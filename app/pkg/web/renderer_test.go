@@ -21,7 +21,7 @@ import (
 )
 
 func ReplaceSpaces(inString string) string {
-	return strings.ReplaceAll(strings.ReplaceAll(strings.ReplaceAll(inString, "\t", ""), " ", ""), "\n", ""), "/>", ">")
+	return strings.ReplaceAll(strings.ReplaceAll(strings.ReplaceAll(strings.ReplaceAll(inString, "\t", ""), " ", ""), "\n", ""), "/>", ">")
 }
 
 func compareRendererResponse(buf *bytes.Buffer, fileName string, ctx *web.Context) {

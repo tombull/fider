@@ -11,7 +11,7 @@ import (
 )
 
 func ReplaceSpaces(inString string) string {
-	return strings.ReplaceAll(strings.ReplaceAll(strings.ReplaceAll(inString, "\t", ""), " ", ""), "\n", ""), "/>", ">")
+	return strings.ReplaceAll(strings.ReplaceAll(strings.ReplaceAll(strings.ReplaceAll(inString, "\t", ""), " ", ""), "\n", ""), "/>", ">")
 }
 func TestRenderMessage(t *testing.T) {
 	RegisterT(t)
