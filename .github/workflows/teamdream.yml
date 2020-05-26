@@ -13,7 +13,7 @@ jobs:
     name: Test UI
     runs-on: ubuntu-latest
     container:
-      image: getteamdream/githubci:0.0.2
+      image: getfider/githubci:0.0.2
 
     steps:
       - name: checkout code
@@ -26,11 +26,11 @@ jobs:
     name: Test Server
     runs-on: ubuntu-latest
     container:
-      image: getteamdream/githubci:0.0.2
+      image: getfider/githubci:0.0.2
 
     services:
       minio:
-        image: getteamdream/minio:0.0.2
+        image: getfider/minio:0.0.2
         ports:
           - 9000:9000
         env:
@@ -63,7 +63,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [test-server, test-ui]
     container:
-      image: getteamdream/githubci:0.0.2
+      image: getfider/githubci:0.0.2
 
     steps:
       - name: checkout code

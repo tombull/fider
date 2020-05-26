@@ -1,5 +1,5 @@
 # Build Step
-FROM getteamdream/githubci:0.0.2 AS builder
+FROM getfider/githubci:0.0.2 AS builder
 
 RUN mkdir /app
 WORKDIR /app

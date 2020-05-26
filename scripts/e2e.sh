@@ -19,7 +19,7 @@ start_teamdream () {
     -v `pwd`/etc:/app/etc \
     --env-file .env \
     --link $PG_CONTAINER \
-    --name $FIDER_CONTAINER getteamdream/teamdream:e2e
+    --name $FIDER_CONTAINER getfider/teamdream:e2e
 }
 
 run_e2e () {
@@ -31,7 +31,7 @@ run_e2e () {
 if [[ $1 == 'build' ]] || [ -z $1 ]
 then
   mage build:docker
-  docker tag getteamdream/teamdream getteamdream/teamdream:e2e
+  docker tag getfider/teamdream getfider/teamdream:e2e
 fi
 
 if [[ $1 == 'single' ]] || [ -z $1 ]
