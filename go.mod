@@ -22,8 +22,8 @@ require (
 	github.com/patrickmn/go-cache v2.1.0+incompatible
 	github.com/pelletier/go-toml v1.8.0 // indirect
 	github.com/russross/blackfriday v1.5.2
-	github.com/securego/gosec v0.0.0-20191002120514-e680875ea14d // indirect
-	github.com/stripe/stripe-go v70.15.0+incompatible
+	github.com/securego/gosec v0.0.0-20200401082031-e946c8c39989 // indirect
+	github.com/stripe/stripe-go v64.1.0+incompatible
 	golang.org/x/crypto v0.0.0-20200510223506-06a226fb4e37
 	golang.org/x/oauth2 v0.0.0-20200107190931-bf48bf16ab8d
 )
