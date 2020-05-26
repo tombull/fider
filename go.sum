@@ -14,10 +14,14 @@ github.com/aws/aws-sdk-go v1.25.25 h1:j3HLOqcDWjNox1DyvJRs+kVQF42Ghtv6oL6cVBfXS3
 github.com/aws/aws-sdk-go v1.25.25/go.mod h1:KmX6BPdI08NWTb3/sm4ZGu5ShLoqVDhKgpiN924inxo=
 github.com/aws/aws-sdk-go v1.31.4 h1:YZ0uEYIWeanGuAomElHmRWMAbXVqrQixxgf2vtIjO6M=
 github.com/aws/aws-sdk-go v1.31.4/go.mod h1:5zCpMtNQVjRREroY7sYe8lOMRSxkhG6MZveU8YkpAk0=
+github.com/aws/aws-sdk-go v1.31.5 h1:DFA7BzTydO4etqsTja+x7UfkOKQUv1xzEluLvNk81L0=
+github.com/aws/aws-sdk-go v1.31.5/go.mod h1:5zCpMtNQVjRREroY7sYe8lOMRSxkhG6MZveU8YkpAk0=
 github.com/beorn7/perks v0.0.0-20180321164747-3a771d992973/go.mod h1:Dwedo/Wpr24TaqPxmxbtue+5NUziq4I4S80YR8gNf3Q=
 github.com/beorn7/perks v1.0.0/go.mod h1:KWe93zE9D1o94FZ5RNwFwVgaQK1VOXiVxmqh+CedLV8=
 github.com/bombsimon/wsl v1.2.5 h1:9gTOkIwVtoDZywvX802SDHokeX4kW1cKnV8ZTVAPkRs=
 github.com/bombsimon/wsl v1.2.5/go.mod h1:43lEF/i0kpXbLCeDXL9LMT8c92HyBywXb0AsgMHYngM=
+github.com/bombsimon/wsl v1.2.8 h1:b+E/W7koicKBZDU+vEsw/hnQTN8026Gv1eMZDLUU/Wc=
+github.com/bombsimon/wsl v1.2.8/go.mod h1:43lEF/i0kpXbLCeDXL9LMT8c92HyBywXb0AsgMHYngM=
 github.com/bombsimon/wsl/v3 v3.0.0/go.mod h1:st10JtZYLE4D5sC7b8xV4zTKZwAQjCH/Hy2Pm1FNZIc=
 github.com/cespare/xxhash v1.1.0/go.mod h1:XrSqR1VqqWfGrhpAt58auRo0WTKS1nRRg3ghfAqPWnc=
 github.com/client9/misspell v0.3.4/go.mod h1:qj6jICC3Q7zFZvVWo7KLAzC3yx5G7kyvSDkc90ppPyw=

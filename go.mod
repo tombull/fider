@@ -3,8 +3,8 @@ module github.com/tombull/teamdream
 go 1.13
 
 require (
-	github.com/aws/aws-sdk-go v1.31.4
-	github.com/bombsimon/wsl v1.2.5 // indirect
+	github.com/aws/aws-sdk-go v1.31.5
+	github.com/bombsimon/wsl v1.2.8 // indirect
 	github.com/cosmtrek/air v1.12.1
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/goenning/imagic v0.0.1
