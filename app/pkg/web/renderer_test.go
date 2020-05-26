@@ -20,11 +20,15 @@ import (
 	"github.com/tombull/teamdream/app/pkg/web"
 )
 
+func ReplaceSpaces(inString string) string {
+	return strings.Replace(strings.Replace(strings.Replace(inString, "\t", ""), " ", ""), "\n", "")
+}
+
 func compareRendererResponse(buf *bytes.Buffer, fileName string, ctx *web.Context) {
 	// ioutil.WriteFile(env.Path(fileName), []byte(strings.Replace(buf.String(), ctx.ContextID(), "CONTEXT_ID", -1)), 0744)
 	bytes, err := ioutil.ReadFile(env.Path(fileName))
 	Expect(err).IsNil()
-	Expect(strings.Replace(buf.String(), ctx.ContextID(), "CONTEXT_ID", -1)).Equals(string(bytes))
+	Expect(ReplaceSpaces(strings.Replace(buf.String(), ctx.ContextID(), "CONTEXT_ID", -1))).Equals(ReplaceSpaces(string(bytes)))
 }
 
 func TestRenderer_Basic(t *testing.T) {
