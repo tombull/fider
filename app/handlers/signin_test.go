@@ -63,7 +63,7 @@ func TestVerifySignInKeyHandler_UnknownKey(t *testing.T) {
 	server := mock.NewServer()
 	code, _ := server.
 		OnTenant(mock.DemoTenant).
-		WithURL("http://demo.test.fider.io/signin/verify?k=unknown").
+		WithURL("http://demo.test.teamdream.co.uk/signin/verify?k=unknown").
 		Execute(handlers.VerifySignInKey(enum.EmailVerificationKindSignIn))
 
 	Expect(code).Equals(http.StatusNotFound)
@@ -91,7 +91,7 @@ func TestVerifySignInKeyHandler_UsedKey(t *testing.T) {
 
 	code, _ := server.
 		OnTenant(mock.DemoTenant).
-		WithURL("http://demo.test.fider.io/signin/verify?k=" + key).
+		WithURL("http://demo.test.teamdream.co.uk/signin/verify?k=" + key).
 		Execute(handlers.VerifySignInKey(enum.EmailVerificationKindSignIn))
 
 	Expect(code).Equals(http.StatusGone)
@@ -127,7 +127,7 @@ func TestVerifySignInKeyHandler_ExpiredKey(t *testing.T) {
 
 	code, _ := server.
 		OnTenant(mock.DemoTenant).
-		WithURL("http://demo.test.fider.io/signin/verify?k=" + key).
+		WithURL("http://demo.test.teamdream.co.uk/signin/verify?k=" + key).
 		Execute(handlers.VerifySignInKey(enum.EmailVerificationKindSignIn))
 
 	Expect(code).Equals(http.StatusGone)
@@ -172,11 +172,11 @@ func TestVerifySignInKeyHandler_CorrectKey_ExistingUser(t *testing.T) {
 
 	code, response := server.
 		OnTenant(mock.DemoTenant).
-		WithURL("http://demo.test.fider.io/signin/verify?k=" + key).
+		WithURL("http://demo.test.teamdream.co.uk/signin/verify?k=" + key).
 		Execute(handlers.VerifySignInKey(enum.EmailVerificationKindSignIn))
 
 	Expect(code).Equals(http.StatusTemporaryRedirect)
-	Expect(response.Header().Get("Location")).Equals("http://demo.test.fider.io")
+	Expect(response.Header().Get("Location")).Equals("http://demo.test.teamdream.co.uk")
 
 	Expect(verified).IsTrue()
 	ExpectFiderAuthCookie(response, mock.JonSnow)
@@ -220,7 +220,7 @@ func TestVerifySignInKeyHandler_CorrectKey_NewUser(t *testing.T) {
 
 	code, _ := server.
 		OnTenant(mock.DemoTenant).
-		WithURL("http://demo.test.fider.io/signin/verify?k=" + key).
+		WithURL("http://demo.test.teamdream.co.uk/signin/verify?k=" + key).
 		Execute(handlers.VerifySignInKey(enum.EmailVerificationKindSignIn))
 
 	Expect(code).Equals(http.StatusOK)
@@ -253,7 +253,7 @@ func TestVerifySignInKeyHandler_PrivateTenant_SignInRequest_NonInviteNewUser(t *
 
 	code, _ := server.
 		OnTenant(mock.DemoTenant).
-		WithURL("http://demo.test.fider.io/signin/verify?k=" + key).
+		WithURL("http://demo.test.teamdream.co.uk/signin/verify?k=" + key).
 		Execute(handlers.VerifySignInKey(enum.EmailVerificationKindSignIn))
 
 	Expect(code).Equals(http.StatusForbidden)
@@ -304,11 +304,11 @@ func TestVerifySignInKeyHandler_PrivateTenant_SignInRequest_RegisteredUser(t *te
 
 	code, response := server.
 		OnTenant(mock.DemoTenant).
-		WithURL("http://demo.test.fider.io/signin/verify?k=" + key).
+		WithURL("http://demo.test.teamdream.co.uk/signin/verify?k=" + key).
 		Execute(handlers.VerifySignInKey(enum.EmailVerificationKindSignIn))
 
 	Expect(code).Equals(http.StatusTemporaryRedirect)
-	Expect(response.Header().Get("Location")).Equals("http://demo.test.fider.io")
+	Expect(response.Header().Get("Location")).Equals("http://demo.test.teamdream.co.uk")
 	Expect(verified).IsTrue()
 }
 
@@ -357,11 +357,11 @@ func TestVerifySignInKeyHandler_PrivateTenant_InviteRequest_ExistingUser(t *test
 
 	code, response := server.
 		OnTenant(mock.DemoTenant).
-		WithURL("http://demo.test.fider.io/invite/verify?k=" + key).
+		WithURL("http://demo.test.teamdream.co.uk/invite/verify?k=" + key).
 		Execute(handlers.VerifySignInKey(enum.EmailVerificationKindUserInvitation))
 
 	Expect(code).Equals(http.StatusTemporaryRedirect)
-	Expect(response.Header().Get("Location")).Equals("http://demo.test.fider.io")
+	Expect(response.Header().Get("Location")).Equals("http://demo.test.teamdream.co.uk")
 	Expect(verified).IsTrue()
 }
 
@@ -392,7 +392,7 @@ func TestVerifySignInKeyHandler_PrivateTenant_InviteRequest_NewUser(t *testing.T
 
 	code, _ := server.
 		OnTenant(mock.DemoTenant).
-		WithURL("http://demo.test.fider.io/invite/verify?k=" + key).
+		WithURL("http://demo.test.teamdream.co.uk/invite/verify?k=" + key).
 		Execute(handlers.VerifySignInKey(enum.EmailVerificationKindUserInvitation))
 
 	Expect(code).Equals(http.StatusOK)
@@ -442,11 +442,11 @@ func TestVerifySignUpKeyHandler_PendingTenant(t *testing.T) {
 
 	code, response := server.
 		OnTenant(mock.DemoTenant).
-		WithURL("http://demo.test.fider.io/signup/verify?k=" + key).
+		WithURL("http://demo.test.teamdream.co.uk/signup/verify?k=" + key).
 		Execute(handlers.VerifySignUpKey())
 
 	Expect(code).Equals(http.StatusTemporaryRedirect)
-	Expect(response.Header().Get("Location")).Equals("http://demo.test.fider.io")
+	Expect(response.Header().Get("Location")).Equals("http://demo.test.teamdream.co.uk")
 	Expect(newUser.Name).Equals("Hot Pie")
 	Expect(newUser.Email).Equals("hot.pie@got.com")
 	Expect(activated).IsTrue()
@@ -460,7 +460,7 @@ func TestCompleteSignInProfileHandler_UnknownKey(t *testing.T) {
 
 	code, _ := server.
 		OnTenant(mock.DemoTenant).
-		WithURL("http://demo.test.fider.io/signin/complete").
+		WithURL("http://demo.test.teamdream.co.uk/signin/complete").
 		ExecutePost(handlers.CompleteSignInProfile(), `{ }`)
 
 	Expect(code).Equals(http.StatusBadRequest)
@@ -496,7 +496,7 @@ func TestCompleteSignInProfileHandler_ExistingUser_CorrectKey(t *testing.T) {
 
 	code, _ := server.
 		OnTenant(mock.DemoTenant).
-		WithURL("http://demo.test.fider.io/signin/complete").
+		WithURL("http://demo.test.teamdream.co.uk/signin/complete").
 		ExecutePost(handlers.CompleteSignInProfile(), `{ "name": "Hot Pie", "key": "`+key+`" }`)
 
 	Expect(code).Equals(http.StatusOK)
@@ -542,7 +542,7 @@ func TestCompleteSignInProfileHandler_CorrectKey(t *testing.T) {
 
 	code, response := server.
 		OnTenant(mock.DemoTenant).
-		WithURL("http://demo.test.fider.io/signin/complete").
+		WithURL("http://demo.test.teamdream.co.uk/signin/complete").
 		ExecutePost(handlers.CompleteSignInProfile(), `{ "name": "Hot Pie", "key": "`+key+`" }`)
 	Expect(code).Equals(http.StatusOK)
 
@@ -560,11 +560,11 @@ func TestSignInPageHandler_AuthenticatedUser(t *testing.T) {
 	code, response := server.
 		OnTenant(mock.DemoTenant).
 		AsUser(mock.AryaStark).
-		WithURL("http://demo.test.fider.io/signin").
+		WithURL("http://demo.test.teamdream.co.uk/signin").
 		Execute(handlers.SignInPage())
 
 	Expect(code).Equals(http.StatusTemporaryRedirect)
-	Expect(response.Header().Get("Location")).Equals("http://demo.test.fider.io")
+	Expect(response.Header().Get("Location")).Equals("http://demo.test.teamdream.co.uk")
 }
 
 func TestSignInPageHandler_NonPrivateTenant(t *testing.T) {
@@ -573,11 +573,11 @@ func TestSignInPageHandler_NonPrivateTenant(t *testing.T) {
 	server := mock.NewServer()
 	code, response := server.
 		OnTenant(mock.DemoTenant).
-		WithURL("http://demo.test.fider.io/signin").
+		WithURL("http://demo.test.teamdream.co.uk/signin").
 		Execute(handlers.SignInPage())
 
 	Expect(code).Equals(http.StatusTemporaryRedirect)
-	Expect(response.Header().Get("Location")).Equals("http://demo.test.fider.io")
+	Expect(response.Header().Get("Location")).Equals("http://demo.test.teamdream.co.uk")
 }
 
 func TestSignInPageHandler_PrivateTenant_UnauthenticatedUser(t *testing.T) {
@@ -588,7 +588,7 @@ func TestSignInPageHandler_PrivateTenant_UnauthenticatedUser(t *testing.T) {
 
 	code, _ := server.
 		OnTenant(mock.DemoTenant).
-		WithURL("http://demo.test.fider.io/signin").
+		WithURL("http://demo.test.teamdream.co.uk/signin").
 		Execute(handlers.SignInPage())
 
 	Expect(code).Equals(http.StatusOK)

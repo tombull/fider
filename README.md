@@ -15,7 +15,7 @@
       Website
     </a>
     <span> | </span>
-    <a href="https://feedback.fider.io/">
+    <a href="https://feedback.teamdream.co.uk/">
       See it in action
     </a>
   </h3>

@@ -421,7 +421,7 @@ const UIToolkitPage = () => {
         </Input>
         <Input label="Disabled!" field="unamed" disabled={true} value={"you can't change this!"} />
         <Input label="Name" field="name" placeholder={"Your name goes here..."} />
-        <Input label="Subdomain" field="subdomain" suffix="fider.io" />
+        <Input label="Subdomain" field="subdomain" suffix="teamdream.co.uk" />
         <Input label="Email" field="email" suffix={<Button color="positive">Sign in</Button>} />
         <TextArea label="Description" field="description" minRows={5}>
           <p className="info">This textarea resizes as you type.</p>

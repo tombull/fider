@@ -11,7 +11,7 @@ import (
 func TestAgnosticAuth_Login(t *testing.T) {
 	RegisterT(t)
 
-	auth := smtp.AgnosticAuth("", "jon", "s3cr3t", "test.fider.io")
+	auth := smtp.AgnosticAuth("", "jon", "s3cr3t", "test.teamdream.co.uk")
 	proto, bytes, err := auth.Start(&gosmtp.ServerInfo{
 		Auth: []string{"LOGIN"},
 	})
@@ -32,7 +32,7 @@ func TestAgnosticAuth_Login(t *testing.T) {
 func TestAgnosticAuth_NoMatchingAuth(t *testing.T) {
 	RegisterT(t)
 
-	auth := smtp.AgnosticAuth("", "jon", "s3cr3t", "test.fider.io")
+	auth := smtp.AgnosticAuth("", "jon", "s3cr3t", "test.teamdream.co.uk")
 	proto, bytes, err := auth.Start(&gosmtp.ServerInfo{
 		Auth: []string{"FAKE-MD5"},
 	})

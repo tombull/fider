@@ -8,8 +8,8 @@ const testCases = [
       '<p>Visit <a target="_blank" rel="noopener" href="https://github.com">GitHub</a> to learn more.</p>',
   },
   {
-    input: "My Picture ![](http://demo.dev.fider.io:3000/images/100/28)",
-    expectedFull: '<p>My Picture <img alt="" src="http://demo.dev.fider.io:3000/images/100/28"></p>',
+    input: "My Picture ![](http://demo.dev.teamdream.co.uk:3000/images/100/28)",
+    expectedFull: '<p>My Picture <img alt="" src="http://demo.dev.teamdream.co.uk:3000/images/100/28"></p>',
     expectedSimple: "<p>My Picture </p>",
   },
   {

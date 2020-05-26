@@ -63,39 +63,39 @@ func TestCanSendTo(t *testing.T) {
 		canSend   bool
 	}{
 		{
-			whitelist: "(^.+@fider.io$)|(^darthvader\\.fider(\\+.*)?@gmail\\.com$)",
+			whitelist: "(^.+@teamdream.co.uk$)|(^darthvader\\.fider(\\+.*)?@gmail\\.com$)",
 			blacklist: "",
-			input:     []string{"me@fider.io", "me+123@fider.io", "darthvader.fider@gmail.com", "darthvader.fider+434@gmail.com"},
+			input:     []string{"me@teamdream.co.uk", "me+123@teamdream.co.uk", "darthvader.fider@gmail.com", "darthvader.fider+434@gmail.com"},
 			canSend:   true,
 		},
 		{
-			whitelist: "(^.+@fider.io$)|(^darthvader\\.fider(\\+.*)?@gmail\\.com$)",
+			whitelist: "(^.+@teamdream.co.uk$)|(^darthvader\\.fider(\\+.*)?@gmail\\.com$)",
 			blacklist: "",
-			input:     []string{"me+123@fider.iod", "me@fidero.io", "darthvader.fidera@gmail.com", "@fider.io"},
+			input:     []string{"me+123@teamdream.co.ukd", "me@fidero.io", "darthvader.fidera@gmail.com", "@teamdream.co.uk"},
 			canSend:   false,
 		},
 		{
-			whitelist: "(^.+@fider.io$)|(^darthvader\\.fider(\\+.*)?@gmail\\.com$)",
-			blacklist: "(^.+@fider.io$)",
-			input:     []string{"me@fider.io"},
+			whitelist: "(^.+@teamdream.co.uk$)|(^darthvader\\.fider(\\+.*)?@gmail\\.com$)",
+			blacklist: "(^.+@teamdream.co.uk$)",
+			input:     []string{"me@teamdream.co.uk"},
 			canSend:   true,
 		},
 		{
 			whitelist: "",
-			blacklist: "(^.+@fider.io$)",
-			input:     []string{"me@fider.io", "abc@fider.io"},
+			blacklist: "(^.+@teamdream.co.uk$)",
+			input:     []string{"me@teamdream.co.uk", "abc@teamdream.co.uk"},
 			canSend:   false,
 		},
 		{
 			whitelist: "",
-			blacklist: "(^.+@fider.io$)",
+			blacklist: "(^.+@teamdream.co.uk$)",
 			input:     []string{"me@fider.com", "abc@fiderio.io"},
 			canSend:   true,
 		},
 		{
 			whitelist: "",
 			blacklist: "",
-			input:     []string{"me@fider.io"},
+			input:     []string{"me@teamdream.co.uk"},
 			canSend:   true,
 		},
 		{

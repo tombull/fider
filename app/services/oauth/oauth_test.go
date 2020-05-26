@@ -39,7 +39,7 @@ func TestGetAuthURL_Facebook(t *testing.T) {
 	RegisterT(t)
 	bus.Init(&oauth.Service{})
 
-	ctx := newGetContext("http://login.test.fider.io:3000")
+	ctx := newGetContext("http://login.test.teamdream.co.uk:3000")
 	authURL := &query.GetOAuthAuthorizationURL{
 		Provider:   app.FacebookProvider,
 		Redirect:   "http://example.org",
@@ -48,14 +48,14 @@ func TestGetAuthURL_Facebook(t *testing.T) {
 
 	err := bus.Dispatch(ctx, authURL)
 	Expect(err).IsNil()
-	Expect(authURL.Result).Equals("https://www.facebook.com/v3.2/dialog/oauth?client_id=FB_CL_ID&redirect_uri=http%3A%2F%2Flogin.test.fider.io%3A3000%2Foauth%2Ffacebook%2Fcallback&response_type=code&scope=public_profile+email&state=http%3A%2F%2Fexample.org%7C456")
+	Expect(authURL.Result).Equals("https://www.facebook.com/v3.2/dialog/oauth?client_id=FB_CL_ID&redirect_uri=http%3A%2F%2Flogin.test.teamdream.co.uk%3A3000%2Foauth%2Ffacebook%2Fcallback&response_type=code&scope=public_profile+email&state=http%3A%2F%2Fexample.org%7C456")
 }
 
 func TestGetAuthURL_Google(t *testing.T) {
 	RegisterT(t)
 	bus.Init(&oauth.Service{})
 
-	ctx := newGetContext("http://login.test.fider.io:3000")
+	ctx := newGetContext("http://login.test.teamdream.co.uk:3000")
 
 	authURL := &query.GetOAuthAuthorizationURL{
 		Provider:   app.GoogleProvider,
@@ -65,14 +65,14 @@ func TestGetAuthURL_Google(t *testing.T) {
 
 	err := bus.Dispatch(ctx, authURL)
 	Expect(err).IsNil()
-	Expect(authURL.Result).Equals("https://accounts.google.com/o/oauth2/v2/auth?client_id=GO_CL_ID&redirect_uri=http%3A%2F%2Flogin.test.fider.io%3A3000%2Foauth%2Fgoogle%2Fcallback&response_type=code&scope=profile+email&state=http%3A%2F%2Fexample.org%7C123")
+	Expect(authURL.Result).Equals("https://accounts.google.com/o/oauth2/v2/auth?client_id=GO_CL_ID&redirect_uri=http%3A%2F%2Flogin.test.teamdream.co.uk%3A3000%2Foauth%2Fgoogle%2Fcallback&response_type=code&scope=profile+email&state=http%3A%2F%2Fexample.org%7C123")
 }
 
 func TestGetAuthURL_GitHub(t *testing.T) {
 	RegisterT(t)
 	bus.Init(&oauth.Service{})
 
-	ctx := newGetContext("http://login.test.fider.io:3000")
+	ctx := newGetContext("http://login.test.teamdream.co.uk:3000")
 
 	authURL := &query.GetOAuthAuthorizationURL{
 		Provider:   app.GitHubProvider,
@@ -82,7 +82,7 @@ func TestGetAuthURL_GitHub(t *testing.T) {
 
 	err := bus.Dispatch(ctx, authURL)
 	Expect(err).IsNil()
-	Expect(authURL.Result).Equals("https://github.com/login/oauth/authorize?client_id=GH_CL_ID&redirect_uri=http%3A%2F%2Flogin.test.fider.io%3A3000%2Foauth%2Fgithub%2Fcallback&response_type=code&scope=user%3Aemail&state=http%3A%2F%2Fexample.org%7C456")
+	Expect(authURL.Result).Equals("https://github.com/login/oauth/authorize?client_id=GH_CL_ID&redirect_uri=http%3A%2F%2Flogin.test.teamdream.co.uk%3A3000%2Foauth%2Fgithub%2Fcallback&response_type=code&scope=user%3Aemail&state=http%3A%2F%2Fexample.org%7C456")
 }
 
 func TestGetAuthURL_Custom(t *testing.T) {
@@ -101,7 +101,7 @@ func TestGetAuthURL_Custom(t *testing.T) {
 		return nil
 	})
 
-	ctx := newGetContext("http://login.test.fider.io:3000")
+	ctx := newGetContext("http://login.test.teamdream.co.uk:3000")
 	authURL := &query.GetOAuthAuthorizationURL{
 		Provider:   "_custom",
 		Redirect:   "http://example.org",
@@ -110,7 +110,7 @@ func TestGetAuthURL_Custom(t *testing.T) {
 
 	err := bus.Dispatch(ctx, authURL)
 	Expect(err).IsNil()
-	Expect(authURL.Result).Equals("https://example.org/oauth/authorize?client_id=CU_CL_ID&redirect_uri=http%3A%2F%2Flogin.test.fider.io%3A3000%2Foauth%2F_custom%2Fcallback&response_type=code&scope=profile+email&state=http%3A%2F%2Fexample.org%7C456")
+	Expect(authURL.Result).Equals("https://example.org/oauth/authorize?client_id=CU_CL_ID&redirect_uri=http%3A%2F%2Flogin.test.teamdream.co.uk%3A3000%2Foauth%2F_custom%2Fcallback&response_type=code&scope=profile+email&state=http%3A%2F%2Fexample.org%7C456")
 }
 
 func TestParseProfileResponse_AllFields(t *testing.T) {
@@ -129,7 +129,7 @@ func TestParseProfileResponse_AllFields(t *testing.T) {
 		return nil
 	})
 
-	ctx := newGetContext("http://login.test.fider.io:3000")
+	ctx := newGetContext("http://login.test.teamdream.co.uk:3000")
 	profile := &cmd.ParseOAuthRawProfile{
 		Provider: "_test1",
 		Body:     `{"name":"Jon Snow","email":"jon\u0040got.com","id":"789654"}`,
@@ -159,7 +159,7 @@ func TestParseProfileResponse_WithoutEmail(t *testing.T) {
 		return nil
 	})
 
-	ctx := newGetContext("http://login.test.fider.io:3000")
+	ctx := newGetContext("http://login.test.teamdream.co.uk:3000")
 	profile := &cmd.ParseOAuthRawProfile{
 		Provider: "_test1",
 		Body:     `{"name":"Jon Snow","id":"1"}`,
@@ -188,7 +188,7 @@ func TestParseProfileResponse_NestedData(t *testing.T) {
 		return nil
 	})
 
-	ctx := newGetContext("http://login.test.fider.io:3000")
+	ctx := newGetContext("http://login.test.teamdream.co.uk:3000")
 	profile := &cmd.ParseOAuthRawProfile{
 		Provider: "_test1",
 		Body: `{
@@ -223,7 +223,7 @@ func TestParseProfileResponse_WithFallback(t *testing.T) {
 		return nil
 	})
 
-	ctx := newGetContext("http://login.test.fider.io:3000")
+	ctx := newGetContext("http://login.test.teamdream.co.uk:3000")
 	profile := &cmd.ParseOAuthRawProfile{
 		Provider: "_test1",
 		Body: `{
@@ -258,7 +258,7 @@ func TestParseProfileResponse_UseEmailWhenNameIsEmpty(t *testing.T) {
 		return nil
 	})
 
-	ctx := newGetContext("http://login.test.fider.io:3000")
+	ctx := newGetContext("http://login.test.teamdream.co.uk:3000")
 	profile := &cmd.ParseOAuthRawProfile{
 		Provider: "_test1",
 		Body: `{
@@ -292,7 +292,7 @@ func TestParseProfileResponse_InvalidEmail(t *testing.T) {
 		return nil
 	})
 
-	ctx := newGetContext("http://login.test.fider.io:3000")
+	ctx := newGetContext("http://login.test.teamdream.co.uk:3000")
 	profile := &cmd.ParseOAuthRawProfile{
 		Provider: "_test1",
 		Body: `{
@@ -327,7 +327,7 @@ func TestParseProfileResponse_EmptyID(t *testing.T) {
 		return nil
 	})
 
-	ctx := newGetContext("http://login.test.fider.io:3000")
+	ctx := newGetContext("http://login.test.teamdream.co.uk:3000")
 	profile := &cmd.ParseOAuthRawProfile{
 		Provider: "_test1",
 		Body:     `{}`,
@@ -354,7 +354,7 @@ func TestParseProfileResponse_EmptyName(t *testing.T) {
 		return nil
 	})
 
-	ctx := newGetContext("http://login.test.fider.io:3000")
+	ctx := newGetContext("http://login.test.teamdream.co.uk:3000")
 	profile := &cmd.ParseOAuthRawProfile{
 		Provider: "_test1",
 		Body:     `{ "id": "A0" }`,
@@ -383,7 +383,7 @@ func TestCustomOAuth_Disabled(t *testing.T) {
 		return nil
 	})
 
-	ctx := newGetContext("http://login.test.fider.io:3000")
+	ctx := newGetContext("http://login.test.teamdream.co.uk:3000")
 	rawProfile := &cmd.ParseOAuthRawProfile{
 		Provider: "_test1",
 		Body:     `{ "id": "A0", "name": "John" }`,

@@ -42,12 +42,12 @@ func TestHasLegal(t *testing.T) {
 func TestMultiTenantDomain(t *testing.T) {
 	RegisterT(t)
 
-	env.Config.HostDomain = "test.fider.io"
-	Expect(env.MultiTenantDomain()).Equals(".test.fider.io")
-	env.Config.HostDomain = "dev.fider.io"
-	Expect(env.MultiTenantDomain()).Equals(".dev.fider.io")
-	env.Config.HostDomain = "fider.io"
-	Expect(env.MultiTenantDomain()).Equals(".fider.io")
+	env.Config.HostDomain = "test.teamdream.co.uk"
+	Expect(env.MultiTenantDomain()).Equals(".test.teamdream.co.uk")
+	env.Config.HostDomain = "dev.teamdream.co.uk"
+	Expect(env.MultiTenantDomain()).Equals(".dev.teamdream.co.uk")
+	env.Config.HostDomain = "teamdream.co.uk"
+	Expect(env.MultiTenantDomain()).Equals(".teamdream.co.uk")
 }
 
 func TestIsBillingEnbled(t *testing.T) {
@@ -63,21 +63,21 @@ func TestIsBillingEnbled(t *testing.T) {
 func TestSubdomain(t *testing.T) {
 	RegisterT(t)
 
-	Expect(env.Subdomain("demo.test.assets-fider.io")).Equals("")
+	Expect(env.Subdomain("demo.test.assets-teamdream.co.uk")).Equals("")
 
-	env.Config.CDN.Host = "test.assets-fider.io:3000"
+	env.Config.CDN.Host = "test.assets-teamdream.co.uk:3000"
 
-	Expect(env.Subdomain("demo.test.fider.io")).Equals("demo")
-	Expect(env.Subdomain("demo.test.assets-fider.io")).Equals("demo")
-	Expect(env.Subdomain("test.fider.io")).Equals("")
-	Expect(env.Subdomain("test.assets-fider.io")).Equals("")
+	Expect(env.Subdomain("demo.test.teamdream.co.uk")).Equals("demo")
+	Expect(env.Subdomain("demo.test.assets-teamdream.co.uk")).Equals("demo")
+	Expect(env.Subdomain("test.teamdream.co.uk")).Equals("")
+	Expect(env.Subdomain("test.assets-teamdream.co.uk")).Equals("")
 	Expect(env.Subdomain("helloworld.com")).Equals("")
 
 	env.Config.HostMode = "single"
 
-	Expect(env.Subdomain("demo.test.fider.io")).Equals("")
-	Expect(env.Subdomain("demo.test.assets-fider.io")).Equals("")
-	Expect(env.Subdomain("test.fider.io")).Equals("")
-	Expect(env.Subdomain("test.assets-fider.io")).Equals("")
+	Expect(env.Subdomain("demo.test.teamdream.co.uk")).Equals("")
+	Expect(env.Subdomain("demo.test.assets-teamdream.co.uk")).Equals("")
+	Expect(env.Subdomain("test.teamdream.co.uk")).Equals("")
+	Expect(env.Subdomain("test.assets-teamdream.co.uk")).Equals("")
 	Expect(env.Subdomain("helloworld.com")).Equals("")
 }

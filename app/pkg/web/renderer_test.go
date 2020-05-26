@@ -39,7 +39,7 @@ func TestRenderer_Basic(t *testing.T) {
 	})
 
 	buf := new(bytes.Buffer)
-	ctx := newGetContext("https://demo.test.fider.io:3000/", nil)
+	ctx := newGetContext("https://demo.test.teamdream.co.uk:3000/", nil)
 	renderer := web.NewRenderer(&models.SystemSettings{})
 	renderer.Render(buf, http.StatusOK, "index.html", web.Props{}, ctx)
 	compareRendererResponse(buf, "/app/pkg/web/testdata/basic.html", ctx)
@@ -53,7 +53,7 @@ func TestRenderer_WithChunkPreload(t *testing.T) {
 	})
 
 	buf := new(bytes.Buffer)
-	ctx := newGetContext("https://demo.test.fider.io:3000/", nil)
+	ctx := newGetContext("https://demo.test.teamdream.co.uk:3000/", nil)
 	renderer := web.NewRenderer(&models.SystemSettings{})
 	renderer.Render(buf, http.StatusOK, "index.html", web.Props{ChunkName: "Test.page"}, ctx)
 	compareRendererResponse(buf, "/app/pkg/web/testdata/chunk.html", ctx)
@@ -67,7 +67,7 @@ func TestRenderer_Tenant(t *testing.T) {
 	})
 
 	buf := new(bytes.Buffer)
-	ctx := newGetContext("https://demo.test.fider.io:3000/", nil)
+	ctx := newGetContext("https://demo.test.teamdream.co.uk:3000/", nil)
 	ctx.SetTenant(&models.Tenant{Name: "Game of Thrones"})
 	renderer := web.NewRenderer(&models.SystemSettings{})
 	renderer.Render(buf, http.StatusOK, "index.html", web.Props{}, ctx)
@@ -82,7 +82,7 @@ func TestRenderer_WithCanonicalURL(t *testing.T) {
 	})
 
 	buf := new(bytes.Buffer)
-	ctx := newGetContext("https://demo.test.fider.io:3000/", nil)
+	ctx := newGetContext("https://demo.test.teamdream.co.uk:3000/", nil)
 	ctx.SetCanonicalURL("http://feedback.demo.org")
 	renderer := web.NewRenderer(&models.SystemSettings{})
 	renderer.Render(buf, http.StatusOK, "index.html", web.Props{}, ctx)
@@ -97,7 +97,7 @@ func TestRenderer_Props(t *testing.T) {
 	})
 
 	buf := new(bytes.Buffer)
-	ctx := newGetContext("https://demo.test.fider.io:3000/", nil)
+	ctx := newGetContext("https://demo.test.teamdream.co.uk:3000/", nil)
 	renderer := web.NewRenderer(&models.SystemSettings{})
 	renderer.Render(buf, http.StatusOK, "index.html", web.Props{
 		Title:       "My Page Title",
@@ -123,7 +123,7 @@ func TestRenderer_AuthenticatedUser(t *testing.T) {
 	})
 
 	buf := new(bytes.Buffer)
-	ctx := newGetContext("https://demo.test.fider.io:3000/", nil)
+	ctx := newGetContext("https://demo.test.teamdream.co.uk:3000/", nil)
 	ctx.SetUser(&models.User{
 		ID:         5,
 		Name:       "Jon Snow",
@@ -131,7 +131,7 @@ func TestRenderer_AuthenticatedUser(t *testing.T) {
 		Status:     enum.UserActive,
 		Role:       enum.RoleAdministrator,
 		AvatarType: enum.AvatarTypeGravatar,
-		AvatarURL:  "https://demo.test.fider.io:3000/avatars/gravatar/5/Jon%20Snow",
+		AvatarURL:  "https://demo.test.teamdream.co.uk:3000/avatars/gravatar/5/Jon%20Snow",
 	})
 	renderer := web.NewRenderer(&models.SystemSettings{})
 	renderer.Render(buf, http.StatusOK, "index.html", web.Props{
@@ -151,8 +151,8 @@ func TestRenderer_WithOAuth(t *testing.T) {
 				Provider:         app.GoogleProvider,
 				DisplayName:      "Google",
 				ClientID:         "1234",
-				URL:              "https://demo.test.fider.io:3000/oauth/google",
-				CallbackURL:      "https://demo.test.fider.io:3000/oauth/google/callback",
+				URL:              "https://demo.test.teamdream.co.uk:3000/oauth/google",
+				CallbackURL:      "https://demo.test.teamdream.co.uk:3000/oauth/google/callback",
 				LogoBlobKey:      "google.png",
 				IsCustomProvider: false,
 				IsEnabled:        true,
@@ -162,7 +162,7 @@ func TestRenderer_WithOAuth(t *testing.T) {
 	})
 
 	buf := new(bytes.Buffer)
-	ctx := newGetContext("https://demo.test.fider.io:3000/", nil)
+	ctx := newGetContext("https://demo.test.teamdream.co.uk:3000/", nil)
 	renderer := web.NewRenderer(&models.SystemSettings{})
 	renderer.Render(buf, http.StatusOK, "index.html", web.Props{}, ctx)
 	compareRendererResponse(buf, "/app/pkg/web/testdata/oauth.html", ctx)
@@ -173,7 +173,7 @@ func TestRenderer_NonOK(t *testing.T) {
 
 	// it should not dispatch query.ListActiveOAuthProviders
 	buf := new(bytes.Buffer)
-	ctx := newGetContext("https://demo.test.fider.io:3000/", nil)
+	ctx := newGetContext("https://demo.test.teamdream.co.uk:3000/", nil)
 	renderer := web.NewRenderer(&models.SystemSettings{})
 	renderer.Render(buf, http.StatusNotFound, "index.html", web.Props{}, ctx)
 	renderer.Render(buf, http.StatusBadRequest, "index.html", web.Props{}, ctx)

@@ -20,12 +20,12 @@ func Test_GetCertificate(t *testing.T) {
 	}{
 		{"multi", "all-test-fider-io", "", true},
 		{"multi", "all-test-fider-io", "fider", true},
-		{"multi", "all-test-fider-io", "feedback.test.fider.io", true},
-		{"multi", "all-test-fider-io", "FEEDBACK.test.fider.io", true},
-		{"multi", "all-test-fider-io", "app.feedback.test.fider.io", false},
-		{"multi", "all-test-fider-io", "my.app.feedback.test.fider.io", false},
-		{"single", "test-fider-io", "test.fider.io", true},
-		{"single", "test-fider-io", "fider.io", true},
+		{"multi", "all-test-fider-io", "feedback.test.teamdream.co.uk", true},
+		{"multi", "all-test-fider-io", "FEEDBACK.test.teamdream.co.uk", true},
+		{"multi", "all-test-fider-io", "app.feedback.test.teamdream.co.uk", false},
+		{"multi", "all-test-fider-io", "my.app.feedback.test.teamdream.co.uk", false},
+		{"single", "test-fider-io", "test.teamdream.co.uk", true},
+		{"single", "test-fider-io", "teamdream.co.uk", true},
 	}
 
 	for _, testCase := range testCases {

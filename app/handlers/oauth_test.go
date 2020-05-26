@@ -30,7 +30,7 @@ func TestSignOutHandler(t *testing.T) {
 
 	server := mock.NewServer()
 	code, response := server.
-		WithURL("http://demo.test.fider.io/signout?redirect=/").
+		WithURL("http://demo.test.teamdream.co.uk/signout?redirect=/").
 		AddCookie(web.CookieAuthName, "some-value").
 		Execute(handlers.SignOut())
 
@@ -48,12 +48,12 @@ func TestSignInByOAuthHandler(t *testing.T) {
 	code, response := server.
 		AddParam("provider", app.FacebookProvider).
 		AddCookie(web.CookieSessionName, "MY_SESSION_ID").
-		WithURL("http://avengers.test.fider.io/oauth/facebook").
+		WithURL("http://avengers.test.teamdream.co.uk/oauth/facebook").
 		Use(middlewares.Session()).
 		Execute(handlers.SignInByOAuth())
 
 	Expect(code).Equals(http.StatusTemporaryRedirect)
-	Expect(response.Header().Get("Location")).Equals("https://www.facebook.com/v3.2/dialog/oauth?client_id=FB_CL_ID&redirect_uri=http%3A%2F%2Flogin.test.fider.io%2Foauth%2Ffacebook%2Fcallback&response_type=code&scope=public_profile+email&state=http%3A%2F%2Favengers.test.fider.io%7CMY_SESSION_ID")
+	Expect(response.Header().Get("Location")).Equals("https://www.facebook.com/v3.2/dialog/oauth?client_id=FB_CL_ID&redirect_uri=http%3A%2F%2Flogin.test.teamdream.co.uk%2Foauth%2Ffacebook%2Fcallback&response_type=code&scope=public_profile+email&state=http%3A%2F%2Favengers.test.teamdream.co.uk%7CMY_SESSION_ID")
 }
 
 func TestSignInByOAuthHandler_AuthenticatedUser(t *testing.T) {
@@ -65,12 +65,12 @@ func TestSignInByOAuthHandler_AuthenticatedUser(t *testing.T) {
 		AsUser(mock.JonSnow).
 		AddParam("provider", app.FacebookProvider).
 		AddCookie(web.CookieSessionName, "MY_SESSION_ID").
-		WithURL("http://avengers.test.fider.io/oauth/facebook?redirect=http://avengers.test.fider.io").
+		WithURL("http://avengers.test.teamdream.co.uk/oauth/facebook?redirect=http://avengers.test.teamdream.co.uk").
 		Use(middlewares.Session()).
 		Execute(handlers.SignInByOAuth())
 
 	Expect(code).Equals(http.StatusTemporaryRedirect)
-	Expect(response.Header().Get("Location")).Equals("http://avengers.test.fider.io")
+	Expect(response.Header().Get("Location")).Equals("http://avengers.test.teamdream.co.uk")
 }
 
 func TestSignInByOAuthHandler_AuthenticatedUser_UsingEcho(t *testing.T) {
@@ -82,12 +82,12 @@ func TestSignInByOAuthHandler_AuthenticatedUser_UsingEcho(t *testing.T) {
 		AsUser(mock.JonSnow).
 		AddParam("provider", app.FacebookProvider).
 		AddCookie(web.CookieSessionName, "MY_SESSION_ID").
-		WithURL("http://avengers.test.fider.io/oauth/facebook?redirect=http://avengers.test.fider.io/oauth/facebook/echo").
+		WithURL("http://avengers.test.teamdream.co.uk/oauth/facebook?redirect=http://avengers.test.teamdream.co.uk/oauth/facebook/echo").
 		Use(middlewares.Session()).
 		Execute(handlers.SignInByOAuth())
 
 	Expect(code).Equals(http.StatusTemporaryRedirect)
-	Expect(response.Header().Get("Location")).Equals("https://www.facebook.com/v3.2/dialog/oauth?client_id=FB_CL_ID&redirect_uri=http%3A%2F%2Flogin.test.fider.io%2Foauth%2Ffacebook%2Fcallback&response_type=code&scope=public_profile+email&state=http%3A%2F%2Favengers.test.fider.io%2Foauth%2Ffacebook%2Fecho%7CMY_SESSION_ID")
+	Expect(response.Header().Get("Location")).Equals("https://www.facebook.com/v3.2/dialog/oauth?client_id=FB_CL_ID&redirect_uri=http%3A%2F%2Flogin.test.teamdream.co.uk%2Foauth%2Ffacebook%2Fcallback&response_type=code&scope=public_profile+email&state=http%3A%2F%2Favengers.test.teamdream.co.uk%2Foauth%2Ffacebook%2Fecho%7CMY_SESSION_ID")
 }
 
 func TestCallbackHandler_InvalidState(t *testing.T) {
@@ -95,7 +95,7 @@ func TestCallbackHandler_InvalidState(t *testing.T) {
 
 	server := mock.NewServer()
 	code, _ := server.
-		WithURL("http://login.test.fider.io/oauth/callback?state=abc").
+		WithURL("http://login.test.teamdream.co.uk/oauth/callback?state=abc").
 		AddParam("provider", app.FacebookProvider).
 		Execute(handlers.OAuthCallback())
 
@@ -108,12 +108,12 @@ func TestCallbackHandler_InvalidCode(t *testing.T) {
 	server := mock.NewServer()
 
 	code, response := server.
-		WithURL("http://login.test.fider.io/oauth/callback?state=http://avengers.test.fider.io").
+		WithURL("http://login.test.teamdream.co.uk/oauth/callback?state=http://avengers.test.teamdream.co.uk").
 		AddParam("provider", app.FacebookProvider).
 		Execute(handlers.OAuthCallback())
 
 	Expect(code).Equals(http.StatusTemporaryRedirect)
-	Expect(response.Header().Get("Location")).Equals("http://avengers.test.fider.io")
+	Expect(response.Header().Get("Location")).Equals("http://avengers.test.teamdream.co.uk")
 }
 
 func TestCallbackHandler_SignIn(t *testing.T) {
@@ -121,12 +121,12 @@ func TestCallbackHandler_SignIn(t *testing.T) {
 
 	server := mock.NewServer()
 	code, response := server.
-		WithURL("http://login.test.fider.io/oauth/callback?state=http://avengers.test.fider.io|888&code=123").
+		WithURL("http://login.test.teamdream.co.uk/oauth/callback?state=http://avengers.test.teamdream.co.uk|888&code=123").
 		AddParam("provider", app.FacebookProvider).
 		Execute(handlers.OAuthCallback())
 
 	Expect(code).Equals(http.StatusTemporaryRedirect)
-	Expect(response.Header().Get("Location")).Equals("http://avengers.test.fider.io/oauth/facebook/token?code=123&identifier=888&redirect=%2F")
+	Expect(response.Header().Get("Location")).Equals("http://avengers.test.teamdream.co.uk/oauth/facebook/token?code=123&identifier=888&redirect=%2F")
 }
 
 func TestCallbackHandler_SignIn_WithPath(t *testing.T) {
@@ -134,12 +134,12 @@ func TestCallbackHandler_SignIn_WithPath(t *testing.T) {
 	server := mock.NewServer()
 
 	code, response := server.
-		WithURL("http://login.test.fider.io/oauth/callback?state=http://avengers.test.fider.io/some-page|888&code=123").
+		WithURL("http://login.test.teamdream.co.uk/oauth/callback?state=http://avengers.test.teamdream.co.uk/some-page|888&code=123").
 		AddParam("provider", app.FacebookProvider).
 		Execute(handlers.OAuthCallback())
 
 	Expect(code).Equals(http.StatusTemporaryRedirect)
-	Expect(response.Header().Get("Location")).Equals("http://avengers.test.fider.io/oauth/facebook/token?code=123&identifier=888&redirect=%2Fsome-page")
+	Expect(response.Header().Get("Location")).Equals("http://avengers.test.teamdream.co.uk/oauth/facebook/token?code=123&identifier=888&redirect=%2Fsome-page")
 }
 
 func TestCallbackHandler_SignUp(t *testing.T) {
@@ -161,13 +161,13 @@ func TestCallbackHandler_SignUp(t *testing.T) {
 
 	server := mock.NewServer()
 	code, response := server.
-		WithURL("http://login.test.fider.io/oauth/callback?state=http://demo.test.fider.io/signup&code=123").
+		WithURL("http://login.test.teamdream.co.uk/oauth/callback?state=http://demo.test.teamdream.co.uk/signup&code=123").
 		AddParam("provider", app.FacebookProvider).
 		Execute(handlers.OAuthCallback())
 	Expect(code).Equals(http.StatusTemporaryRedirect)
 
 	location, _ := url.Parse(response.Header().Get("Location"))
-	Expect(location.Host).Equals("demo.test.fider.io")
+	Expect(location.Host).Equals("demo.test.teamdream.co.uk")
 	Expect(location.Scheme).Equals("http")
 	Expect(location.Path).Equals("/signup")
 	ExpectOAuthToken(location.Query().Get("token"), &jwt.OAuthClaims{
@@ -205,7 +205,7 @@ func TestOAuthTokenHandler_ExistingUserAndProvider(t *testing.T) {
 
 	server := mock.NewServer()
 	code, response := server.
-		WithURL("http://demo.test.fider.io/oauth/facebook/token?code=123&identifier=MY_SESSION_ID&redirect=/hello").
+		WithURL("http://demo.test.teamdream.co.uk/oauth/facebook/token?code=123&identifier=MY_SESSION_ID&redirect=/hello").
 		OnTenant(mock.DemoTenant).
 		AddCookie(web.CookieSessionName, "MY_SESSION_ID").
 		AddParam("provider", app.FacebookProvider).
@@ -248,7 +248,7 @@ func TestOAuthTokenHandler_NewUser(t *testing.T) {
 
 	server := mock.NewServer()
 	code, response := server.
-		WithURL("http://demo.test.fider.io/oauth/facebook/token?code=456&identifier=MY_SESSION_ID&redirect=/hello").
+		WithURL("http://demo.test.teamdream.co.uk/oauth/facebook/token?code=456&identifier=MY_SESSION_ID&redirect=/hello").
 		OnTenant(mock.DemoTenant).
 		AddCookie(web.CookieSessionName, "MY_SESSION_ID").
 		AddParam("provider", app.FacebookProvider).
@@ -291,7 +291,7 @@ func TestOAuthTokenHandler_NewUserWithoutEmail(t *testing.T) {
 	})
 
 	code, response := server.
-		WithURL("http://demo.test.fider.io/oauth/facebook/token?code=798&identifier=MY_SESSION_ID&redirect=/").
+		WithURL("http://demo.test.teamdream.co.uk/oauth/facebook/token?code=798&identifier=MY_SESSION_ID&redirect=/").
 		OnTenant(mock.DemoTenant).
 		AddParam("provider", app.FacebookProvider).
 		AddCookie(web.CookieSessionName, "MY_SESSION_ID").
@@ -347,7 +347,7 @@ func TestOAuthTokenHandler_ExistingUser_WithoutEmail(t *testing.T) {
 	})
 
 	code, response := server.
-		WithURL("http://demo.test.fider.io/oauth/facebook/token?code=456&identifier=MY_SESSION_ID&redirect=/").
+		WithURL("http://demo.test.teamdream.co.uk/oauth/facebook/token?code=456&identifier=MY_SESSION_ID&redirect=/").
 		OnTenant(mock.DemoTenant).
 		AddParam("provider", app.FacebookProvider).
 		AddCookie(web.CookieSessionName, "MY_SESSION_ID").
@@ -398,7 +398,7 @@ func TestOAuthTokenHandler_ExistingUser_NewProvider(t *testing.T) {
 
 	server := mock.NewServer()
 	code, response := server.
-		WithURL("http://demo.test.fider.io/oauth/google/token?code=123&identifier=MY_SESSION_ID&redirect=/").
+		WithURL("http://demo.test.teamdream.co.uk/oauth/google/token?code=123&identifier=MY_SESSION_ID&redirect=/").
 		OnTenant(mock.DemoTenant).
 		AddParam("provider", app.GoogleProvider).
 		AddCookie(web.CookieSessionName, "MY_SESSION_ID").

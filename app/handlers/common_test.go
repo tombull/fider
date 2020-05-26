@@ -60,7 +60,7 @@ func TestRobotsTXT(t *testing.T) {
 
 	server := mock.NewServer()
 	code, response := server.
-		WithURL("https://demo.test.fider.io/robots.txt").
+		WithURL("https://demo.test.teamdream.co.uk/robots.txt").
 		Execute(handlers.RobotsTXT())
 	content, _ := ioutil.ReadAll(response.Body)
 	Expect(code).Equals(http.StatusOK)
@@ -69,7 +69,7 @@ Disallow: /_api/
 Disallow: /api/v1/
 Disallow: /admin/
 Disallow: /oauth/
-Sitemap: https://demo.test.fider.io/sitemap.xml`)
+Sitemap: https://demo.test.teamdream.co.uk/sitemap.xml`)
 }
 
 func TestSitemap(t *testing.T) {
@@ -83,12 +83,12 @@ func TestSitemap(t *testing.T) {
 	server := mock.NewServer()
 	code, response := server.
 		OnTenant(mock.DemoTenant).
-		WithURL("http://demo.test.fider.io:3000/sitemap.xml").
+		WithURL("http://demo.test.teamdream.co.uk:3000/sitemap.xml").
 		Execute(handlers.Sitemap())
 
 	bytes, _ := ioutil.ReadAll(response.Body)
 	Expect(code).Equals(http.StatusOK)
-	Expect(string(bytes)).Equals(`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url> <loc>http://demo.test.fider.io:3000</loc> </url></urlset>`)
+	Expect(string(bytes)).Equals(`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url> <loc>http://demo.test.teamdream.co.uk:3000</loc> </url></urlset>`)
 }
 
 func TestSitemap_WithPosts(t *testing.T) {
@@ -106,12 +106,12 @@ func TestSitemap_WithPosts(t *testing.T) {
 
 	code, response := server.
 		OnTenant(mock.DemoTenant).
-		WithURL("http://demo.test.fider.io:3000/sitemap.xml").
+		WithURL("http://demo.test.teamdream.co.uk:3000/sitemap.xml").
 		Execute(handlers.Sitemap())
 
 	bytes, _ := ioutil.ReadAll(response.Body)
 	Expect(code).Equals(http.StatusOK)
-	Expect(string(bytes)).Equals(`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url> <loc>http://demo.test.fider.io:3000</loc> </url><url> <loc>http://demo.test.fider.io:3000/posts/1/my-new-idea-1</loc> </url><url> <loc>http://demo.test.fider.io:3000/posts/2/the-other-idea</loc> </url></urlset>`)
+	Expect(string(bytes)).Equals(`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url> <loc>http://demo.test.teamdream.co.uk:3000</loc> </url><url> <loc>http://demo.test.teamdream.co.uk:3000/posts/1/my-new-idea-1</loc> </url><url> <loc>http://demo.test.teamdream.co.uk:3000/posts/2/the-other-idea</loc> </url></urlset>`)
 }
 
 func TestSitemap_PrivateTenant_WithPosts(t *testing.T) {
@@ -123,7 +123,7 @@ func TestSitemap_PrivateTenant_WithPosts(t *testing.T) {
 
 	code, _ := server.
 		OnTenant(mock.DemoTenant).
-		WithURL("http://demo.test.fider.io:3000/sitemap.xml").
+		WithURL("http://demo.test.teamdream.co.uk:3000/sitemap.xml").
 		Execute(handlers.Sitemap())
 
 	Expect(code).Equals(http.StatusNotFound)

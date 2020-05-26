@@ -7,7 +7,7 @@ describe("E2E: Sign up with e-mail", () => {
 
   beforeAll(async () => {
     browser = await Browser.launch();
-    tab = await browser.newTab("https://login.dev.fider.io:3000");
+    tab = await browser.newTab("https://login.dev.teamdream.co.uk:3000");
   });
 
   afterAll(async () => {

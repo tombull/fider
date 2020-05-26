@@ -250,7 +250,7 @@ func TestUser_WithSignUpCookie(t *testing.T) {
 	cookie := web.ParseCookie(cookies[0])
 	Expect(cookie.Name).Equals(web.CookieSignUpAuthName)
 	Expect(cookie.Value).Equals("")
-	Expect(cookie.Domain).Equals("test.fider.io")
+	Expect(cookie.Domain).Equals("test.teamdream.co.uk")
 	Expect(cookie.HttpOnly).IsTrue()
 	Expect(cookie.Path).Equals("/")
 	Expect(cookie.Expires).TemporarilySimilar(time.Now().Add(-100*time.Hour), 5*time.Second)

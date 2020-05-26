@@ -81,8 +81,8 @@ func TestInvalidCNAME(t *testing.T) {
 		"",
 		"my",
 		"name.com/abc",
-		"feedback.test.fider.io",
-		"test.fider.io",
+		"feedback.test.teamdream.co.uk",
+		"test.teamdream.co.uk",
 		"@google.com",
 	} {
 		messages := validate.CNAME(context.Background(), cname)
@@ -100,7 +100,7 @@ func TestValidHostname(t *testing.T) {
 
 	for _, cname := range []string{
 		"google.com",
-		"feedback.fider.io",
+		"feedback.teamdream.co.uk",
 		"my.super.domain.com",
 		"jon-snow.got.com",
 		"got.com",

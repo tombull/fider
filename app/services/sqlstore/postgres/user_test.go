@@ -28,7 +28,7 @@ func TestUserStorage_GetByID(t *testing.T) {
 	Expect(userByID.Result.Tenant.ID).Equals(1)
 	Expect(userByID.Result.Name).Equals("Jon Snow")
 	Expect(userByID.Result.Email).Equals("jon.snow@got.com")
-	Expect(userByID.Result.AvatarURL).Equals("http://cdn.test.fider.io/avatars/gravatar/1/Jon%20Snow")
+	Expect(userByID.Result.AvatarURL).Equals("http://cdn.test.teamdream.co.uk/avatars/gravatar/1/Jon%20Snow")
 	Expect(userByID.Result.Providers).HasLen(1)
 	Expect(userByID.Result.Providers[0].UID).Equals("FB1234")
 	Expect(userByID.Result.Providers[0].Name).Equals("facebook")
@@ -158,7 +158,7 @@ func TestUserStorage_Register_MultipleProviders(t *testing.T) {
 
 	var tenantID int
 	err := trx.Get(&tenantID, `
-		INSERT INTO tenants (name, subdomain, created_at, status, is_private, custom_css, logo_bkey) 
+		INSERT INTO tenants (name, subdomain, created_at, status, is_private, custom_css, logo_bkey)
 		VALUES ('My Domain Inc.','mydomain', now(), 1, false, '', '')
 		RETURNING id
 	`)

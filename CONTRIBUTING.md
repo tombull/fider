@@ -4,7 +4,7 @@ There are many ways you can contribute to Fider.
 
 - **Send us a Pull Request** on GitHub. Make sure you read our [Getting Started](#getting-started-with-fider-codebase) guide to learn how to setup the development environment;
 - **Report issues** and bug reports on https://github.com/tombull/teamdream/issues;
-- **Give feedback** and vote on features you'd like to see at https://feedback.fider.io;
+- **Give feedback** and vote on features you'd like to see at https://feedback.teamdream.co.uk;
 - **Spread the word** by starring us on GitHub. Tweet about the project and show it to your friends. The more people know about Fider, the bigger the community will be and more contributions will be made;
 - **Support us financially** by donating any amount to our [OpenCollective](https://opencollective.com/fider) and help us continue our activities;
 
@@ -18,7 +18,7 @@ If you know these technologies or would like to learn them, lucky you! This is t
 #### 1. Install the following tools:
 
 | Software    | How to install                                                 | What is it used for                                       |
-| ----------- | -------------------------------------------------------------- | --------------------------------------------------------- |
+|-------------|----------------------------------------------------------------|-----------------------------------------------------------|
 | Go 1.13+    | https://golang.org/                                            | To compile server side code                               |
 | Node.js 12+ | https://nodejs.org/ or run `nvm use` if you have nvm installed | To compile TypeScript and bundle all the client side code |
 | Docker      | https://www.docker.com/                                        | To start local PostgreSQL instances                       |

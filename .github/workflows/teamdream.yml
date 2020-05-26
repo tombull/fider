@@ -84,6 +84,8 @@ jobs:
 
       - name: push docker image
         if: steps.getBranch.outputs.branch == 'master'
+        env:
+          CONTAINER_URL: docker.pkg.github.com/${{github.repository}}/
         run: |
           export SHORT_SHA=`git rev-parse --short=7 ${GITHUB_SHA}`
           echo ${{secrets.GITHUB_TOKEN}} | docker login --username $GITHUB_ACTOR --password-stdin docker.pkg.github.com

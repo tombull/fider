@@ -35,7 +35,7 @@ func TestSecureWithoutCDN(t *testing.T) {
 func TestSecureWithCDN(t *testing.T) {
 	RegisterT(t)
 
-	env.Config.CDN.Host = "test.fider.io"
+	env.Config.CDN.Host = "test.teamdream.co.uk"
 
 	server := mock.NewServer()
 	server.Use(middlewares.Secure())
@@ -46,7 +46,7 @@ func TestSecureWithCDN(t *testing.T) {
 		return c.NoContent(http.StatusOK)
 	})
 
-	expectedPolicy := "base-uri 'self'; default-src 'self'; style-src 'self' 'nonce-" + ctxID + "' https://fonts.googleapis.com *.test.fider.io; script-src 'self' 'nonce-" + ctxID + "' https://cdn.polyfill.io https://js.stripe.com https://www.google-analytics.com *.test.fider.io; img-src 'self' https: data: *.test.fider.io; font-src 'self' https://fonts.gstatic.com data: *.test.fider.io; object-src 'none'; media-src 'none'; connect-src 'self' https://www.google-analytics.com https://ipinfo.io https://js.stripe.com *.test.fider.io; frame-src 'self' https://js.stripe.com"
+	expectedPolicy := "base-uri 'self'; default-src 'self'; style-src 'self' 'nonce-" + ctxID + "' https://fonts.googleapis.com *.test.teamdream.co.uk; script-src 'self' 'nonce-" + ctxID + "' https://cdn.polyfill.io https://js.stripe.com https://www.google-analytics.com *.test.teamdream.co.uk; img-src 'self' https: data: *.test.teamdream.co.uk; font-src 'self' https://fonts.gstatic.com data: *.test.teamdream.co.uk; object-src 'none'; media-src 'none'; connect-src 'self' https://www.google-analytics.com https://ipinfo.io https://js.stripe.com *.test.teamdream.co.uk; frame-src 'self' https://js.stripe.com"
 
 	Expect(status).Equals(http.StatusOK)
 	Expect(response.Header().Get("Content-Security-Policy")).Equals(expectedPolicy)
@@ -58,7 +58,7 @@ func TestSecureWithCDN(t *testing.T) {
 func TestSecureWithCDN_SingleHost(t *testing.T) {
 	RegisterT(t)
 
-	env.Config.CDN.Host = "test.fider.io"
+	env.Config.CDN.Host = "test.teamdream.co.uk"
 
 	server := mock.NewSingleTenantServer()
 	server.Use(middlewares.Secure())
@@ -69,7 +69,7 @@ func TestSecureWithCDN_SingleHost(t *testing.T) {
 		return c.NoContent(http.StatusOK)
 	})
 
-	expectedPolicy := "base-uri 'self'; default-src 'self'; style-src 'self' 'nonce-" + ctxID + "' https://fonts.googleapis.com test.fider.io; script-src 'self' 'nonce-" + ctxID + "' https://cdn.polyfill.io https://js.stripe.com https://www.google-analytics.com test.fider.io; img-src 'self' https: data: test.fider.io; font-src 'self' https://fonts.gstatic.com data: test.fider.io; object-src 'none'; media-src 'none'; connect-src 'self' https://www.google-analytics.com https://ipinfo.io https://js.stripe.com test.fider.io; frame-src 'self' https://js.stripe.com"
+	expectedPolicy := "base-uri 'self'; default-src 'self'; style-src 'self' 'nonce-" + ctxID + "' https://fonts.googleapis.com test.teamdream.co.uk; script-src 'self' 'nonce-" + ctxID + "' https://cdn.polyfill.io https://js.stripe.com https://www.google-analytics.com test.teamdream.co.uk; img-src 'self' https: data: test.teamdream.co.uk; font-src 'self' https://fonts.gstatic.com data: test.teamdream.co.uk; object-src 'none'; media-src 'none'; connect-src 'self' https://www.google-analytics.com https://ipinfo.io https://js.stripe.com test.teamdream.co.uk; frame-src 'self' https://js.stripe.com"
 
 	Expect(status).Equals(http.StatusOK)
 	Expect(response.Header().Get("Content-Security-Policy")).Equals(expectedPolicy)

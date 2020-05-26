@@ -27,7 +27,7 @@ func TestSignUpHandler_MultiTenant(t *testing.T) {
 
 	server := mock.NewServer()
 	code, _ := server.
-		WithURL("http://login.test.fider.io/signup").
+		WithURL("http://login.test.teamdream.co.uk/signup").
 		Execute(handlers.SignUp())
 
 	Expect(code).Equals(http.StatusOK)
@@ -38,11 +38,11 @@ func TestSignUpHandler_MultiTenant_WrongURL(t *testing.T) {
 
 	server := mock.NewServer()
 	code, response := server.
-		WithURL("http://demo.test.fider.io/signup").
+		WithURL("http://demo.test.teamdream.co.uk/signup").
 		Execute(handlers.SignUp())
 
 	Expect(code).Equals(http.StatusTemporaryRedirect)
-	Expect(response.Header().Get("Location")).Equals("http://login.test.fider.io/signup")
+	Expect(response.Header().Get("Location")).Equals("http://login.test.teamdream.co.uk/signup")
 }
 
 func TestSignUpHandler_SingleTenant_NoTenants(t *testing.T) {
@@ -171,7 +171,7 @@ func TestCreateTenantHandler_WithSocialAccount(t *testing.T) {
 	cookie := web.ParseCookie(response.Header().Get("Set-Cookie"))
 	Expect(cookie.Name).Equals(web.CookieSignUpAuthName)
 	ExpectFiderToken(cookie.Value, newUser)
-	Expect(cookie.Domain).Equals("test.fider.io")
+	Expect(cookie.Domain).Equals("test.teamdream.co.uk")
 	Expect(cookie.HttpOnly).IsTrue()
 	Expect(cookie.Path).Equals("/")
 	Expect(cookie.Expires).TemporarilySimilar(time.Now().Add(5*time.Minute), 5*time.Second)

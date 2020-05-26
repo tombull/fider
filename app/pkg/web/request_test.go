@@ -71,7 +71,7 @@ func TestRequest_BehindTLSTerminationProxy(t *testing.T) {
 		&http.Request{
 			Method: "GET",
 			Header: header,
-			Host:   "demo.test.fider.io",
+			Host:   "demo.test.teamdream.co.uk",
 		},
 	)
 
@@ -89,12 +89,12 @@ func TestRequest_FullURL(t *testing.T) {
 	req := web.WrapRequest(
 		&http.Request{
 			TLS:        &tls.ConnectionState{},
-			Host:       "demo.test.fider.io",
+			Host:       "demo.test.teamdream.co.uk",
 			RequestURI: "/api/hello?value=Jon",
 		},
 	)
 
-	Expect(req.URL.String()).Equals("https://demo.test.fider.io/api/hello?value=Jon")
+	Expect(req.URL.String()).Equals("https://demo.test.teamdream.co.uk/api/hello?value=Jon")
 	Expect(req.URL.Path).Equals("/api/hello")
 	Expect(req.URL.Query().Get("value")).Equals("Jon")
 	Expect(req.URL.RequestURI()).Equals("/api/hello?value=Jon")
@@ -154,7 +154,7 @@ func TestRequest_IsCrawler(t *testing.T) {
 			&http.Request{
 				Method: "GET",
 				Header: header,
-				Host:   "demo.test.fider.io",
+				Host:   "demo.test.teamdream.co.uk",
 			},
 		)
 		Expect(req.IsCrawler()).Equals(tt.isCrawler)

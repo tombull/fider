@@ -42,7 +42,7 @@ func SetupDatabaseTest(t *testing.T) context.Context {
 	RegisterT(t)
 	bus.Init(postgres.Service{})
 
-	u, _ := url.Parse("http://cdn.test.fider.io")
+	u, _ := url.Parse("http://cdn.test.teamdream.co.uk")
 	req := web.Request{URL: u}
 	ctx := context.WithValue(context.Background(), app.RequestCtxKey, req)
 

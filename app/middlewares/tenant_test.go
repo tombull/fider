@@ -24,16 +24,16 @@ var testCases = []struct {
 	{
 		"Avengers",
 		[]string{
-			"http://avengers.test.fider.io",
-			"http://avengers.test.fider.io:3000",
+			"http://avengers.test.teamdream.co.uk",
+			"http://avengers.test.teamdream.co.uk:3000",
 		},
 	},
 	{
 		"Demonstration",
 		[]string{
-			"http://demo.test.fider.io",
-			"http://demo.test.fider.io:1231",
-			"http://demo.test.fider.io:80",
+			"http://demo.test.teamdream.co.uk",
+			"http://demo.test.teamdream.co.uk:1231",
+			"http://demo.test.teamdream.co.uk:80",
 		},
 	},
 }
@@ -42,10 +42,10 @@ func TestMultiTenant(t *testing.T) {
 	RegisterT(t)
 
 	bus.AddHandler(func(ctx context.Context, q *query.GetTenantByDomain) error {
-		if q.Domain == "avengers.test.fider.io" {
+		if q.Domain == "avengers.test.teamdream.co.uk" {
 			q.Result = mock.AvengersTenant
 			return nil
-		} else if q.Domain == "demo.test.fider.io" {
+		} else if q.Domain == "demo.test.teamdream.co.uk" {
 			q.Result = mock.DemoTenant
 			return nil
 		}
@@ -72,7 +72,7 @@ func TestMultiTenant_SubSubDomain(t *testing.T) {
 	RegisterT(t)
 
 	bus.AddHandler(func(ctx context.Context, q *query.GetTenantByDomain) error {
-		if q.Domain == "demo.test.fider.io" {
+		if q.Domain == "demo.test.teamdream.co.uk" {
 			q.Result = mock.DemoTenant
 			return nil
 		}
@@ -82,7 +82,7 @@ func TestMultiTenant_SubSubDomain(t *testing.T) {
 	server := mock.NewServer()
 	server.Use(middlewares.MultiTenant())
 
-	status, _ := server.WithURL("http://demo.demo.test.fider.io").Execute(func(c *web.Context) error {
+	status, _ := server.WithURL("http://demo.demo.test.teamdream.co.uk").Execute(func(c *web.Context) error {
 		if c.Tenant() == nil {
 			return c.Ok(web.Map{})
 		}
@@ -116,10 +116,10 @@ func TestMultiTenant_CanonicalHeader(t *testing.T) {
 	RegisterT(t)
 
 	bus.AddHandler(func(ctx context.Context, q *query.GetTenantByDomain) error {
-		if q.Domain == "avengers.test.fider.io" {
+		if q.Domain == "avengers.test.teamdream.co.uk" {
 			q.Result = mock.AvengersTenant
 			return nil
-		} else if q.Domain == "demo.test.fider.io" {
+		} else if q.Domain == "demo.test.teamdream.co.uk" {
 			q.Result = mock.DemoTenant
 			return nil
 		}
@@ -132,12 +132,12 @@ func TestMultiTenant_CanonicalHeader(t *testing.T) {
 		isAjax bool
 	}{
 		{
-			"http://avengers.test.fider.io/",
+			"http://avengers.test.teamdream.co.uk/",
 			"http://feedback.theavengers.com/",
 			false,
 		},
 		{
-			"http://avengers.test.fider.io/",
+			"http://avengers.test.teamdream.co.uk/",
 			"",
 			true,
 		},
@@ -147,17 +147,17 @@ func TestMultiTenant_CanonicalHeader(t *testing.T) {
 			false,
 		},
 		{
-			"http://avengers.test.fider.io/posts",
+			"http://avengers.test.teamdream.co.uk/posts",
 			"http://feedback.theavengers.com/posts",
 			false,
 		},
 		{
-			"http://avengers.test.fider.io/posts?q=1",
+			"http://avengers.test.teamdream.co.uk/posts?q=1",
 			"http://feedback.theavengers.com/posts?q=1",
 			false,
 		},
 		{
-			"http://demo.test.fider.io",
+			"http://demo.test.teamdream.co.uk",
 			"",
 			false,
 		},
@@ -322,7 +322,7 @@ func TestRequireTenant_MultiHostMode_ValidTenant(t *testing.T) {
 	RegisterT(t)
 
 	bus.AddHandler(func(ctx context.Context, q *query.GetTenantByDomain) error {
-		if q.Domain == "avengers.test.fider.io" {
+		if q.Domain == "avengers.test.teamdream.co.uk" {
 			q.Result = mock.AvengersTenant
 			return nil
 		}
@@ -333,7 +333,7 @@ func TestRequireTenant_MultiHostMode_ValidTenant(t *testing.T) {
 	server.Use(middlewares.MultiTenant())
 	server.Use(middlewares.RequireTenant())
 
-	status, response := server.WithURL("http://avengers.test.fider.io").Execute(func(c *web.Context) error {
+	status, response := server.WithURL("http://avengers.test.teamdream.co.uk").Execute(func(c *web.Context) error {
 		return c.String(http.StatusOK, c.Tenant().Name)
 	})
 
@@ -372,7 +372,7 @@ func TestRequireTenant_SingleHostMode_ValidTenant(t *testing.T) {
 	server.Use(middlewares.SingleTenant())
 	server.Use(middlewares.RequireTenant())
 
-	status, response := server.WithURL("http://demo.test.fider.io").Execute(func(c *web.Context) error {
+	status, response := server.WithURL("http://demo.test.teamdream.co.uk").Execute(func(c *web.Context) error {
 		return c.String(http.StatusOK, c.Tenant().Name)
 	})
 
@@ -386,7 +386,7 @@ func TestBlockLockedTenants_ActiveTenant(t *testing.T) {
 	server.Use(middlewares.BlockLockedTenants())
 
 	status, response := server.
-		WithURL("http://demo.test.fider.io").
+		WithURL("http://demo.test.teamdream.co.uk").
 		OnTenant(mock.DemoTenant).
 		Execute(func(c *web.Context) error {
 			return c.String(http.StatusOK, c.Tenant().Name)
@@ -403,7 +403,7 @@ func TestBlockLockedTenants_LockedTenant(t *testing.T) {
 	mock.DemoTenant.Status = enum.TenantLocked
 
 	status, response := server.
-		WithURL("http://demo.test.fider.io").
+		WithURL("http://demo.test.teamdream.co.uk").
 		OnTenant(mock.DemoTenant).
 		Execute(func(c *web.Context) error {
 			return c.String(http.StatusOK, c.Tenant().Name)
@@ -420,7 +420,7 @@ func TestBlockLockedTenants_LockedTenant_APICall(t *testing.T) {
 	mock.DemoTenant.Status = enum.TenantLocked
 
 	status, _ := server.
-		WithURL("http://demo.test.fider.io/api/v1/posts").
+		WithURL("http://demo.test.teamdream.co.uk/api/v1/posts").
 		OnTenant(mock.DemoTenant).
 		Execute(func(c *web.Context) error {
 			return c.String(http.StatusOK, c.Tenant().Name)
