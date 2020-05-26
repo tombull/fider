@@ -1,5 +1,5 @@
 import React from "react";
-import { formatDate, timeSince } from "@fider/services";
+import { formatDate, timeSince } from "@teamdream/services";
 
 interface MomentText {
   date: Date | string;

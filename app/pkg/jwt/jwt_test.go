@@ -11,7 +11,7 @@ import (
 func TestJWT_Encode(t *testing.T) {
 	RegisterT(t)
 
-	claims := &jwt.FiderClaims{
+	claims := &jwt.TeamdreamClaims{
 		UserID:    424,
 		UserName:  "Jon Snow",
 		UserEmail: "jon.snow@got.com",
@@ -25,7 +25,7 @@ func TestJWT_Encode(t *testing.T) {
 func TestJWT_Decode(t *testing.T) {
 	RegisterT(t)
 
-	claims := &jwt.FiderClaims{
+	claims := &jwt.TeamdreamClaims{
 		UserID:    424,
 		UserName:  "Jon Snow",
 		UserEmail: "jon.snow@got.com",
@@ -33,7 +33,7 @@ func TestJWT_Decode(t *testing.T) {
 
 	token, _ := jwt.Encode(claims)
 
-	decoded, err := jwt.DecodeFiderClaims(token)
+	decoded, err := jwt.DecodeTeamdreamClaims(token)
 	Expect(err).IsNil()
 	Expect(decoded.UserID).Equals(claims.UserID)
 	Expect(decoded.UserName).Equals(claims.UserName)
@@ -43,7 +43,7 @@ func TestJWT_Decode(t *testing.T) {
 func TestJWT_DecodeExpired(t *testing.T) {
 	RegisterT(t)
 
-	claims := &jwt.FiderClaims{
+	claims := &jwt.TeamdreamClaims{
 		UserID:    424,
 		UserName:  "Jon Snow",
 		UserEmail: "jon.snow@got.com",
@@ -56,7 +56,7 @@ func TestJWT_DecodeExpired(t *testing.T) {
 	Expect(err).IsNil()
 	time.Sleep(1 * time.Second)
 
-	decoded, err := jwt.DecodeFiderClaims(token)
+	decoded, err := jwt.DecodeTeamdreamClaims(token)
 	Expect(err).IsNotNil()
 	Expect(decoded).IsNil()
 }
@@ -84,7 +84,7 @@ func TestJWT_DecodeOAuthClaims(t *testing.T) {
 func TestJWT_DecodeChangedToken(t *testing.T) {
 	RegisterT(t)
 
-	claims := &jwt.FiderClaims{
+	claims := &jwt.TeamdreamClaims{
 		UserID:    424,
 		UserName:  "Jon Snow",
 		UserEmail: "jon.snow@got.com",
@@ -92,7 +92,7 @@ func TestJWT_DecodeChangedToken(t *testing.T) {
 
 	token, _ := jwt.Encode(claims)
 
-	decoded, err := jwt.DecodeFiderClaims(token + "foo")
+	decoded, err := jwt.DecodeTeamdreamClaims(token + "foo")
 	Expect(err).IsNotNil()
 	Expect(decoded).IsNil()
 }

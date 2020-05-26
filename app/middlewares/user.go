@@ -40,7 +40,7 @@ func User() web.MiddlewareFunc {
 			}
 
 			if token != "" {
-				claims, err := jwt.DecodeFiderClaims(token)
+				claims, err := jwt.DecodeTeamdreamClaims(token)
 				if err != nil {
 					c.RemoveCookie(web.CookieAuthName)
 					return next(c)
@@ -75,7 +75,7 @@ func User() web.MiddlewareFunc {
 						return c.HandleValidation(validate.Failed("API Key is invalid"))
 					}
 
-					if impersonateUserIDStr := c.Request.GetHeader("X-Fider-UserID"); impersonateUserIDStr != "" {
+					if impersonateUserIDStr := c.Request.GetHeader("X-Teamdream-UserID"); impersonateUserIDStr != "" {
 						if !user.IsAdministrator() {
 							return c.HandleValidation(validate.Failed("Only Administrators are allowed to impersonate another user"))
 						}

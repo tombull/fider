@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import { ErrorBoundary } from "@fider/components";
+import { ErrorBoundary } from "@teamdream/components";
 
 describe("<ErrorBoundary />", () => {
   let errorMethod: () => void;

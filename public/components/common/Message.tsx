@@ -1,7 +1,7 @@
 import "./Message.scss";
 
 import React from "react";
-import { classSet } from "@fider/services";
+import { classSet } from "@teamdream/services";
 import { FaBan, FaRegCheckCircle, FaExclamationTriangle } from "react-icons/fa";
 
 interface MessageProps {

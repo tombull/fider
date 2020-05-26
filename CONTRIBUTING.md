@@ -1,18 +1,18 @@
 # Contributing
 
-There are many ways you can contribute to Fider.
+There are many ways you can contribute to Teamdream.
 
-- **Send us a Pull Request** on GitHub. Make sure you read our [Getting Started](#getting-started-with-fider-codebase) guide to learn how to setup the development environment;
+- **Send us a Pull Request** on GitHub. Make sure you read our [Getting Started](#getting-started-with-teamdream-codebase) guide to learn how to setup the development environment;
 - **Report issues** and bug reports on https://github.com/tombull/teamdream/issues;
 - **Give feedback** and vote on features you'd like to see at https://feedback.teamdream.co.uk;
-- **Spread the word** by starring us on GitHub. Tweet about the project and show it to your friends. The more people know about Fider, the bigger the community will be and more contributions will be made;
-- **Support us financially** by donating any amount to our [OpenCollective](https://opencollective.com/fider) and help us continue our activities;
+- **Spread the word** by starring us on GitHub. Tweet about the project and show it to your friends. The more people know about Teamdream, the bigger the community will be and more contributions will be made;
+- **Support us financially** by donating any amount to our [OpenCollective](https://opencollective.com/teamdream) and help us continue our activities;
 
-## Getting started with Fider codebase
+## Getting started with Teamdream codebase
 
 Before start working on something that you intend to send a Pull Request, make sure there's an [GitHub Issue](https://github.com/tombull/teamdream/issues) open for that. If you're working on something not tracked yet, please open a new Issue before the Pull Request. If you have any question or need any help, leave a comment on the issue and we'll try our best to help you.
 
-Fider is written in Go (backend) and TypeScript (frontend), but we also use things like Node.js, React and PostgreSQL.
+Teamdream is written in Go (backend) and TypeScript (frontend), but we also use things like Node.js, React and PostgreSQL.
 If you know these technologies or would like to learn them, lucky you! This is the right place!
 
 #### 1. Install the following tools:
@@ -35,7 +35,7 @@ If you know these technologies or would like to learn them, lucky you! This is t
 8. run `docker-compose up -d` to start a local PostgreSQL database and Local SMTP (with [MailHog](https://github.com/mailhog/MailHog)) on Docker.
 9. run `cp .example.env .env` to create a local environment configuration file.
 
-- **Important:** Fider has a strong dependency on an email delivery service. For easier local development, the docker-compose file already provides
+- **Important:** Teamdream has a strong dependency on an email delivery service. For easier local development, the docker-compose file already provides
   a fake SMTP server running at port **1026** and a UI (to check sent emails) at http://localhost:8026. The `.example.env` is already
   configured to use it. If you want to, you can edit `.env` file and configure the `EMAIL_*` environment variables with your own SMTP server
   details. If you don't have an SMTP server, you can either sign up for a [Mailgun account](https://www.mailgun.com/) (it's Free) or sign
@@ -44,8 +44,8 @@ If you know these technologies or would like to learn them, lucky you! This is t
 
 #### 3. To start the application
 
-1. run `mage watch` to start the application on watch mode. The application will be reloaded every time a file is changed. Alternatively, it's also possible to start Fider by running `mage build` and `mage run`.
-2. Navigate to `http://localhost:3000/` and 🎉! You should see the sign up page of Fider!
+1. run `mage watch` to start the application on watch mode. The application will be reloaded every time a file is changed. Alternatively, it's also possible to start Teamdream by running `mage build` and `mage run`.
+2. Navigate to `http://localhost:3000/` and 🎉! You should see the sign up page of Teamdream!
 
 #### 4. To run the unit tests:
 
@@ -55,7 +55,7 @@ If you know these technologies or would like to learn them, lucky you! This is t
 
 #### 1. It doesn't work on Windows
 
-This is a known [Issue #434](https://github.com/tombull/teamdream/issues/434). If you're a Windows user and want to contribute to Fider, please help us resolve this.
+This is a known [Issue #434](https://github.com/tombull/teamdream/issues/434). If you're a Windows user and want to contribute to Teamdream, please help us resolve this.
 
 #### 2. godotenv: not found
 

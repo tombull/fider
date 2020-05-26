@@ -17,9 +17,9 @@ func TestRenderMessage(t *testing.T) {
 	RegisterT(t)
 
 	message := email.RenderMessage("echo_test", dto.Props{
-		"name": "Fider",
+		"name": "Teamdream",
 	})
-	Expect(message.Subject).Equals("Message to: Fider")
+	Expect(message.Subject).Equals("Message to: Teamdream")
 	Expect(ReplaceSpaces(message.Body)).Equals(ReplaceSpaces(`<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -36,7 +36,7 @@ func TestRenderMessage(t *testing.T) {
 			<tr>
 				<td align="center">
 					<table bgcolor="#FFFFFF" cellpadding="0" cellspacing="0" border="0" style="text-align:left;padding:20px;margin:10px;border-radius:5px;color:#1c262d;border:1px solid #ECECEC;min-width:320px;max-width:660px;">
-						Hello World Fider!
+						Hello World Teamdream!
 					</table>
 				</td>
 			</tr>
@@ -63,19 +63,19 @@ func TestCanSendTo(t *testing.T) {
 		canSend   bool
 	}{
 		{
-			whitelist: "(^.+@teamdream.co.uk$)|(^darthvader\\.fider(\\+.*)?@gmail\\.com$)",
+			whitelist: "(^.+@teamdream.co.uk$)|(^darthvader\\.teamdream(\\+.*)?@gmail\\.com$)",
 			blacklist: "",
-			input:     []string{"me@teamdream.co.uk", "me+123@teamdream.co.uk", "darthvader.fider@gmail.com", "darthvader.fider+434@gmail.com"},
+			input:     []string{"me@teamdream.co.uk", "me+123@teamdream.co.uk", "darthvader.teamdream@gmail.com", "darthvader.teamdream+434@gmail.com"},
 			canSend:   true,
 		},
 		{
-			whitelist: "(^.+@teamdream.co.uk$)|(^darthvader\\.fider(\\+.*)?@gmail\\.com$)",
+			whitelist: "(^.+@teamdream.co.uk$)|(^darthvader\\.teamdream(\\+.*)?@gmail\\.com$)",
 			blacklist: "",
-			input:     []string{"me+123@teamdream.co.ukd", "me@fidero.io", "darthvader.fidera@gmail.com", "@teamdream.co.uk"},
+			input:     []string{"me+123@teamdream.co.ukd", "me@teamdreamo.io", "darthvader.teamdreama@gmail.com", "@teamdream.co.uk"},
 			canSend:   false,
 		},
 		{
-			whitelist: "(^.+@teamdream.co.uk$)|(^darthvader\\.fider(\\+.*)?@gmail\\.com$)",
+			whitelist: "(^.+@teamdream.co.uk$)|(^darthvader\\.teamdream(\\+.*)?@gmail\\.com$)",
 			blacklist: "(^.+@teamdream.co.uk$)",
 			input:     []string{"me@teamdream.co.uk"},
 			canSend:   true,
@@ -89,7 +89,7 @@ func TestCanSendTo(t *testing.T) {
 		{
 			whitelist: "",
 			blacklist: "(^.+@teamdream.co.uk$)",
-			input:     []string{"me@fider.com", "abc@fiderio.io"},
+			input:     []string{"me@teamdream.com", "abc@teamdreamio.io"},
 			canSend:   true,
 		},
 		{

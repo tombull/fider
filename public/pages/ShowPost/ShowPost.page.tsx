@@ -2,8 +2,8 @@ import "./ShowPost.page.scss";
 
 import React from "react";
 
-import { Comment, Post, Tag, Vote, ImageUpload } from "@fider/models";
-import { actions, Failure, Fider } from "@fider/services";
+import { Comment, Post, Tag, Vote, ImageUpload } from "@teamdream/models";
+import { actions, Failure, Teamdream } from "@teamdream/services";
 
 import {
   VoteCounter,
@@ -20,7 +20,7 @@ import {
   TextArea,
   MultiImageUploader,
   ImageViewer,
-} from "@fider/components";
+} from "@teamdream/components";
 import { FaSave, FaTimes, FaEdit } from "react-icons/fa";
 import { ResponseForm } from "./components/ResponseForm";
 import { TagsPanel } from "./components/TagsPanel";
@@ -145,8 +145,8 @@ export default class ShowPostPage extends React.Component<ShowPostPageProps, Sho
         <div className="action-col">
           <VotesPanel post={this.props.post} votes={this.props.votes} />
 
-          {Fider.session.isAuthenticated &&
-            Fider.session.user.isCollaborator && [
+          {Teamdream.session.isAuthenticated &&
+            Teamdream.session.user.isCollaborator && [
               <span key={0} className="subtitle">
                 Actions
               </span>,

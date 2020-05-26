@@ -12,11 +12,11 @@ import (
 )
 
 func encode(user *models.User) string {
-	token, err := jwt.Encode(jwt.FiderClaims{
+	token, err := jwt.Encode(jwt.TeamdreamClaims{
 		UserID:    user.ID,
 		UserName:  user.Name,
 		UserEmail: user.Email,
-		Origin:    jwt.FiderClaimsOriginUI,
+		Origin:    jwt.TeamdreamClaimsOriginUI,
 		Metadata: jwt.Metadata{
 			ExpiresAt: time.Now().Add(365 * 24 * time.Hour).Unix(),
 		},

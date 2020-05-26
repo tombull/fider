@@ -102,7 +102,7 @@ func Page(title, description, chunkName string) web.HandlerFunc {
 	}
 }
 
-//BrowserNotSupported returns an error page for browser that Fider dosn't support
+//BrowserNotSupported returns an error page for browser that Teamdream dosn't support
 func BrowserNotSupported() web.HandlerFunc {
 	return func(c *web.Context) error {
 		return c.Render(http.StatusOK, "browser-not-supported.html", web.Props{

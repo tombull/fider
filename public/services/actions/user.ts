@@ -1,5 +1,5 @@
-import { http, Result } from "@fider/services/http";
-import { UserSettings, UserAvatarType, ImageUpload } from "@fider/models";
+import { http, Result } from "@teamdream/services/http";
+import { UserSettings, UserAvatarType, ImageUpload } from "@teamdream/models";
 
 interface UpdateUserSettings {
   name: string;

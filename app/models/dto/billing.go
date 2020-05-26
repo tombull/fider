@@ -2,7 +2,7 @@ package dto
 
 import "time"
 
-// Country is a valid country within Fider
+// Country is a valid country within Teamdream
 type Country struct {
 	Code string `json:"code"`
 	Name string `json:"name"`

@@ -1,7 +1,7 @@
 import React from "react";
 import { shallow } from "enzyme";
 import { DisplayError } from "./DisplayError";
-import { Failure } from "@fider/services";
+import { Failure } from "@teamdream/services";
 
 describe("<DisplayError />", () => {
   test("when error is undefined", () => {

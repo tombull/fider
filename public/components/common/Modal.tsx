@@ -2,7 +2,7 @@ import "./Modal.scss";
 
 import React, { useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
-import { classSet } from "@fider/services";
+import { classSet } from "@teamdream/services";
 
 interface ModalWindowProps {
   className?: string;

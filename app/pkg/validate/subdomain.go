@@ -31,7 +31,7 @@ func Subdomain(ctx context.Context, subdomain string) ([]string, error) {
 
 	switch subdomain {
 	case
-		"signup", "fider", "login", "customers", "admin", "setup", "about",
+		"signup", "teamdream", "login", "customers", "admin", "setup", "about",
 		"wecanhearyou", "dev", "mail", "billing", "www", "web", "translate",
 		"help", "support", "status", "staging", "cdn", "assets", "live",
 		"manage", "mgmt", "platform", "production", "development":

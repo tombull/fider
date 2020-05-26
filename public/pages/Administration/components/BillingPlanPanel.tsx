@@ -1,8 +1,8 @@
 import React from "react";
-import { Segment, Button, Moment, Modal, ButtonClickEvent } from "@fider/components";
-import { BillingPlan, InvoiceDue } from "@fider/models";
-import { Fider, actions, classSet, currencySymbol } from "@fider/services";
-import { useFider } from "@fider/hooks";
+import { Segment, Button, Moment, Modal, ButtonClickEvent } from "@teamdream/components";
+import { BillingPlan, InvoiceDue } from "@teamdream/models";
+import { Teamdream, actions, classSet, currencySymbol } from "@teamdream/services";
+import { useTeamdream } from "@teamdream/hooks";
 
 interface BillingPlanOptionProps {
   tenantUserCount: number;
@@ -14,9 +14,9 @@ interface BillingPlanOptionProps {
 }
 
 const BillingPlanOption = (props: BillingPlanOptionProps) => {
-  const fider = useFider();
+  const teamdream = useTeamdream();
 
-  const billing = fider.session.tenant.billing!;
+  const billing = teamdream.session.tenant.billing!;
   const isSelected = billing.stripePlanID === props.plan.id && !billing.subscriptionEndsAt;
   const className = classSet({ "l-plan": true, selected: isSelected });
 
@@ -108,14 +108,14 @@ export class BillingPlanPanel extends React.Component<BillingPlanPanelProps, Bil
   };
 
   private getCurrentPlan(): BillingPlan | undefined {
-    const filtered = this.props.plans.filter((x) => x.id === Fider.session.tenant.billing!.stripePlanID);
+    const filtered = this.props.plans.filter((x) => x.id === Teamdream.session.tenant.billing!.stripePlanID);
     if (filtered.length > 0) {
       return filtered[0];
     }
   }
 
   public render() {
-    const billing = Fider.session.tenant.billing!;
+    const billing = Teamdream.session.tenant.billing!;
     const currentPlan = this.getCurrentPlan();
     const trialExpired = new Date(billing.trialEndsAt) <= new Date();
 

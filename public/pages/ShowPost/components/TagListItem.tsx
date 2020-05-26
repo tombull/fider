@@ -1,6 +1,6 @@
 import React from "react";
-import { Tag } from "@fider/models";
-import { ListItem, ShowTag } from "@fider/components";
+import { Tag } from "@teamdream/models";
+import { ListItem, ShowTag } from "@teamdream/components";
 import { FaCheck } from "react-icons/fa";
 
 interface TagListItemProps {

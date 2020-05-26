@@ -214,7 +214,7 @@ func TestOAuthTokenHandler_ExistingUserAndProvider(t *testing.T) {
 
 	Expect(code).Equals(http.StatusTemporaryRedirect)
 	Expect(response.Header().Get("Location")).Equals("/hello")
-	ExpectFiderAuthCookie(response, mock.JonSnow)
+	ExpectTeamdreamAuthCookie(response, mock.JonSnow)
 }
 
 func TestOAuthTokenHandler_NewUser(t *testing.T) {
@@ -260,7 +260,7 @@ func TestOAuthTokenHandler_NewUser(t *testing.T) {
 
 	Expect(registeredUser.Name).Equals("Some Facebook Guy")
 
-	ExpectFiderAuthCookie(response, registeredUser)
+	ExpectTeamdreamAuthCookie(response, registeredUser)
 }
 
 func TestOAuthTokenHandler_NewUserWithoutEmail(t *testing.T) {
@@ -305,7 +305,7 @@ func TestOAuthTokenHandler_NewUserWithoutEmail(t *testing.T) {
 	Expect(code).Equals(http.StatusTemporaryRedirect)
 
 	Expect(response.Header().Get("Location")).Equals("/")
-	ExpectFiderAuthCookie(response, &models.User{
+	ExpectTeamdreamAuthCookie(response, &models.User{
 		ID:   1,
 		Name: "Mark",
 	})
@@ -357,7 +357,7 @@ func TestOAuthTokenHandler_ExistingUser_WithoutEmail(t *testing.T) {
 	Expect(code).Equals(http.StatusTemporaryRedirect)
 
 	Expect(response.Header().Get("Location")).Equals("/")
-	ExpectFiderAuthCookie(response, &models.User{
+	ExpectTeamdreamAuthCookie(response, &models.User{
 		ID:    3,
 		Name:  "Some Facebook Guy",
 		Email: "",
@@ -411,7 +411,7 @@ func TestOAuthTokenHandler_ExistingUser_NewProvider(t *testing.T) {
 	Expect(newProvider.UID).Equals("GO123")
 
 	Expect(response.Header().Get("Location")).Equals("/")
-	ExpectFiderAuthCookie(response, mock.JonSnow)
+	ExpectTeamdreamAuthCookie(response, mock.JonSnow)
 }
 
 func TestOAuthTokenHandler_NewUser_PrivateTenant(t *testing.T) {
@@ -450,7 +450,7 @@ func TestOAuthTokenHandler_NewUser_PrivateTenant(t *testing.T) {
 
 	Expect(code).Equals(http.StatusTemporaryRedirect)
 	Expect(response.Header().Get("Location")).Equals("/not-invited")
-	ExpectFiderAuthCookie(response, nil)
+	ExpectTeamdreamAuthCookie(response, nil)
 }
 
 func TestOAuthTokenHandler_InvalidIdentifier(t *testing.T) {
@@ -468,7 +468,7 @@ func TestOAuthTokenHandler_InvalidIdentifier(t *testing.T) {
 
 	Expect(code).Equals(http.StatusTemporaryRedirect)
 	Expect(response.Header().Get("Location")).Equals("/")
-	ExpectFiderAuthCookie(response, nil)
+	ExpectTeamdreamAuthCookie(response, nil)
 }
 
 func ExpectOAuthToken(token string, expected *jwt.OAuthClaims) {

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Tag, Post } from "@fider/models";
-import { actions } from "@fider/services";
-import { ShowTag, List, ListItem } from "@fider/components";
+import { Tag, Post } from "@teamdream/models";
+import { actions } from "@teamdream/services";
+import { ShowTag, List, ListItem } from "@teamdream/components";
 import { TagListItem } from "./TagListItem";
 import { FaCheckCircle, FaCog } from "react-icons/fa";
-import { useFider } from "@fider/hooks";
+import { useTeamdream } from "@teamdream/hooks";
 
 interface TagsPanelProps {
   post: Post;
@@ -12,8 +12,8 @@ interface TagsPanelProps {
 }
 
 export const TagsPanel = (props: TagsPanelProps) => {
-  const fider = useFider();
-  const canEdit = fider.session.isAuthenticated && fider.session.user.isCollaborator && props.tags.length > 0;
+  const teamdream = useTeamdream();
+  const canEdit = teamdream.session.isAuthenticated && teamdream.session.user.isCollaborator && props.tags.length > 0;
 
   const [isEditing, setIsEditing] = useState(false);
   const [assignedTags, setAssignedTags] = useState(props.tags.filter((t) => props.post.tags.indexOf(t.slug) >= 0));

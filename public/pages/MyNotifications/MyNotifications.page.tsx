@@ -2,9 +2,9 @@ import "./MyNotifications.page.scss";
 
 import React from "react";
 
-import { Notification } from "@fider/models";
-import { MultiLineText, Moment, Heading, List, ListItem } from "@fider/components";
-import { actions } from "@fider/services";
+import { Notification } from "@teamdream/models";
+import { MultiLineText, Moment, Heading, List, ListItem } from "@teamdream/components";
+import { actions } from "@teamdream/services";
 import { FaBell } from "react-icons/fa";
 
 interface MyNotificationsPageProps {

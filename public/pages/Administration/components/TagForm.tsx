@@ -1,8 +1,8 @@
 import "./TagForm.scss";
 
 import React from "react";
-import { Button, Input, ShowTag, Form, RadioButton, Field, SelectOption } from "@fider/components";
-import { Failure } from "@fider/services";
+import { Button, Input, ShowTag, Form, RadioButton, Field, SelectOption } from "@teamdream/components";
+import { Failure } from "@teamdream/services";
 
 interface TagFormProps {
   name?: string;

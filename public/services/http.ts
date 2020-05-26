@@ -1,4 +1,4 @@
-import { analytics, notify, truncate } from "@fider/services";
+import { analytics, notify, truncate } from "@teamdream/services";
 
 export interface ErrorItem {
   field?: string;

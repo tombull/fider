@@ -1,24 +1,24 @@
 import "./VoteCounter.scss";
 
 import React, { useState } from "react";
-import { Post, PostStatus } from "@fider/models";
-import { actions, device, classSet } from "@fider/services";
-import { SignInModal } from "@fider/components";
+import { Post, PostStatus } from "@teamdream/models";
+import { actions, device, classSet } from "@teamdream/services";
+import { SignInModal } from "@teamdream/components";
 import { FaCaretUp } from "react-icons/fa";
-import { useFider } from "@fider/hooks";
+import { useTeamdream } from "@teamdream/hooks";
 
 interface VoteCounterProps {
   post: Post;
 }
 
 export const VoteCounter = (props: VoteCounterProps) => {
-  const fider = useFider();
+  const teamdream = useTeamdream();
   const [hasVoted, setHasVoted] = useState(props.post.hasVoted);
   const [votesCount, setVotesCount] = useState(props.post.votesCount);
   const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
 
   const voteOrUndo = async () => {
-    if (!fider.session.isAuthenticated) {
+    if (!teamdream.session.isAuthenticated) {
       setIsSignInModalOpen(true);
       return;
     }

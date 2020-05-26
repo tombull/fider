@@ -1,4 +1,4 @@
-import * as Pages from "@fider/AsyncPages";
+import * as Pages from "@teamdream/AsyncPages";
 
 interface PageConfiguration {
   regex: RegExp;

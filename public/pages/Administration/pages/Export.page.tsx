@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Button, Form, Field, Segment } from "@fider/components";
+import { Button, Form, Field, Segment } from "@teamdream/components";
 import { FaRegFileExcel } from "react-icons/fa";
 import { AdminBasePage } from "../components/AdminBasePage";
 

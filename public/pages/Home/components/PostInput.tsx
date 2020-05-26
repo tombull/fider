@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Button, ButtonClickEvent, Input, Form, TextArea, MultiImageUploader } from "@fider/components";
-import { SignInModal } from "@fider/components";
-import { cache, actions, Failure } from "@fider/services";
-import { ImageUpload } from "@fider/models";
-import { useFider } from "@fider/hooks";
+import { Button, ButtonClickEvent, Input, Form, TextArea, MultiImageUploader } from "@teamdream/components";
+import { SignInModal } from "@teamdream/components";
+import { cache, actions, Failure } from "@teamdream/services";
+import { ImageUpload } from "@teamdream/models";
+import { useTeamdream } from "@teamdream/hooks";
 
 interface PostInputProps {
   placeholder: string;
@@ -15,13 +15,13 @@ const CACHE_DESCRIPTION_KEY = "PostInput-Description";
 
 export const PostInput = (props: PostInputProps) => {
   const getCachedValue = (key: string): string => {
-    if (fider.session.isAuthenticated) {
+    if (teamdream.session.isAuthenticated) {
       return cache.session.get(key) || "";
     }
     return "";
   };
 
-  const fider = useFider();
+  const teamdream = useTeamdream();
   const titleRef = useRef<HTMLInputElement>();
   const [title, setTitle] = useState(getCachedValue(CACHE_TITLE_KEY));
   const [description, setDescription] = useState(getCachedValue(CACHE_DESCRIPTION_KEY));
@@ -34,7 +34,7 @@ export const PostInput = (props: PostInputProps) => {
   }, [title]);
 
   const handleTitleFocus = () => {
-    if (!fider.session.isAuthenticated && titleRef.current) {
+    if (!teamdream.session.isAuthenticated && titleRef.current) {
       titleRef.current.blur();
       setIsSignInModalOpen(true);
     }
@@ -90,7 +90,7 @@ export const PostInput = (props: PostInputProps) => {
       <Form error={error}>
         <Input
           field="title"
-          noTabFocus={!fider.session.isAuthenticated}
+          noTabFocus={!teamdream.session.isAuthenticated}
           inputRef={titleRef}
           onFocus={handleTitleFocus}
           maxLength={100}

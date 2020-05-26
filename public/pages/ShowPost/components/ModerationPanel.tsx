@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import { PostStatus, Post } from "@fider/models";
-import { actions, navigator, Failure } from "@fider/services";
-import { Form, Modal, Button, List, ListItem, TextArea } from "@fider/components";
-import { useFider } from "@fider/hooks";
+import { PostStatus, Post } from "@teamdream/models";
+import { actions, navigator, Failure } from "@teamdream/services";
+import { Form, Modal, Button, List, ListItem, TextArea } from "@teamdream/components";
+import { useTeamdream } from "@teamdream/hooks";
 
 interface ModerationPanelProps {
   post: Post;
 }
 
 export const ModerationPanel = (props: ModerationPanelProps) => {
-  const fider = useFider();
+  const teamdream = useTeamdream();
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [text, setText] = useState("");
   const [error, setError] = useState<Failure>();
@@ -28,7 +28,7 @@ export const ModerationPanel = (props: ModerationPanelProps) => {
   };
 
   const status = PostStatus.Get(props.post.status);
-  if (!fider.session.isAuthenticated || !fider.session.user.isAdministrator || status.closed) {
+  if (!teamdream.session.isAuthenticated || !teamdream.session.user.isAdministrator || status.closed) {
     return null;
   }
 

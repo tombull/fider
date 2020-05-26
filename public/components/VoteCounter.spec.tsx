@@ -1,8 +1,8 @@
 import React from "react";
 import { shallow } from "enzyme";
-import { Post, UserRole, PostStatus, UserStatus } from "@fider/models";
-import { VoteCounter, SignInModal } from "@fider/components";
-import { httpMock, fiderMock, rerender } from "@fider/services/testing";
+import { Post, UserRole, PostStatus, UserStatus } from "@teamdream/models";
+import { VoteCounter, SignInModal } from "@teamdream/components";
+import { httpMock, teamdreamMock, rerender } from "@teamdream/services/testing";
 
 let post: Post;
 
@@ -61,7 +61,7 @@ describe("<VoteCounter />", () => {
   });
 
   test("click when unauthenticated", async () => {
-    fiderMock.notAuthenticated();
+    teamdreamMock.notAuthenticated();
 
     const mock = httpMock.alwaysOk();
 
@@ -74,7 +74,7 @@ describe("<VoteCounter />", () => {
   });
 
   test("click when authenticated and hasVoted === false", async () => {
-    fiderMock.authenticated();
+    teamdreamMock.authenticated();
 
     const mock = httpMock.alwaysOk();
 
@@ -89,7 +89,7 @@ describe("<VoteCounter />", () => {
 
   test("click when authenticated and hasVoted === true", async () => {
     post.hasVoted = true;
-    fiderMock.authenticated();
+    teamdreamMock.authenticated();
 
     const mock = httpMock.alwaysOk();
 

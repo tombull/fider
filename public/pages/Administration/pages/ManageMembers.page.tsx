@@ -1,11 +1,11 @@
 import "./ManageMembers.page.scss";
 
 import React from "react";
-import { Segment, List, Input, ListItem, Avatar, UserName, DropDown, DropDownItem } from "@fider/components/common";
-import { User, UserRole, UserStatus } from "@fider/models";
+import { Segment, List, Input, ListItem, Avatar, UserName, DropDown, DropDownItem } from "@teamdream/components/common";
+import { User, UserRole, UserStatus } from "@teamdream/models";
 import { AdminBasePage } from "../components/AdminBasePage";
 import { FaUsers, FaEllipsisH, FaTimes, FaSearch } from "react-icons/fa";
-import { actions, Fider } from "@fider/services";
+import { actions, Teamdream } from "@teamdream/services";
 
 interface ManageMembersPageState {
   query: string;
@@ -45,7 +45,7 @@ const UserListItem = (props: UserListItemProps) => {
           {admin} {collaborator} {blocked}
         </span>
       </div>
-      {Fider.session.user.id !== props.user.id && Fider.session.user.isAdministrator && (
+      {Teamdream.session.user.id !== props.user.id && Teamdream.session.user.isAdministrator && (
         <DropDown
           className="l-user-actions"
           inline={true}
@@ -189,7 +189,7 @@ export default class ManageMembersPage extends AdminBasePage<ManageMembersPagePr
         <ul className="l-legend info">
           <li>
             <strong>&middot; Administrators</strong>have full access to edit and manage content, permissions and all
-            site settings{Fider.isBillingEnabled() ? ", including billing." : "."}
+            site settings{Teamdream.isBillingEnabled() ? ", including billing." : "."}
           </li>
           <li>
             <strong>&middot; Collaborators</strong> can edit and manage content, but not permissions and settings.

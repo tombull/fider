@@ -1,5 +1,5 @@
 import React from "react";
-import { classSet } from "@fider/services";
+import { classSet } from "@teamdream/services";
 
 interface ButtonProps {
   className?: string;

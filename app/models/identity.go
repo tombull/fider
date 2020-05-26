@@ -32,7 +32,7 @@ type TenantBilling struct {
 	SubscriptionEndsAt   *time.Time `json:"subscriptionEndsAt,omitempty"`
 }
 
-//Upload represents a file that has been uploaded to Fider
+//Upload represents a file that has been uploaded to Teamdream
 type Upload struct {
 	ContentType string `db:"content_type"`
 	Size        int    `db:"size"`
@@ -271,7 +271,7 @@ type ChangeUserRole struct {
 	UserID int       `json:"userID"`
 }
 
-// InviteUsers is used to invite new users into Fider
+// InviteUsers is used to invite new users into Teamdream
 type InviteUsers struct {
 	Subject    string   `json:"subject"`
 	Message    string   `json:"message"`

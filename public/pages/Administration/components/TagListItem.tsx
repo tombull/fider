@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Tag } from "@fider/models";
-import { ListItem, ShowTag, Button } from "@fider/components";
+import { Tag } from "@teamdream/models";
+import { ListItem, ShowTag, Button } from "@teamdream/components";
 import { TagFormState, TagForm } from "./TagForm";
-import { actions, Failure } from "@fider/services";
+import { actions, Failure } from "@teamdream/services";
 import { FaTimes, FaEdit } from "react-icons/fa";
-import { useFider } from "@fider/hooks";
+import { useTeamdream } from "@teamdream/hooks";
 
 interface TagListItemProps {
   tag: Tag;
@@ -13,7 +13,7 @@ interface TagListItemProps {
 }
 
 export const TagListItem = (props: TagListItemProps) => {
-  const fider = useFider();
+  const teamdream = useTeamdream();
   const [tag] = useState(props.tag);
   const [state, setState] = useState<"view" | "edit" | "delete">("view");
 
@@ -64,7 +64,7 @@ export const TagListItem = (props: TagListItemProps) => {
   };
 
   const renderViewMode = () => {
-    const buttons = fider.session.user.isAdministrator && [
+    const buttons = teamdream.session.user.isAdministrator && [
       <Button size="mini" key={0} onClick={startDelete} className="right">
         <FaTimes />
         Delete

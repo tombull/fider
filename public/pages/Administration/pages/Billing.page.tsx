@@ -4,9 +4,9 @@ import React from "react";
 
 import { FaFileInvoice } from "react-icons/fa";
 import { AdminBasePage } from "../components/AdminBasePage";
-import { Segment, Button, CardInfo, Message } from "@fider/components";
-import { PaymentInfo, BillingPlan, Country, InvoiceDue } from "@fider/models";
-import { Fider, actions, navigator } from "@fider/services";
+import { Segment, Button, CardInfo, Message } from "@teamdream/components";
+import { PaymentInfo, BillingPlan, Country, InvoiceDue } from "@teamdream/models";
+import { Teamdream, actions, navigator } from "@teamdream/services";
 // import PaymentInfoModal from "../components/PaymentInfoModal";
 import { StripeProvider, Elements } from "react-stripe-elements";
 import { BillingPlanPanel } from "../components/BillingPlanPanel";
@@ -47,7 +47,7 @@ export default class BillingPage extends AdminBasePage<BillingPageProps, Billing
       script.src = "https://js.stripe.com/v3/";
       script.onload = () => {
         this.setState({
-          stripe: Stripe(Fider.settings.stripePublicKey!),
+          stripe: Stripe(Teamdream.settings.stripePublicKey!),
           showModal: true,
         });
       };

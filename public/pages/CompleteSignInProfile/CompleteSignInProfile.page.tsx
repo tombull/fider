@@ -2,8 +2,8 @@ import React from "react";
 
 import HomePage, { HomePageProps } from "../Home/Home.page";
 import SignInPage from "../SignIn/SignIn.page";
-import { Modal, Button, Form, Input, LegalFooter } from "@fider/components";
-import { actions, Failure, querystring, Fider } from "@fider/services";
+import { Modal, Button, Form, Input, LegalFooter } from "@teamdream/components";
+import { actions, Failure, querystring, Teamdream } from "@teamdream/services";
 
 interface CompleteSignInProfilePageState {
   name: string;
@@ -61,7 +61,7 @@ export default class CompleteSignInProfilePage extends React.Component<HomePageP
           </Modal.Content>
           <LegalFooter />
         </Modal.Window>
-        {Fider.session.tenant.isPrivate
+        {Teamdream.session.tenant.isPrivate
           ? React.createElement(SignInPage, this.props)
           : React.createElement(HomePage, this.props)}
       </>

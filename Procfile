@@ -1,1 +1,1 @@
-web: ./bin/fider migrate && ./bin/fider
+web: ./bin/teamdream migrate && ./bin/teamdream

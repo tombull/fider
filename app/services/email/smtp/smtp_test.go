@@ -48,7 +48,7 @@ func TestSend_Success(t *testing.T) {
 	reset()
 
 	bus.Publish(ctx, &cmd.SendMail{
-		From: "Fider Test",
+		From: "Teamdream Test",
 		To: []dto.Recipient{
 			dto.Recipient{
 				Name:    "Jon Sow",
@@ -66,7 +66,7 @@ func TestSend_Success(t *testing.T) {
 	Expect(requests[0].auth).Equals(smtp.AgnosticAuth("", "us3r", "p4ss", "localhost"))
 	Expect(requests[0].from).Equals("noreply@random.org")
 	Expect(requests[0].to).Equals([]string{"jon.snow@got.com"})
-	Expect(string(requests[0].body)).ContainsSubstring("From: \"Fider Test\" <noreply@random.org>\r\nReply-To: noreply@random.org\r\nTo: \"Jon Sow\" <jon.snow@got.com>\r\nSubject: Message to: Hello\r\nMIME-version: 1.0\r\nContent-Type: text/html; charset=\"UTF-8\"\r\nDate: ")
+	Expect(string(requests[0].body)).ContainsSubstring("From: \"Teamdream Test\" <noreply@random.org>\r\nReply-To: noreply@random.org\r\nTo: \"Jon Sow\" <jon.snow@got.com>\r\nSubject: Message to: Hello\r\nMIME-version: 1.0\r\nContent-Type: text/html; charset=\"UTF-8\"\r\nDate: ")
 	Expect(string(requests[0].body)).ContainsSubstring("Message-ID: ")
 	Expect(string(requests[0].body)).ContainsSubstring("Hello World Hello!")
 
@@ -78,7 +78,7 @@ func TestSend_SkipEmptyAddress(t *testing.T) {
 	reset()
 
 	bus.Publish(ctx, &cmd.SendMail{
-		From: "Fider Test",
+		From: "Teamdream Test",
 		To: []dto.Recipient{
 			dto.Recipient{
 				Name:    "Jon Sow",
@@ -100,7 +100,7 @@ func TestSend_SkipUnlistedAddress(t *testing.T) {
 	email.SetWhitelist("^.*@gmail.com$")
 
 	bus.Publish(ctx, &cmd.SendMail{
-		From: "Fider Test",
+		From: "Teamdream Test",
 		To: []dto.Recipient{
 			dto.Recipient{
 				Name:    "Jon Sow",
@@ -122,7 +122,7 @@ func TestBatch_Success(t *testing.T) {
 	email.SetWhitelist("")
 
 	bus.Publish(ctx, &cmd.SendMail{
-		From: "Fider Test",
+		From: "Teamdream Test",
 		To: []dto.Recipient{
 			dto.Recipient{
 				Name:    "Jon Sow",
@@ -148,7 +148,7 @@ func TestBatch_Success(t *testing.T) {
 	Expect(requests[0].auth).Equals(smtp.AgnosticAuth("", "us3r", "p4ss", "localhost"))
 	Expect(requests[0].from).Equals("noreply@random.org")
 	Expect(requests[0].to).Equals([]string{"jon.snow@got.com"})
-	Expect(string(requests[0].body)).ContainsSubstring("From: \"Fider Test\" <noreply@random.org>\r\nReply-To: noreply@random.org\r\nTo: \"Jon Sow\" <jon.snow@got.com>\r\nSubject: Message to: Jon\r\nMIME-version: 1.0\r\nContent-Type: text/html; charset=\"UTF-8\"\r\nDate: ")
+	Expect(string(requests[0].body)).ContainsSubstring("From: \"Teamdream Test\" <noreply@random.org>\r\nReply-To: noreply@random.org\r\nTo: \"Jon Sow\" <jon.snow@got.com>\r\nSubject: Message to: Jon\r\nMIME-version: 1.0\r\nContent-Type: text/html; charset=\"UTF-8\"\r\nDate: ")
 	Expect(string(requests[0].body)).ContainsSubstring("Message-ID: ")
 	Expect(string(requests[0].body)).ContainsSubstring("Hello World Jon!")
 
@@ -156,7 +156,7 @@ func TestBatch_Success(t *testing.T) {
 	Expect(requests[1].auth).Equals(smtp.AgnosticAuth("", "us3r", "p4ss", "localhost"))
 	Expect(requests[1].from).Equals("noreply@random.org")
 	Expect(requests[1].to).Equals([]string{"arya.start@got.com"})
-	Expect(string(requests[1].body)).ContainsSubstring("From: \"Fider Test\" <noreply@random.org>\r\nReply-To: noreply@random.org\r\nTo: \"Arya Stark\" <arya.start@got.com>\r\nSubject: Message to: Arya\r\nMIME-version: 1.0\r\nContent-Type: text/html; charset=\"UTF-8\"\r\nDate: ")
+	Expect(string(requests[1].body)).ContainsSubstring("From: \"Teamdream Test\" <noreply@random.org>\r\nReply-To: noreply@random.org\r\nTo: \"Arya Stark\" <arya.start@got.com>\r\nSubject: Message to: Arya\r\nMIME-version: 1.0\r\nContent-Type: text/html; charset=\"UTF-8\"\r\nDate: ")
 	Expect(string(requests[1].body)).ContainsSubstring("Message-ID: ")
 	Expect(string(requests[1].body)).ContainsSubstring("Hello World Arya!")
 }

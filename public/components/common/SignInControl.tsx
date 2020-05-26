@@ -1,9 +1,9 @@
 import "./SignInControl.scss";
 
 import React, { useState } from "react";
-import { SocialSignInButton, Form, Button, Input, Message } from "@fider/components";
-import { device, actions, Failure, isCookieEnabled } from "@fider/services";
-import { useFider } from "@fider/hooks";
+import { SocialSignInButton, Form, Button, Input, Message } from "@teamdream/components";
+import { device, actions, Failure, isCookieEnabled } from "@teamdream/services";
+import { useTeamdream } from "@teamdream/hooks";
 
 interface SignInControlProps {
   useEmail: boolean;
@@ -12,7 +12,7 @@ interface SignInControlProps {
 }
 
 export const SignInControl: React.FunctionComponent<SignInControlProps> = (props) => {
-  const fider = useFider();
+  const teamdream = useTeamdream();
   const [email, setEmail] = useState("");
   const [error, setError] = useState<Failure | undefined>(undefined);
 
@@ -29,7 +29,7 @@ export const SignInControl: React.FunctionComponent<SignInControlProps> = (props
     }
   };
 
-  const providersLen = fider.settings.oauth.length;
+  const providersLen = teamdream.settings.oauth.length;
 
   if (!isCookieEnabled()) {
     return (
@@ -45,7 +45,7 @@ export const SignInControl: React.FunctionComponent<SignInControlProps> = (props
       {providersLen > 0 && (
         <div className="l-signin-social">
           <div className="row">
-            {fider.settings.oauth.map((o, i) => (
+            {teamdream.settings.oauth.map((o, i) => (
               <React.Fragment key={o.provider}>
                 {i % 4 === 0 && <div className="col-lf" />}
                 <div

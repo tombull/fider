@@ -1,9 +1,9 @@
 import "./SideMenu.scss";
 
 import React from "react";
-import { classSet } from "@fider/services";
-import { FiderVersion } from "@fider/components";
-import { useFider } from "@fider/hooks";
+import { classSet } from "@teamdream/services";
+import { TeamdreamVersion } from "@teamdream/components";
+import { useTeamdream } from "@teamdream/hooks";
 
 interface SiteMenuProps {
   activeItem: string;
@@ -40,7 +40,7 @@ const SideMenuItem = (props: SideMenuItemProps) => {
 };
 
 export const SideMenu = (props: SiteMenuProps) => {
-  const fider = useFider();
+  const teamdream = useTeamdream();
   const activeItem = props.activeItem || "general";
   const style = { display: props.visible ? "" : "none" };
 
@@ -64,16 +64,16 @@ export const SideMenu = (props: SiteMenuProps) => {
           isActive={activeItem === "authentication"}
         />
         <SideMenuItem name="advanced" title="Advanced" href="/admin/advanced" isActive={activeItem === "advanced"} />
-        {fider.session.user.isAdministrator && (
+        {teamdream.session.user.isAdministrator && (
           <>
-            {fider.isBillingEnabled() && !!fider.session.tenant.billing && (
+            {teamdream.isBillingEnabled() && !!teamdream.session.tenant.billing && (
               <SideMenuItem name="billing" title="Billing" href="/admin/billing" isActive={activeItem === "billing"} />
             )}
             <SideMenuItem name="export" title="Export" href="/admin/export" isActive={activeItem === "export"} />
           </>
         )}
       </div>
-      <FiderVersion />
+      <TeamdreamVersion />
     </div>
   );
 };

@@ -1,12 +1,12 @@
 import React from "react";
-import { TenantStatus } from "@fider/models";
+import { TenantStatus } from "@teamdream/models";
 import { Message } from "./Message";
-import { useFider } from "@fider/hooks";
+import { useTeamdream } from "@teamdream/hooks";
 
 export const TenantStatusInfo = () => {
-  const fider = useFider();
+  const teamdream = useTeamdream();
 
-  if (!fider.isBillingEnabled() || fider.session.tenant.status !== TenantStatus.Locked) {
+  if (!teamdream.isBillingEnabled() || teamdream.session.tenant.status !== TenantStatus.Locked) {
     return null;
   }
 

@@ -31,7 +31,7 @@ export * from "./UserName";
 export * from "./Loader";
 export * from "./Logo";
 export * from "./Toggle";
-export * from "./FiderVersion";
+export * from "./TeamdreamVersion";
 export * from "./DropDown";
 
 import Textarea from "react-textarea-autosize";

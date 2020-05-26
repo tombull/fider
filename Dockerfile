@@ -1,13 +1,13 @@
 # Build Step
-FROM getfider/githubci:0.0.2 AS builder
+FROM getteamdream/githubci:0.0.2 AS builder
 
 RUN mkdir /app
 WORKDIR /app
 
 COPY . .
 RUN npm ci
-RUN node -v 
-RUN npm -v 
+RUN node -v
+RUN npm -v
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 mage build
 
 # Runtime Step
@@ -23,10 +23,10 @@ COPY --from=builder /app/views /app/views
 COPY --from=builder /app/dist /app/dist
 COPY --from=builder /app/LICENSE /app
 COPY --from=builder /app/robots.txt /app
-COPY --from=builder /app/fider /app
+COPY --from=builder /app/teamdream /app
 
 EXPOSE 3000
 
-HEALTHCHECK --timeout=5s CMD ./fider ping
+HEALTHCHECK --timeout=5s CMD ./teamdream ping
 
-CMD ./fider migrate && ./fider
+CMD ./teamdream migrate && ./teamdream

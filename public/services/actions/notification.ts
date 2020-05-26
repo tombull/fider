@@ -1,4 +1,4 @@
-import { http, Result } from "@fider/services";
+import { http, Result } from "@teamdream/services";
 
 export const getTotalUnreadNotifications = async (): Promise<Result<number>> => {
   return http.get<{ total: number }>("/_api/notifications/unread/total").then((result) => {

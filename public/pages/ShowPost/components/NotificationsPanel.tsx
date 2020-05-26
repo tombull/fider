@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Post } from "@fider/models";
-import { Button, List, ListItem } from "@fider/components";
-import { actions } from "@fider/services";
+import { Post } from "@teamdream/models";
+import { Button, List, ListItem } from "@teamdream/components";
+import { actions } from "@teamdream/services";
 import { FaVolumeUp, FaVolumeMute } from "react-icons/fa";
-import { useFider } from "@fider/hooks";
+import { useTeamdream } from "@teamdream/hooks";
 
 interface NotificationsPanelProps {
   post: Post;
@@ -11,7 +11,7 @@ interface NotificationsPanelProps {
 }
 
 export const NotificationsPanel = (props: NotificationsPanelProps) => {
-  const fider = useFider();
+  const teamdream = useTeamdream();
   const [subscribed, setSubscribed] = useState(props.subscribed);
 
   const subscribeOrUnsubscribe = async () => {
@@ -23,7 +23,7 @@ export const NotificationsPanel = (props: NotificationsPanelProps) => {
     }
   };
 
-  if (!fider.session.isAuthenticated) {
+  if (!teamdream.session.isAuthenticated) {
     return null;
   }
 

@@ -1,9 +1,9 @@
 import "./PostFilter.scss";
 
 import React from "react";
-import { PostStatus } from "@fider/models";
-import { DropDown, DropDownItem } from "@fider/components";
-import { useFider } from "@fider/hooks";
+import { PostStatus } from "@teamdream/models";
+import { DropDown, DropDownItem } from "@teamdream/components";
+import { useTeamdream } from "@teamdream/hooks";
 
 interface PostFilterProps {
   activeView: string;
@@ -12,7 +12,7 @@ interface PostFilterProps {
 }
 
 export const PostFilter = (props: PostFilterProps) => {
-  const fider = useFider();
+  const teamdream = useTeamdream();
 
   const handleChangeView = (item: DropDownItem) => {
     props.viewChanged(item.value as string);
@@ -25,7 +25,7 @@ export const PostFilter = (props: PostFilterProps) => {
     { value: "most-discussed", label: "Most Discussed" },
   ];
 
-  if (fider.session.isAuthenticated) {
+  if (teamdream.session.isAuthenticated) {
     options.push({ value: "my-votes", label: "My Votes" });
   }
 

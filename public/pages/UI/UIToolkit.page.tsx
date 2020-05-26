@@ -1,7 +1,7 @@
 import "./UIToolkit.page.scss";
 
 import React, { useState } from "react";
-import { PostStatus, UserStatus } from "@fider/models";
+import { PostStatus, UserStatus } from "@teamdream/models";
 import {
   Heading,
   Button,
@@ -26,10 +26,10 @@ import {
   ButtonClickEvent,
   Message,
   Hint,
-} from "@fider/components";
-import { User, UserRole, Tag } from "@fider/models";
-import { notify, Failure } from "@fider/services";
-import { DropDown, DropDownItem } from "@fider/components";
+} from "@teamdream/components";
+import { User, UserRole, Tag } from "@teamdream/models";
+import { notify, Failure } from "@teamdream/services";
+import { DropDown, DropDownItem } from "@teamdream/components";
 import { FaSearch, FaRegLightbulb, FaCogs } from "react-icons/fa";
 
 const jonSnow: User = {

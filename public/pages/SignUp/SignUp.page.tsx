@@ -1,8 +1,17 @@
 import "./SignUp.page.scss";
 
 import React from "react";
-import { SignInControl, Modal, Button, DisplayError, Form, Input, Message, LegalAgreement } from "@fider/components";
-import { jwt, actions, Failure, querystring, Fider } from "@fider/services";
+import {
+  SignInControl,
+  Modal,
+  Button,
+  DisplayError,
+  Form,
+  Input,
+  Message,
+  LegalAgreement,
+} from "@teamdream/components";
+import { jwt, actions, Failure, querystring, Teamdream } from "@teamdream/services";
 
 interface OAuthUser {
   token: string;
@@ -61,10 +70,10 @@ export default class SignUpPage extends React.Component<{}, SignUpPageState> {
 
     if (result.ok) {
       if (this.user) {
-        if (Fider.isSingleHostMode()) {
+        if (Teamdream.isSingleHostMode()) {
           location.reload();
         } else {
-          let baseURL = `${location.protocol}//${this.state.subdomain.value}${Fider.settings.domain}`;
+          let baseURL = `${location.protocol}//${this.state.subdomain.value}${Teamdream.settings.domain}`;
           if (location.port) {
             baseURL = `${baseURL}:${location.port}`;
           }
@@ -154,7 +163,7 @@ export default class SignUpPage extends React.Component<{}, SignUpPageState> {
           </p>
         ) : (
           <>
-            <p>We need to identify you to setup your new Fider account.</p>
+            <p>We need to identify you to setup your new Teamdream account.</p>
             <SignInControl useEmail={false} />
             <Form error={this.state.error}>
               <Input field="name" maxLength={100} onChange={this.setName} placeholder="Name" />
@@ -172,13 +181,13 @@ export default class SignUpPage extends React.Component<{}, SignUpPageState> {
             onChange={this.setTenantName}
             placeholder="your company or product name"
           />
-          {!Fider.isSingleHostMode() && (
+          {!Teamdream.isSingleHostMode() && (
             <Input
               field="subdomain"
               maxLength={40}
               onChange={this.setSubdomain}
               placeholder="subdomain"
-              suffix={Fider.settings.domain}
+              suffix={Teamdream.settings.domain}
             >
               {this.state.subdomain.available && (
                 <Message type="success" showIcon={true}>

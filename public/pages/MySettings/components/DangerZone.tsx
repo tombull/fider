@@ -1,7 +1,7 @@
 import React from "react";
 
-import { Button, Modal, ButtonClickEvent } from "@fider/components";
-import { actions, notify, navigator } from "@fider/services";
+import { Button, Modal, ButtonClickEvent } from "@teamdream/components";
+import { actions, notify, navigator } from "@teamdream/services";
 
 interface DangerZoneState {
   clicked: boolean;

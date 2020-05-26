@@ -1,8 +1,8 @@
 import "./Error.page.scss";
 
 import React from "react";
-import { TenantLogo } from "@fider/components";
-import { useFider } from "@fider/hooks";
+import { TenantLogo } from "@teamdream/components";
+import { useTeamdream } from "@teamdream/hooks";
 
 interface ErrorPageProps {
   error: Error;
@@ -11,16 +11,16 @@ interface ErrorPageProps {
 }
 
 export const ErrorPage = (props: ErrorPageProps) => {
-  const fider = useFider();
+  const teamdream = useTeamdream();
 
   return (
     <div id="p-error" className="container failure-page">
-      <TenantLogo size={100} useFiderIfEmpty={true} />
+      <TenantLogo size={100} useTeamdreamIfEmpty={true} />
       <h1>Shoot! Well, this is unexpected…</h1>
       <p>An error has occurred and we're working to fix the problem!</p>
-      {fider.settings && (
+      {teamdream.settings && (
         <span>
-          Take me back to <a href={fider.settings.baseURL}>{fider.settings.baseURL}</a> home page.
+          Take me back to <a href={teamdream.settings.baseURL}>{teamdream.settings.baseURL}</a> home page.
         </span>
       )}
       {props.showDetails && (

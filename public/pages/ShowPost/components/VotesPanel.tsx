@@ -1,10 +1,10 @@
 import "./VotesPanel.scss";
 
 import React, { useState } from "react";
-import { Post, Vote } from "@fider/models";
-import { Avatar } from "@fider/components";
-import { Fider, classSet } from "@fider/services";
-import { useFider } from "@fider/hooks";
+import { Post, Vote } from "@teamdream/models";
+import { Avatar } from "@teamdream/components";
+import { Teamdream, classSet } from "@teamdream/services";
+import { useTeamdream } from "@teamdream/hooks";
 import { VotesModal } from "./VotesModal";
 
 interface VotesPanelProps {
@@ -13,7 +13,7 @@ interface VotesPanelProps {
 }
 
 export const VotesPanel = (props: VotesPanelProps) => {
-  const fider = useFider();
+  const teamdream = useTeamdream();
   const [isVotesModalOpen, setIsVotesModalOpen] = useState(false);
 
   const openModal = () => {
@@ -23,7 +23,7 @@ export const VotesPanel = (props: VotesPanelProps) => {
   };
 
   const closeModal = () => setIsVotesModalOpen(false);
-  const canShowAll = () => fider.session.isAuthenticated && Fider.session.user.isCollaborator;
+  const canShowAll = () => teamdream.session.isAuthenticated && Teamdream.session.user.isCollaborator;
 
   const extraVotesCount = props.post.votesCount - props.votes.length;
   const moreVotesClassName = classSet({

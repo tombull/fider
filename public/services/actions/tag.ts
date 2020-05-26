@@ -1,5 +1,5 @@
-import { http, Result } from "@fider/services/http";
-import { Tag } from "@fider/models";
+import { http, Result } from "@teamdream/services/http";
+import { Tag } from "@teamdream/models";
 
 export const createTag = async (name: string, color: string, isPublic: boolean): Promise<Result<Tag>> => {
   return http

@@ -2,10 +2,10 @@ import "./MySettings.page.scss";
 
 import React from "react";
 
-import { Modal, Form, Button, Heading, Input, Select, SelectOption, ImageUploader } from "@fider/components";
+import { Modal, Form, Button, Heading, Input, Select, SelectOption, ImageUploader } from "@teamdream/components";
 
-import { UserSettings, UserAvatarType, ImageUpload } from "@fider/models";
-import { Failure, actions, Fider } from "@fider/services";
+import { UserSettings, UserAvatarType, ImageUpload } from "@teamdream/models";
+import { Failure, actions, Teamdream } from "@teamdream/services";
 import { FaRegAddressCard } from "react-icons/fa";
 import { NotificationSettings } from "./components/NotificationSettings";
 import { APIKeyForm } from "./components/APIKeyForm";
@@ -32,9 +32,9 @@ export default class MySettingsPage extends React.Component<MySettingsPageProps,
     this.state = {
       showModal: false,
       changingEmail: false,
-      avatarType: Fider.session.user.avatarType,
+      avatarType: Teamdream.session.user.avatarType,
       newEmail: "",
-      name: Fider.session.user.name,
+      name: Teamdream.session.user.name,
       userSettings: this.props.userSettings,
     };
   }
@@ -138,14 +138,14 @@ export default class MySettingsPage extends React.Component<MySettingsPageProps,
               <Input
                 label="Email"
                 field="email"
-                value={this.state.changingEmail ? this.state.newEmail : Fider.session.user.email}
+                value={this.state.changingEmail ? this.state.newEmail : Teamdream.session.user.email}
                 maxLength={200}
                 disabled={!this.state.changingEmail}
                 afterLabel={this.state.changingEmail ? undefined : changeEmail}
                 onChange={this.setNewEmail}
               >
                 <p className="info">
-                  {Fider.session.user.email || this.state.changingEmail
+                  {Teamdream.session.user.email || this.state.changingEmail
                     ? "Your email is private and will never be publicly displayed."
                     : "Your account doesn't have an email."}
                 </p>
@@ -192,7 +192,7 @@ export default class MySettingsPage extends React.Component<MySettingsPageProps,
                     field="avatar"
                     previewMaxWidth={80}
                     onChange={this.setAvatar}
-                    bkey={Fider.session.user.avatarBlobKey}
+                    bkey={Teamdream.session.user.avatarBlobKey}
                   >
                     <p className="info">
                       We accept JPG, GIF and PNG images, smaller than 100KB and with an aspect ratio of 1:1 with minimum
@@ -214,7 +214,7 @@ export default class MySettingsPage extends React.Component<MySettingsPageProps,
           </div>
         </div>
 
-        {Fider.session.user.isCollaborator && (
+        {Teamdream.session.user.isCollaborator && (
           <div className="row">
             <div className="col-lg-7">
               <APIKeyForm />

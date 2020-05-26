@@ -14,7 +14,7 @@ import (
 	"github.com/tombull/teamdream/app/pkg/validate"
 )
 
-// InviteUsers is used to invite new users into Fider
+// InviteUsers is used to invite new users into Teamdream
 type InviteUsers struct {
 	IsSampleInvite bool
 	Model          *models.InviteUsers

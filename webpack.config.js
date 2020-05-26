@@ -51,7 +51,7 @@ module.exports = {
   resolve: {
     extensions: [".mjs", ".ts", ".tsx", ".js"],
     alias: {
-      "@fider": publicFolder,
+      "@teamdream": publicFolder,
     },
   },
   performance: {

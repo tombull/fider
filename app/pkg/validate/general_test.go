@@ -115,13 +115,13 @@ func TestValidCNAME_Availability(t *testing.T) {
 	RegisterT(t)
 
 	bus.AddHandler(func(ctx context.Context, q *query.IsCNAMEAvailable) error {
-		q.Result = q.CNAME != "footbook.com" && q.CNAME != "fider.yourcompany.com" && q.CNAME != "feedback.newyork.com"
+		q.Result = q.CNAME != "footbook.com" && q.CNAME != "teamdream.yourcompany.com" && q.CNAME != "feedback.newyork.com"
 		return nil
 	})
 
 	for _, cname := range []string{
 		"footbook.com",
-		"fider.yourcompany.com",
+		"teamdream.yourcompany.com",
 		"feedback.newyork.com",
 	} {
 		messages := validate.CNAME(context.Background(), cname)
@@ -129,7 +129,7 @@ func TestValidCNAME_Availability(t *testing.T) {
 	}
 
 	for _, cname := range []string{
-		"fider.footbook.com",
+		"teamdream.footbook.com",
 		"yourcompany.com",
 		"anything.com",
 	} {

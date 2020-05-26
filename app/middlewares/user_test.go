@@ -40,7 +40,7 @@ func TestUser_WithCookie(t *testing.T) {
 	RegisterT(t)
 
 	server := mock.NewServer()
-	token, _ := jwt.Encode(jwt.FiderClaims{
+	token, _ := jwt.Encode(jwt.TeamdreamClaims{
 		UserID:   mock.JonSnow.ID,
 		UserName: mock.JonSnow.Name,
 	})
@@ -72,7 +72,7 @@ func TestUser_Blocked(t *testing.T) {
 
 	server := mock.NewServer()
 	mock.JonSnow.Status = enum.UserBlocked
-	token, _ := jwt.Encode(jwt.FiderClaims{
+	token, _ := jwt.Encode(jwt.TeamdreamClaims{
 		UserID:   mock.JonSnow.ID,
 		UserName: mock.JonSnow.Name,
 	})
@@ -102,7 +102,7 @@ func TestUser_LockedTenant_Administrator(t *testing.T) {
 
 	server := mock.NewServer()
 	mock.DemoTenant.Status = enum.TenantLocked
-	token, _ := jwt.Encode(jwt.FiderClaims{
+	token, _ := jwt.Encode(jwt.TeamdreamClaims{
 		UserID:   mock.JonSnow.ID,
 		UserName: mock.JonSnow.Name,
 	})
@@ -133,7 +133,7 @@ func TestUser_LockedTenant_Visitor(t *testing.T) {
 
 	server := mock.NewServer()
 	mock.DemoTenant.Status = enum.TenantLocked
-	token, _ := jwt.Encode(jwt.FiderClaims{
+	token, _ := jwt.Encode(jwt.TeamdreamClaims{
 		UserID:   mock.AryaStark.ID,
 		UserName: mock.AryaStark.Name,
 	})
@@ -162,7 +162,7 @@ func TestUser_WithCookie_InvalidUser(t *testing.T) {
 	RegisterT(t)
 
 	server := mock.NewServer()
-	token, _ := jwt.Encode(jwt.FiderClaims{
+	token, _ := jwt.Encode(jwt.TeamdreamClaims{
 		UserID:   999,
 		UserName: "Unknown",
 	})
@@ -194,7 +194,7 @@ func TestUser_WithCookie_DifferentTenant(t *testing.T) {
 	RegisterT(t)
 
 	server := mock.NewServer()
-	token, _ := jwt.Encode(jwt.FiderClaims{
+	token, _ := jwt.Encode(jwt.TeamdreamClaims{
 		UserID:   mock.JonSnow.ID,
 		UserName: mock.JonSnow.Name,
 	})
@@ -221,7 +221,7 @@ func TestUser_WithSignUpCookie(t *testing.T) {
 	RegisterT(t)
 
 	server := mock.NewServer()
-	token, _ := jwt.Encode(jwt.FiderClaims{
+	token, _ := jwt.Encode(jwt.TeamdreamClaims{
 		UserID:   mock.JonSnow.ID,
 		UserName: mock.JonSnow.Name,
 	})
@@ -357,7 +357,7 @@ func TestUser_Impersonation_Collaborator(t *testing.T) {
 		OnTenant(mock.DemoTenant).
 		WithURL("http://example.com/api/v1").
 		AddHeader("Authorization", "Bearer 12345").
-		AddHeader("X-Fider-UserID", strconv.Itoa(mock.JonSnow.ID)).
+		AddHeader("X-Teamdream-UserID", strconv.Itoa(mock.JonSnow.ID)).
 		ExecuteAsJSON(func(c *web.Context) error {
 			return c.NoContent(http.StatusOK)
 		})
@@ -384,7 +384,7 @@ func TestUser_Impersonation_InvalidUser(t *testing.T) {
 		OnTenant(mock.DemoTenant).
 		WithURL("http://example.com/api/v1").
 		AddHeader("Authorization", "Bearer 1234567890").
-		AddHeader("X-Fider-UserID", "ABC").
+		AddHeader("X-Teamdream-UserID", "ABC").
 		ExecuteAsJSON(func(c *web.Context) error {
 			return c.NoContent(http.StatusOK)
 		})
@@ -415,7 +415,7 @@ func TestUser_Impersonation_UserNotFound(t *testing.T) {
 		OnTenant(mock.DemoTenant).
 		WithURL("http://example.com/api/v1").
 		AddHeader("Authorization", "Bearer 1234567890").
-		AddHeader("X-Fider-UserID", "999").
+		AddHeader("X-Teamdream-UserID", "999").
 		ExecuteAsJSON(func(c *web.Context) error {
 			return c.NoContent(http.StatusOK)
 		})
@@ -450,7 +450,7 @@ func TestUser_Impersonation_ValidUser(t *testing.T) {
 		OnTenant(mock.DemoTenant).
 		WithURL("http://example.com/api/v1").
 		AddHeader("Authorization", "Bearer 1234567890").
-		AddHeader("X-Fider-UserID", strconv.Itoa(mock.AryaStark.ID)).
+		AddHeader("X-Teamdream-UserID", strconv.Itoa(mock.AryaStark.ID)).
 		Execute(func(c *web.Context) error {
 			return c.String(http.StatusOK, c.User().Name)
 		})

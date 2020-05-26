@@ -6,7 +6,7 @@ import (
 	"github.com/tombull/teamdream/app/pkg/web"
 )
 
-// BlockUser is used to block an existing user from using Fider
+// BlockUser is used to block an existing user from using Teamdream
 func BlockUser() web.HandlerFunc {
 	return func(c *web.Context) error {
 		userID, err := c.ParamAsInt("userID")
@@ -23,7 +23,7 @@ func BlockUser() web.HandlerFunc {
 	}
 }
 
-// UnblockUser is used to unblock an existing user so they can use Fider again
+// UnblockUser is used to unblock an existing user so they can use Teamdream again
 func UnblockUser() web.HandlerFunc {
 	return func(c *web.Context) error {
 		userID, err := c.ParamAsInt("userID")

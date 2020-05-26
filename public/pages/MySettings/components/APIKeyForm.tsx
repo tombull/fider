@@ -1,6 +1,6 @@
 import React from "react";
-import { Button } from "@fider/components";
-import { actions } from "@fider/services";
+import { Button } from "@teamdream/components";
+import { actions } from "@teamdream/services";
 
 interface APIKeyFormState {
   apiKey?: string;

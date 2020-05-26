@@ -1,7 +1,7 @@
 import "./Loader.scss";
 
 import React, { useState } from "react";
-import { useTimeout } from "@fider/hooks";
+import { useTimeout } from "@teamdream/hooks";
 
 export function Loader() {
   const [show, setShow] = useState(false);

@@ -1,5 +1,5 @@
-import { http, Result } from "@fider/services/http";
-import { UserRole, OAuthConfig, ImageUpload } from "@fider/models";
+import { http, Result } from "@teamdream/services/http";
+import { UserRole, OAuthConfig, ImageUpload } from "@teamdream/models";
 
 export interface CheckAvailabilityResponse {
   message: string;

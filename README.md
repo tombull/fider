@@ -2,7 +2,7 @@
   <a href="https://teamdream.co.uk">
     <img src="etc/logo-small.png" />
   </a>
-  <h1 align="center">Fider</h1>
+  <h1 align="center">Teamdream</h1>
   <div align="center">
     <strong>A platform to collect and organize customer feedback.</strong>
   </div>
@@ -33,30 +33,30 @@
 
 This project exists thanks to all the people who contribute.
 
-<a href="https://github.com/tombull/teamdream/graphs/contributors"><img src="https://opencollective.com/fider/contributors.svg?width=890&button=false" /></a>
+<a href="https://github.com/tombull/teamdream/graphs/contributors"><img src="https://opencollective.com/teamdream/contributors.svg?width=890&button=false" /></a>
 
-Read our [CONTRIBUTING](CONTRIBUTING.md) guide to learn the many ways you can contribute to Fider.
+Read our [CONTRIBUTING](CONTRIBUTING.md) guide to learn the many ways you can contribute to Teamdream.
 
 ## Sponsors
 
-Thanks to [BrowserStack](https://browserstack.com/) for providing us with free cross-browser testing for Fider.
+Thanks to [BrowserStack](https://browserstack.com/) for providing us with free cross-browser testing for Teamdream.
 
 <a href="https://browserstack.com" target="_blank">
   <img src="etc/browserstack.png">
 </a>
 
-Does your organization use Fider? [Become a sponsor](https://opencollective.com/fider) and your logo will show up here with a link to your website.
+Does your organization use Teamdream? [Become a sponsor](https://opencollective.com/teamdream) and your logo will show up here with a link to your website.
 
-<a href="https://opencollective.com/fider/sponsors/0/website" target="_blank"><img src="https://opencollective.com/fider/sponsors/0/avatar"></a>
-<a href="https://opencollective.com/fider/sponsors/1/website" target="_blank"><img src="https://opencollective.com/fider/sponsors/1/avatar"></a>
-<a href="https://opencollective.com/fider/sponsors/2/website" target="_blank"><img src="https://opencollective.com/fider/sponsors/2/avatar"></a>
-<a href="https://opencollective.com/fider/sponsors/3/website" target="_blank"><img src="https://opencollective.com/fider/sponsors/3/avatar"></a>
-<a href="https://opencollective.com/fider/sponsors/4/website" target="_blank"><img src="https://opencollective.com/fider/sponsors/4/avatar"></a>
+<a href="https://opencollective.com/teamdream/sponsors/0/website" target="_blank"><img src="https://opencollective.com/teamdream/sponsors/0/avatar"></a>
+<a href="https://opencollective.com/teamdream/sponsors/1/website" target="_blank"><img src="https://opencollective.com/teamdream/sponsors/1/avatar"></a>
+<a href="https://opencollective.com/teamdream/sponsors/2/website" target="_blank"><img src="https://opencollective.com/teamdream/sponsors/2/avatar"></a>
+<a href="https://opencollective.com/teamdream/sponsors/3/website" target="_blank"><img src="https://opencollective.com/teamdream/sponsors/3/avatar"></a>
+<a href="https://opencollective.com/teamdream/sponsors/4/website" target="_blank"><img src="https://opencollective.com/teamdream/sponsors/4/avatar"></a>
 
 ## Backers
 
 Thank you to all our backers! 🙏
 
-<a href="https://opencollective.com/fider" target="_blank">
-  <img src="https://opencollective.com/fider/backers.svg?width=890">
+<a href="https://opencollective.com/teamdream" target="_blank">
+  <img src="https://opencollective.com/teamdream/backers.svg?width=890">
 </a>

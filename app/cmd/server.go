@@ -27,7 +27,7 @@ import (
 	_ "github.com/tombull/teamdream/app/services/sqlstore/postgres"
 )
 
-//RunServer starts the Fider Server
+//RunServer starts the Teamdream Server
 //Returns an exitcode, 0 for OK and 1 for ERROR
 func RunServer(settings *models.SystemSettings) int {
 	svcs := bus.Init()

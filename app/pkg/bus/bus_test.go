@@ -17,10 +17,10 @@ func TestBus_SimpleMessage(t *testing.T) {
 	bus.Register(GreeterService{})
 	bus.Init()
 	ctx := context.WithValue(context.Background(), GreetingKey, "Good Morning")
-	cmd := &SayHelloCommand{Name: "Fider"}
+	cmd := &SayHelloCommand{Name: "Teamdream"}
 	err := bus.Dispatch(ctx, cmd)
 	Expect(err).IsNil()
-	Expect(cmd.Result).Equals("Good Morning Fider")
+	Expect(cmd.Result).Equals("Good Morning Teamdream")
 }
 
 func TestBus_MessageIsNotPointer_ShouldPanic(t *testing.T) {
@@ -35,7 +35,7 @@ func TestBus_MessageIsNotPointer_ShouldPanic(t *testing.T) {
 		}
 	}()
 
-	cmd := SayHelloCommand{Name: "Fider"}
+	cmd := SayHelloCommand{Name: "Teamdream"}
 	err := bus.Dispatch(context.Background(), cmd)
 	Expect(err).IsNil()
 }
@@ -46,10 +46,10 @@ func TestBus_OverwriteService(t *testing.T) {
 	bus.Register(GreeterService{})
 	bus.Register(BetterGreeterService{})
 	bus.Init()
-	cmd := &SayHelloCommand{Name: "Fider"}
+	cmd := &SayHelloCommand{Name: "Teamdream"}
 	err := bus.Dispatch(context.Background(), cmd)
 	Expect(err).IsNil()
-	Expect(cmd.Result).Equals("Hello Fider")
+	Expect(cmd.Result).Equals("Hello Teamdream")
 }
 
 func TestBus_MultipleMessages(t *testing.T) {
@@ -79,9 +79,9 @@ func TestBus_MultipleListeners(t *testing.T) {
 		value2 = c.Name
 	})
 
-	bus.Publish(context.Background(), &SayHelloCommand{Name: "Fider"})
-	Expect(value1).Equals("Fider")
-	Expect(value2).Equals("Fider")
+	bus.Publish(context.Background(), &SayHelloCommand{Name: "Teamdream"})
+	Expect(value1).Equals("Teamdream")
+	Expect(value2).Equals("Teamdream")
 }
 
 func TestBus_MultiplePublish(t *testing.T) {

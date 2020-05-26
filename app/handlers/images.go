@@ -109,7 +109,7 @@ func Gravatar() web.HandlerFunc {
 	}
 }
 
-//Favicon returns the Fider favicon by given size
+//Favicon returns the Teamdream favicon by given size
 func Favicon() web.HandlerFunc {
 	return func(c *web.Context) error {
 		var (

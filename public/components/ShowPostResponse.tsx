@@ -1,8 +1,8 @@
 import "./ShowPostResponse.scss";
 
 import React from "react";
-import { PostResponse, PostStatus } from "@fider/models";
-import { Avatar, MultiLineText, UserName, Segment } from "@fider/components/common";
+import { PostResponse, PostStatus } from "@teamdream/models";
+import { Avatar, MultiLineText, UserName, Segment } from "@teamdream/components/common";
 
 interface ShowPostStatusProps {
   status: PostStatus;

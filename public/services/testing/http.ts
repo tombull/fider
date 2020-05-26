@@ -1,4 +1,4 @@
-import { http } from "@fider/services";
+import { http } from "@teamdream/services";
 
 export const httpMock = {
   alwaysOk: () => {

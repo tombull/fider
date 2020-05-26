@@ -18,7 +18,7 @@ var missingDepsWarning = `Dependencies %v are missing. Please install them and t
 To learn how, visit our contributors guide: https://github.com/tombull/teamdream/blob/master/CONTRIBUTING.md.
 `
 
-// required dependencies for building fider
+// required dependencies for building teamdream
 var requiredDeps = []string{
 	"air",
 	"godotenv",
@@ -30,7 +30,7 @@ var requiredDeps = []string{
 }
 var buildTime = time.Now().Format("2006.01.02.150405")
 var buildNumber = os.Getenv("CIRCLE_BUILD_NUM")
-var exeName = "fider"
+var exeName = "teamdream"
 
 var Aliases = map[string]interface{}{
 	"build": Build.All,
@@ -42,7 +42,7 @@ var Aliases = map[string]interface{}{
 func init() {
 	os.Setenv("MAGEFILE_VERBOSE", "true")
 	if runtime.GOOS == "windows" {
-		exeName = "fider.exe"
+		exeName = "teamdream.exe"
 	}
 
 	missingDeps := missingDependencies()

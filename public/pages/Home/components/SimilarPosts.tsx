@@ -1,8 +1,8 @@
 import React from "react";
-import { Post, Tag, CurrentUser } from "@fider/models";
-import { Heading, Loader } from "@fider/components";
+import { Post, Tag, CurrentUser } from "@teamdream/models";
+import { Heading, Loader } from "@teamdream/components";
 import { ListPosts } from "./ListPosts";
-import { actions } from "@fider/services";
+import { actions } from "@teamdream/services";
 import { FaRegLightbulb } from "react-icons/fa";
 
 interface SimilarPostsProps {

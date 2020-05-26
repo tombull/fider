@@ -1,6 +1,6 @@
 import React from "react";
-import { uploadedImageURL } from "@fider/services";
-import { Modal, Button, Loader } from "@fider/components";
+import { uploadedImageURL } from "@teamdream/services";
+import { Modal, Button, Loader } from "@teamdream/components";
 
 import "./ImageViewer.scss";
 

@@ -24,7 +24,7 @@ type Request struct {
 	URL           *url.URL
 }
 
-// WrapRequest returns Fider wrapper of HTTP Request
+// WrapRequest returns Teamdream wrapper of HTTP Request
 func WrapRequest(request *http.Request) Request {
 	protocol := "http"
 	if request.TLS != nil || request.Header.Get("X-Forwarded-Proto") == "https" {

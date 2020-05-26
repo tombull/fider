@@ -2,8 +2,8 @@ import "./AdvancedSettings.page.scss";
 
 import React from "react";
 
-import { TextArea, Form, Button, ButtonClickEvent } from "@fider/components";
-import { Failure, actions, Fider } from "@fider/services";
+import { TextArea, Form, Button, ButtonClickEvent } from "@teamdream/components";
+import { Failure, actions, Teamdream } from "@teamdream/services";
 import { FaStar } from "react-icons/fa";
 import { AdminBasePage } from "../components/AdminBasePage";
 
@@ -50,25 +50,25 @@ export default class AdvancedSettingsPage extends AdminBasePage<AdvancedSettings
         <TextArea
           field="customCSS"
           label="Custom CSS"
-          disabled={!Fider.session.user.isAdministrator}
+          disabled={!Teamdream.session.user.isAdministrator}
           minRows={10}
           value={this.state.customCSS}
           onChange={this.setCustomCSS}
         >
           <p className="info">
-            Custom CSS allows you to change the look and feel of Fider so that you can apply your own branding.
+            Custom CSS allows you to change the look and feel of Teamdream so that you can apply your own branding.
             <br />
             This is a powerful and flexible feature, but requires basic understanding of{" "}
             <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS">CSS</a>.
           </p>
           <p className="info">
-            Custom CSS might break the design of your site as Fider evolves. By doing this, you're taking this risk, and
-            you will need to fix issues if they arise. <br /> You can minimize some issues by following these
+            Custom CSS might break the design of your site as Teamdream evolves. By doing this, you're taking this risk,
+            and you will need to fix issues if they arise. <br /> You can minimize some issues by following these
             recommendations:
           </p>
           <ul className="info">
             <li>
-              <strong>Avoid nested selectors</strong>: Fider might change the structure of the HTML at any time, and
+              <strong>Avoid nested selectors</strong>: Teamdream might change the structure of the HTML at any time, and
               it's likely that such changes would invalidate some rules.
             </li>
             <li>
@@ -78,7 +78,7 @@ export default class AdvancedSettingsPage extends AdminBasePage<AdvancedSettings
           </ul>
         </TextArea>
 
-        {Fider.session.user.isAdministrator && (
+        {Teamdream.session.user.isAdministrator && (
           <div className="field">
             <Button color="positive" onClick={this.handleSave}>
               Save

@@ -1,7 +1,7 @@
 import "./Comments.scss";
 
 import React from "react";
-import { CurrentUser, Comment, Post } from "@fider/models";
+import { CurrentUser, Comment, Post } from "@teamdream/models";
 import { ShowComment } from "./ShowComment";
 import { CommentInput } from "./CommentInput";
 

@@ -1,7 +1,7 @@
 import "./Toggle.scss";
 
 import React, { useState } from "react";
-import { classSet } from "@fider/services";
+import { classSet } from "@teamdream/services";
 
 interface ToggleProps {
   label?: string;

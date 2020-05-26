@@ -77,7 +77,7 @@ func routes(r *web.Engine) *web.Engine {
 		})
 	}
 
-	r.Get("/-/ui", handlers.Page("UI Toolkit", "A preview of Fider UI elements", "UIToolkit.page"))
+	r.Get("/-/ui", handlers.Page("UI Toolkit", "A preview of Teamdream UI elements", "UIToolkit.page"))
 	r.Get("/signup/verify", handlers.VerifySignUpKey())
 	r.Get("/signout", handlers.SignOut())
 	r.Get("/oauth/:provider/token", handlers.OAuthToken())

@@ -2,11 +2,11 @@ import "./GeneralSettings.page.scss";
 
 import React from "react";
 
-import { Button, ButtonClickEvent, TextArea, Form, Input, ImageUploader } from "@fider/components/common";
-import { actions, Failure, Fider } from "@fider/services";
+import { Button, ButtonClickEvent, TextArea, Form, Input, ImageUploader } from "@teamdream/components/common";
+import { actions, Failure, Teamdream } from "@teamdream/services";
 import { FaCogs } from "react-icons/fa";
 import { AdminBasePage } from "../components/AdminBasePage";
-import { ImageUpload } from "@fider/models";
+import { ImageUpload } from "@teamdream/models";
 
 interface GeneralSettingsPageState {
   logo?: ImageUpload;
@@ -28,10 +28,10 @@ export default class GeneralSettingsPage extends AdminBasePage<{}, GeneralSettin
     super(props);
 
     this.state = {
-      title: Fider.session.tenant.name,
-      cname: Fider.session.tenant.cname,
-      welcomeMessage: Fider.session.tenant.welcomeMessage,
-      invitation: Fider.session.tenant.invitation,
+      title: Teamdream.session.tenant.name,
+      cname: Teamdream.session.tenant.cname,
+      welcomeMessage: Teamdream.session.tenant.welcomeMessage,
+      invitation: Teamdream.session.tenant.invitation,
     };
   }
 
@@ -52,8 +52,8 @@ export default class GeneralSettingsPage extends AdminBasePage<{}, GeneralSettin
       <>
         <strong>{this.state.cname}</strong> {recordType}{" "}
         <strong>
-          {Fider.session.tenant.subdomain}
-          {Fider.settings.domain}
+          {Teamdream.session.tenant.subdomain}
+          {Teamdream.settings.domain}
         </strong>
       </>
     );
@@ -87,7 +87,7 @@ export default class GeneralSettingsPage extends AdminBasePage<{}, GeneralSettin
           label="Title"
           maxLength={60}
           value={this.state.title}
-          disabled={!Fider.session.user.isAdministrator}
+          disabled={!Teamdream.session.user.isAdministrator}
           onChange={this.setTitle}
         >
           <p className="info">
@@ -100,7 +100,7 @@ export default class GeneralSettingsPage extends AdminBasePage<{}, GeneralSettin
           field="welcomeMessage"
           label="Welcome Message"
           value={this.state.welcomeMessage}
-          disabled={!Fider.session.user.isAdministrator}
+          disabled={!Teamdream.session.user.isAdministrator}
           onChange={this.setWelcomeMessage}
         >
           <p className="info">
@@ -114,7 +114,7 @@ export default class GeneralSettingsPage extends AdminBasePage<{}, GeneralSettin
           label="Invitation"
           maxLength={60}
           value={this.state.invitation}
-          disabled={!Fider.session.user.isAdministrator}
+          disabled={!Teamdream.session.user.isAdministrator}
           placeholder="Enter your suggestion here..."
           onChange={this.setInvitation}
         >
@@ -127,9 +127,9 @@ export default class GeneralSettingsPage extends AdminBasePage<{}, GeneralSettin
         <ImageUploader
           label="Logo"
           field="logo"
-          bkey={Fider.session.tenant.logoBlobKey}
+          bkey={Teamdream.session.tenant.logoBlobKey}
           previewMaxWidth={200}
-          disabled={!Fider.session.user.isAdministrator}
+          disabled={!Teamdream.session.user.isAdministrator}
           onChange={this.setLogo}
         >
           <p className="info">
@@ -138,14 +138,14 @@ export default class GeneralSettingsPage extends AdminBasePage<{}, GeneralSettin
           </p>
         </ImageUploader>
 
-        {!Fider.isSingleHostMode() && (
+        {!Teamdream.isSingleHostMode() && (
           <Input
             field="cname"
             label="Custom Domain"
             maxLength={100}
             placeholder="feedback.yourcompany.com"
             value={this.state.cname}
-            disabled={!Fider.session.user.isAdministrator}
+            disabled={!Teamdream.session.user.isAdministrator}
             onChange={this.setCNAME}
           >
             <div className="info">
@@ -170,7 +170,7 @@ export default class GeneralSettingsPage extends AdminBasePage<{}, GeneralSettin
         )}
 
         <div className="field">
-          <Button disabled={!Fider.session.user.isAdministrator} color="positive" onClick={this.handleSave}>
+          <Button disabled={!Teamdream.session.user.isAdministrator} color="positive" onClick={this.handleSave}>
             Save
           </Button>
         </div>

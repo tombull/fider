@@ -64,8 +64,8 @@ func OAuthEcho() web.HandlerFunc {
 }
 
 // OAuthToken exchanges OAuth Code for a user profile
-// The user profile is then used to either get an existing user on Fider or creating a new one
-// Once Fider user is retrieved/created, an authentication cookie is store in user's browser
+// The user profile is then used to either get an existing user on Teamdream or creating a new one
+// Once Teamdream user is retrieved/created, an authentication cookie is store in user's browser
 func OAuthToken() web.HandlerFunc {
 	return func(c *web.Context) error {
 		provider := c.Param("provider")

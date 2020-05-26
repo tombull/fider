@@ -179,7 +179,7 @@ func TestVerifySignInKeyHandler_CorrectKey_ExistingUser(t *testing.T) {
 	Expect(response.Header().Get("Location")).Equals("http://demo.test.teamdream.co.uk")
 
 	Expect(verified).IsTrue()
-	ExpectFiderAuthCookie(response, mock.JonSnow)
+	ExpectTeamdreamAuthCookie(response, mock.JonSnow)
 }
 
 func TestVerifySignInKeyHandler_CorrectKey_NewUser(t *testing.T) {
@@ -550,7 +550,7 @@ func TestCompleteSignInProfileHandler_CorrectKey(t *testing.T) {
 	Expect(newUser.Email).Equals("hot.pie@got.com")
 	Expect(verified).IsTrue()
 
-	ExpectFiderAuthCookie(response, newUser)
+	ExpectTeamdreamAuthCookie(response, newUser)
 }
 
 func TestSignInPageHandler_AuthenticatedUser(t *testing.T) {
@@ -594,7 +594,7 @@ func TestSignInPageHandler_PrivateTenant_UnauthenticatedUser(t *testing.T) {
 	Expect(code).Equals(http.StatusOK)
 }
 
-func ExpectFiderAuthCookie(response *httptest.ResponseRecorder, expected *models.User) {
+func ExpectTeamdreamAuthCookie(response *httptest.ResponseRecorder, expected *models.User) {
 	cookies := response.Header()["Set-Cookie"]
 	if expected == nil {
 		for _, c := range cookies {
@@ -606,7 +606,7 @@ func ExpectFiderAuthCookie(response *httptest.ResponseRecorder, expected *models
 			cookie := web.ParseCookie(c)
 			if cookie.Name == web.CookieAuthName {
 				Expect(cookie.Name).Equals(web.CookieAuthName)
-				ExpectFiderToken(cookie.Value, expected)
+				ExpectTeamdreamToken(cookie.Value, expected)
 				Expect(cookie.HttpOnly).IsTrue()
 				Expect(cookie.Path).Equals("/")
 				Expect(cookie.Expires).TemporarilySimilar(time.Now().Add(365*24*time.Hour), 5*time.Second)
@@ -617,8 +617,8 @@ func ExpectFiderAuthCookie(response *httptest.ResponseRecorder, expected *models
 	}
 }
 
-func ExpectFiderToken(token string, expected *models.User) {
-	user, err := jwt.DecodeFiderClaims(token)
+func ExpectTeamdreamToken(token string, expected *models.User) {
+	user, err := jwt.DecodeTeamdreamClaims(token)
 	Expect(err).IsNil()
 	Expect(user.UserID).Equals(expected.ID)
 	Expect(user.UserName).Equals(expected.Name)

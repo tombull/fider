@@ -1,5 +1,5 @@
 import React from "react";
-import { classSet } from "@fider/services";
+import { classSet } from "@teamdream/services";
 import { ValidationContext } from "./Form";
 import { DisplayError, hasError } from "./DisplayError";
 import { IconType } from "react-icons";

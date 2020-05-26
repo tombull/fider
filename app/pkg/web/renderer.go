@@ -163,7 +163,7 @@ func (r *Renderer) Render(w io.Writer, statusCode int, name string, props Props,
 	private := make(Map)
 
 	tenant := ctx.Tenant()
-	tenantName := "Fider"
+	tenantName := "Teamdream"
 	if tenant != nil {
 		tenantName = tenant.Name
 	}

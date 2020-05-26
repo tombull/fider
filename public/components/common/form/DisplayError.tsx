@@ -1,5 +1,5 @@
 import React from "react";
-import { Failure } from "@fider/services";
+import { Failure } from "@teamdream/services";
 
 const arrayToTag = (items: string[]) => {
   return items.map((m) => <li key={m}>{m}</li>);

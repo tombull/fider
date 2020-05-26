@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { classSet } from "@fider/services";
+import { classSet } from "@teamdream/services";
 import { DisplayError, ValidationContext, hasError } from "../";
 
 interface CheckboxProps {

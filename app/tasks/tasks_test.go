@@ -39,7 +39,7 @@ func TestSendSignUpEmailTask(t *testing.T) {
 	Expect(emailmock.MessageHistory[0].Props).Equals(dto.Props{
 		"logo": "https://teamdream.co.uk/images/TeamDream-Logo.svg",
 	})
-	Expect(emailmock.MessageHistory[0].From).Equals("Fider")
+	Expect(emailmock.MessageHistory[0].From).Equals("Teamdream")
 	Expect(emailmock.MessageHistory[0].To).HasLen(1)
 	Expect(emailmock.MessageHistory[0].To[0]).Equals(dto.Recipient{
 		Props: dto.Props{

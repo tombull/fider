@@ -1,8 +1,8 @@
 // import React from "react";
 // import { injectStripe, CardElement } from "react-stripe-elements";
-// import { Input, Field, Button, Form, Select, SelectOption, Modal, CardInfo } from "@fider/components";
-// import { Failure, actions } from "@fider/services";
-// import { PaymentInfo, Country } from "@fider/models";
+// import { Input, Field, Button, Form, Select, SelectOption, Modal, CardInfo } from "@teamdream/components";
+// import { Failure, actions } from "@teamdream/services";
+// import { PaymentInfo, Country } from "@teamdream/models";
 
 // type PatchedTokenResponse = stripe.TokenResponse & {
 //   error?: { decline_code?: string };

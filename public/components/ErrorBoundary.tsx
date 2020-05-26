@@ -1,6 +1,6 @@
 import React from "react";
-import { ErrorPage } from "@fider/pages/Error/Error.page";
-import { FiderContext } from "@fider/services";
+import { ErrorPage } from "@teamdream/pages/Error/Error.page";
+import { TeamdreamContext } from "@teamdream/services";
 
 interface ErrorBoundaryProps {
   onError?: (err: Error) => void;
@@ -38,9 +38,9 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoun
 
     if (error && errorInfo) {
       return (
-        <FiderContext.Consumer>
-          {(fider) => <ErrorPage error={error} errorInfo={errorInfo} showDetails={!fider.isProduction()} />}
-        </FiderContext.Consumer>
+        <TeamdreamContext.Consumer>
+          {(teamdream) => <ErrorPage error={error} errorInfo={errorInfo} showDetails={!teamdream.isProduction()} />}
+        </TeamdreamContext.Consumer>
       );
     } else {
       return this.props.children;

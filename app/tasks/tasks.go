@@ -39,7 +39,7 @@ func SendSignUpEmail(model *models.CreateTenant, baseURL string) worker.Task {
 		})
 
 		bus.Publish(c, &cmd.SendMail{
-			From:         "Fider",
+			From:         "Teamdream",
 			To:           []dto.Recipient{to},
 			TemplateName: "signup_email",
 			Props: dto.Props{

@@ -1,5 +1,5 @@
-import { http, Result, querystring } from "@fider/services";
-import { Post, Vote, ImageUpload } from "@fider/models";
+import { http, Result, querystring } from "@teamdream/services";
+import { Post, Vote, ImageUpload } from "@teamdream/models";
 
 export const getAllPosts = async (): Promise<Result<Post[]>> => {
   return await http.get<Post[]>("/api/v1/posts");

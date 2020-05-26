@@ -1,4 +1,4 @@
-import { Fider } from ".";
+import { Teamdream } from ".";
 
 export const delay = (ms: number) => {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -143,9 +143,9 @@ export const isCookieEnabled = (): boolean => {
 export const uploadedImageURL = (bkey: string | undefined, size?: number): string | undefined => {
   if (bkey) {
     if (size) {
-      return `${Fider.settings.tenantAssetsURL}/images/${bkey}?size=${size}`;
+      return `${Teamdream.settings.tenantAssetsURL}/images/${bkey}?size=${size}`;
     }
-    return `${Fider.settings.tenantAssetsURL}/images/${bkey}`;
+    return `${Teamdream.settings.tenantAssetsURL}/images/${bkey}`;
   }
   return undefined;
 };

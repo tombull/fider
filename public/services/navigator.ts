@@ -1,4 +1,4 @@
-import { Fider, http } from "@fider/services";
+import { Teamdream, http } from "@teamdream/services";
 import { cache } from "./cache";
 
 const navigator = {
@@ -28,7 +28,7 @@ const navigator = {
   },
   replaceState: (path: string): void => {
     // if (history.replaceState) {
-    const newURL = Fider.settings.baseURL + path;
+    const newURL = Teamdream.settings.baseURL + path;
     window.history.replaceState({ path: newURL }, "", newURL);
     // }
   },

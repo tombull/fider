@@ -1,7 +1,7 @@
 import React from "react";
-import { Post, PostStatus } from "@fider/models";
-import { actions } from "@fider/services";
-import { DropDown, DropDownItem } from "@fider/components";
+import { Post, PostStatus } from "@teamdream/models";
+import { actions } from "@teamdream/services";
+import { DropDown, DropDownItem } from "@teamdream/components";
 import { FaCaretUp } from "react-icons/fa";
 
 interface PostSearchProps {

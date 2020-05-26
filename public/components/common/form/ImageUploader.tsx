@@ -3,10 +3,10 @@ import "./ImageUploader.scss";
 import React from "react";
 import { ValidationContext } from "./Form";
 import { DisplayError, hasError } from "./DisplayError";
-import { classSet, fileToBase64, uploadedImageURL } from "@fider/services";
-import { Button, ButtonClickEvent, Modal } from "@fider/components";
+import { classSet, fileToBase64, uploadedImageURL } from "@teamdream/services";
+import { Button, ButtonClickEvent, Modal } from "@teamdream/components";
 import { FaRegImage } from "react-icons/fa";
-import { ImageUpload } from "@fider/models";
+import { ImageUpload } from "@teamdream/models";
 
 const hardFileSizeLimit = 5 * 1024 * 1024;
 

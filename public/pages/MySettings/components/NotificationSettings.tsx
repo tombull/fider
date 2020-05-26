@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
-import { UserSettings } from "@fider/models";
-import { Toggle, Segment, Segments, Field } from "@fider/components";
-import { useFider } from "@fider/hooks";
+import { UserSettings } from "@teamdream/models";
+import { Toggle, Segment, Segments, Field } from "@teamdream/components";
+import { useTeamdream } from "@teamdream/hooks";
 
 interface NotificationSettingsProps {
   userSettings: UserSettings;
@@ -14,7 +14,7 @@ const WebChannel: Channel = 1;
 const EmailChannel: Channel = 2;
 
 export const NotificationSettings = (props: NotificationSettingsProps) => {
-  const fider = useFider();
+  const teamdream = useTeamdream();
   const [userSettings, setUserSettings] = useState(props.userSettings);
 
   const isEnabled = (settingsKey: string, channel: Channel): boolean => {
@@ -41,7 +41,7 @@ export const NotificationSettings = (props: NotificationSettingsProps) => {
   };
 
   const info = (settingsKey: string, aboutForVisitors: string, aboutForCollaborators: string) => {
-    const about = fider.session.user.isCollaborator ? aboutForCollaborators : aboutForVisitors;
+    const about = teamdream.session.user.isCollaborator ? aboutForCollaborators : aboutForVisitors;
     const webEnabled = isEnabled(settingsKey, WebChannel);
     const emailEnabled = isEnabled(settingsKey, EmailChannel);
 

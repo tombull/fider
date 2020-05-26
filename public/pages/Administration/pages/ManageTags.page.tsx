@@ -1,10 +1,10 @@
 import "./ManageTags.page.scss";
 
 import React from "react";
-import { Button, Segment, List, ListItem, Heading } from "@fider/components";
+import { Button, Segment, List, ListItem, Heading } from "@teamdream/components";
 
-import { Tag } from "@fider/models";
-import { actions, Failure, Fider } from "@fider/services";
+import { Tag } from "@teamdream/models";
+import { actions, Failure, Teamdream } from "@teamdream/services";
 import { FaTags } from "react-icons/fa";
 import { AdminBasePage } from "../components/AdminBasePage";
 import { TagFormState, TagForm } from "../components/TagForm";
@@ -93,7 +93,7 @@ export default class ManageTagsPage extends AdminBasePage<ManageTagsPageProps, M
     const privateTagList = this.getTagList((t) => !t.isPublic);
 
     const form =
-      Fider.session.user.isAdministrator &&
+      Teamdream.session.user.isAdministrator &&
       (this.state.isAdding ? (
         <Segment>
           <TagForm onSave={this.saveNewTag} onCancel={this.cancelAdd} />

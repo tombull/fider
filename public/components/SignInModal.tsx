@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Modal, SignInControl, LegalFooter } from "@fider/components/common";
+import { Modal, SignInControl, LegalFooter } from "@teamdream/components/common";
 
 interface SignInModalProps {
   isOpen: boolean;

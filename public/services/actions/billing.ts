@@ -1,5 +1,5 @@
-import { http, Result } from "@fider/services";
-import { BillingPlan } from "@fider/models";
+import { http, Result } from "@teamdream/services";
+import { BillingPlan } from "@teamdream/models";
 
 interface UpdatePaymentInfoRequest {
   name: string;

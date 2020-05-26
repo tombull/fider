@@ -1,16 +1,16 @@
 import "./Footer.scss";
 
 import React from "react";
-import { PrivacyPolicy, TermsOfService } from "@fider/components";
-import { useFider } from "@fider/hooks";
+import { PrivacyPolicy, TermsOfService } from "@teamdream/components";
+import { useTeamdream } from "@teamdream/hooks";
 
 export const Footer = () => {
-  const fider = useFider();
+  const teamdream = useTeamdream();
 
   return (
     <div id="c-footer">
       <div className="container">
-        {fider.settings.hasLegal && (
+        {teamdream.settings.hasLegal && (
           <div className="l-links">
             <PrivacyPolicy />
             &middot;
@@ -18,8 +18,8 @@ export const Footer = () => {
           </div>
         )}
         <a className="l-powered" target="_blank" href="https://teamdream.co.uk/">
-          <img src="https://teamdream.co.uk/images/TeamDream-Logo.svg" alt="Fider" />
-          <span>Powered by Fider</span>
+          <img src="https://teamdream.co.uk/images/TeamDream-Logo.svg" alt="Teamdream" />
+          <span>Powered by Teamdream</span>
         </a>
       </div>
     </div>

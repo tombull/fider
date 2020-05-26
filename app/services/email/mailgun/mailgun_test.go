@@ -36,7 +36,7 @@ func TestSend_Success(t *testing.T) {
 	reset()
 
 	bus.Publish(ctx, &cmd.SendMail{
-		From: "Fider Test",
+		From: "Teamdream Test",
 		To: []dto.Recipient{
 			dto.Recipient{
 				Name:    "Jon Sow",
@@ -60,7 +60,7 @@ func TestSend_Success(t *testing.T) {
 	Expect(err).IsNil()
 	Expect(values).HasLen(6)
 	Expect(values.Get("to")).Equals(`"Jon Sow" <jon.snow@got.com>`)
-	Expect(values.Get("from")).Equals(`"Fider Test" <noreply@random.org>`)
+	Expect(values.Get("from")).Equals(`"Teamdream Test" <noreply@random.org>`)
 	Expect(values.Get("h:Reply-To")).Equals("noreply@random.org")
 	Expect(values.Get("subject")).Equals("Message to: Hello")
 	Expect(values["o:tag"][0]).Equals("template:echo_test")
@@ -103,7 +103,7 @@ func TestSend_SkipEmptyAddress(t *testing.T) {
 	reset()
 
 	bus.Publish(ctx, &cmd.SendMail{
-		From: "Fider Test",
+		From: "Teamdream Test",
 		To: []dto.Recipient{
 			dto.Recipient{
 				Name:    "Jon Sow",
@@ -125,7 +125,7 @@ func TestSend_SkipUnlistedAddress(t *testing.T) {
 	email.SetWhitelist("^.*@gmail.com$")
 
 	bus.Publish(ctx, &cmd.SendMail{
-		From: "Fider Test",
+		From: "Teamdream Test",
 		To: []dto.Recipient{
 			dto.Recipient{
 				Name:    "Jon Sow",
@@ -147,7 +147,7 @@ func TestBatch_Success(t *testing.T) {
 	email.SetWhitelist("")
 
 	bus.Publish(ctx, &cmd.SendMail{
-		From: "Fider Test",
+		From: "Teamdream Test",
 		To: []dto.Recipient{
 			dto.Recipient{
 				Name:    "Jon Sow",
@@ -180,7 +180,7 @@ func TestBatch_Success(t *testing.T) {
 	Expect(values["to"]).HasLen(2)
 	Expect(values["to"][0]).Equals(`"Jon Sow" <jon.snow@got.com>`)
 	Expect(values["to"][1]).Equals(`"Arya Stark" <arya.start@got.com>`)
-	Expect(values.Get("from")).Equals(`"Fider Test" <noreply@random.org>`)
+	Expect(values.Get("from")).Equals(`"Teamdream Test" <noreply@random.org>`)
 	Expect(values.Get("h:Reply-To")).Equals("noreply@random.org")
 	Expect(values.Get("subject")).Equals("Message to: %recipient.name%")
 	Expect(values["o:tag"]).HasLen(2)
@@ -225,7 +225,7 @@ func TestGetBaseURL(t *testing.T) {
 	reset()
 
 	sendMail := &cmd.SendMail{
-		From: "Fider Test",
+		From: "Teamdream Test",
 		To: []dto.Recipient{
 			dto.Recipient{
 				Name:    "Jon Sow",

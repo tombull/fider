@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { OAuthConfig, OAuthConfigStatus, ImageUpload } from "@fider/models";
-import { Failure, actions } from "@fider/services";
-import { Form, Button, Input, Heading, SocialSignInButton, Field, ImageUploader, Toggle } from "@fider/components";
-import { useFider } from "@fider/hooks";
+import { OAuthConfig, OAuthConfigStatus, ImageUpload } from "@teamdream/models";
+import { Failure, actions } from "@teamdream/services";
+import { Form, Button, Input, Heading, SocialSignInButton, Field, ImageUploader, Toggle } from "@teamdream/components";
+import { useTeamdream } from "@teamdream/hooks";
 
 interface OAuthFormProps {
   config?: OAuthConfig;
@@ -10,7 +10,7 @@ interface OAuthFormProps {
 }
 
 export const OAuthForm: React.FC<OAuthFormProps> = (props) => {
-  const fider = useFider();
+  const teamdream = useTeamdream();
   const [provider] = useState((props.config && props.config.provider) || "");
   const [displayName, setDisplayName] = useState((props.config && props.config.displayName) || "");
   const [enabled, setEnabled] = useState((props.config && props.config.status === OAuthConfigStatus.Enabled) || false);
@@ -79,7 +79,7 @@ export const OAuthForm: React.FC<OAuthFormProps> = (props) => {
               label="Display Name"
               maxLength={50}
               value={displayName}
-              disabled={!fider.session.user.isAdministrator}
+              disabled={!teamdream.session.user.isAdministrator}
               onChange={setDisplayName}
             />
 
@@ -88,7 +88,7 @@ export const OAuthForm: React.FC<OAuthFormProps> = (props) => {
               field="logo"
               bkey={logoBlobKey}
               previewMaxWidth={80}
-              disabled={!fider.session.user.isAdministrator}
+              disabled={!teamdream.session.user.isAdministrator}
               onChange={handleLogoChange}
             >
               <p className="info">
@@ -109,7 +109,7 @@ export const OAuthForm: React.FC<OAuthFormProps> = (props) => {
           label="Client ID"
           maxLength={100}
           value={clientID}
-          disabled={!fider.session.user.isAdministrator}
+          disabled={!teamdream.session.user.isAdministrator}
           onChange={setClientID}
         />
 
@@ -136,7 +136,7 @@ export const OAuthForm: React.FC<OAuthFormProps> = (props) => {
           label="Authorize URL"
           maxLength={300}
           value={authorizeURL}
-          disabled={!fider.session.user.isAdministrator}
+          disabled={!teamdream.session.user.isAdministrator}
           onChange={setAuthorizeURL}
         />
         <Input
@@ -144,7 +144,7 @@ export const OAuthForm: React.FC<OAuthFormProps> = (props) => {
           label="Token URL"
           maxLength={300}
           value={tokenURL}
-          disabled={!fider.session.user.isAdministrator}
+          disabled={!teamdream.session.user.isAdministrator}
           onChange={setTokenURL}
         />
 
@@ -153,7 +153,7 @@ export const OAuthForm: React.FC<OAuthFormProps> = (props) => {
           label="Scope"
           maxLength={100}
           value={scope}
-          disabled={!fider.session.user.isAdministrator}
+          disabled={!teamdream.session.user.isAdministrator}
           onChange={setScope}
         >
           <p className="info">
@@ -164,7 +164,7 @@ export const OAuthForm: React.FC<OAuthFormProps> = (props) => {
 
         <h3>User Profile</h3>
         <p className="info">
-          This section is used to configure how Fider will fetch user after the authentication process.
+          This section is used to configure how Teamdream will fetch user after the authentication process.
         </p>
 
         <Input
@@ -172,11 +172,11 @@ export const OAuthForm: React.FC<OAuthFormProps> = (props) => {
           label="Profile API URL"
           maxLength={300}
           value={profileURL}
-          disabled={!fider.session.user.isAdministrator}
+          disabled={!teamdream.session.user.isAdministrator}
           onChange={setProfileURL}
         >
           <p className="info">
-            The URL to fetch the authenticated user info. If empty, Fider will try to parse the user info from the
+            The URL to fetch the authenticated user info. If empty, Teamdream will try to parse the user info from the
             Access Token.
           </p>
         </Input>
@@ -190,7 +190,7 @@ export const OAuthForm: React.FC<OAuthFormProps> = (props) => {
             className="col-sm-4"
             maxLength={100}
             value={jsonUserIDPath}
-            disabled={!fider.session.user.isAdministrator}
+            disabled={!teamdream.session.user.isAdministrator}
             onChange={setJSONUserIDPath}
           >
             <p className="info">
@@ -204,7 +204,7 @@ export const OAuthForm: React.FC<OAuthFormProps> = (props) => {
             className="col-sm-4"
             maxLength={100}
             value={jsonUserNamePath}
-            disabled={!fider.session.user.isAdministrator}
+            disabled={!teamdream.session.user.isAdministrator}
             onChange={setJSONUserNamePath}
           >
             <p className="info">
@@ -218,7 +218,7 @@ export const OAuthForm: React.FC<OAuthFormProps> = (props) => {
             className="col-sm-4"
             maxLength={100}
             value={jsonUserEmailPath}
-            disabled={!fider.session.user.isAdministrator}
+            disabled={!teamdream.session.user.isAdministrator}
             onChange={setJSONUserEmailPath}
           >
             <p className="info">
@@ -230,7 +230,7 @@ export const OAuthForm: React.FC<OAuthFormProps> = (props) => {
         <pre>
           <h5>Example Response</h5>
           {`
-  { 
+  {
   id: "35235"
   title: "Sr. Account Manager",
   profile: {

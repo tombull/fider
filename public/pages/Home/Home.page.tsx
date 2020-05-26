@@ -1,13 +1,13 @@
 import "./Home.page.scss";
 
 import React, { useState } from "react";
-import { Post, Tag, PostStatus } from "@fider/models";
-import { MultiLineText, Hint } from "@fider/components";
+import { Post, Tag, PostStatus } from "@teamdream/models";
+import { MultiLineText, Hint } from "@teamdream/components";
 import { SimilarPosts } from "./components/SimilarPosts";
 import { FaRegLightbulb } from "react-icons/fa";
 import { PostInput } from "./components/PostInput";
 import { PostsContainer } from "./components/PostsContainer";
-import { useFider } from "@fider/hooks";
+import { useTeamdream } from "@teamdream/hooks";
 
 export interface HomePageProps {
   posts: Post[];
@@ -20,13 +20,13 @@ export interface HomePageState {
 }
 
 const Lonely = () => {
-  const fider = useFider();
+  const teamdream = useTeamdream();
 
   return (
     <div className="l-lonely center">
       <Hint
         permanentCloseKey="at-least-3-posts"
-        condition={fider.session.isAuthenticated && fider.session.user.isAdministrator}
+        condition={teamdream.session.isAuthenticated && teamdream.session.user.isAdministrator}
       >
         It's recommended that you post <strong>at least 3</strong> suggestions here before sharing this site. The
         initial content is key to start the interactions with your audience.
@@ -39,12 +39,12 @@ const Lonely = () => {
   );
 };
 
-const defaultWelcomeMessage = `We'd love to hear what you're thinking about. 
+const defaultWelcomeMessage = `We'd love to hear what you're thinking about.
 
 What can we do better? This is the place for you to vote, discuss and share ideas.`;
 
 const HomePage = (props: HomePageProps) => {
-  const fider = useFider();
+  const teamdream = useTeamdream();
   const [title, setTitle] = useState("");
 
   const isLonely = () => {
@@ -66,11 +66,11 @@ const HomePage = (props: HomePageProps) => {
         <div className="l-welcome-col col-md-4">
           <MultiLineText
             className="welcome-message"
-            text={fider.session.tenant.welcomeMessage || defaultWelcomeMessage}
+            text={teamdream.session.tenant.welcomeMessage || defaultWelcomeMessage}
             style="full"
           />
           <PostInput
-            placeholder={fider.session.tenant.invitation || "Enter your suggestion here..."}
+            placeholder={teamdream.session.tenant.invitation || "Enter your suggestion here..."}
             onTitleChanged={setTitle}
           />
         </div>

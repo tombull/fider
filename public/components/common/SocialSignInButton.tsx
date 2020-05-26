@@ -1,6 +1,6 @@
 import React from "react";
-import { Button, OAuthProviderLogo } from "@fider/components/common";
-import { classSet } from "@fider/services";
+import { Button, OAuthProviderLogo } from "@teamdream/components/common";
+import { classSet } from "@teamdream/services";
 
 interface SocialSignInButtonProps {
   option: {

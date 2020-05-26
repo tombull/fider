@@ -1,15 +1,15 @@
 import React from "react";
-import { Modal, Checkbox } from "@fider/components/common";
-import { useFider } from "@fider/hooks";
+import { Modal, Checkbox } from "@teamdream/components/common";
+import { useTeamdream } from "@teamdream/hooks";
 
 interface LegalAgreementProps {
   onChange: (agreed: boolean) => void;
 }
 
 export const TermsOfService: React.FunctionComponent<{}> = () => {
-  const fider = useFider();
+  const teamdream = useTeamdream();
 
-  if (fider.settings.hasLegal) {
+  if (teamdream.settings.hasLegal) {
     return (
       <a href="/terms" target="_blank">
         Terms of Service
@@ -20,9 +20,9 @@ export const TermsOfService: React.FunctionComponent<{}> = () => {
 };
 
 export const PrivacyPolicy: React.FunctionComponent<{}> = () => {
-  const fider = useFider();
+  const teamdream = useTeamdream();
 
-  if (fider.settings.hasLegal) {
+  if (teamdream.settings.hasLegal) {
     return (
       <a href="/privacy" target="_blank">
         Privacy Policy
@@ -33,9 +33,9 @@ export const PrivacyPolicy: React.FunctionComponent<{}> = () => {
 };
 
 export const LegalNotice: React.FunctionComponent<{}> = () => {
-  const fider = useFider();
+  const teamdream = useTeamdream();
 
-  if (fider.settings.hasLegal) {
+  if (teamdream.settings.hasLegal) {
     return (
       <p className="info">
         By signing in, you agree to the <PrivacyPolicy /> and <TermsOfService />.
@@ -46,9 +46,9 @@ export const LegalNotice: React.FunctionComponent<{}> = () => {
 };
 
 export const LegalFooter: React.FunctionComponent<{}> = () => {
-  const fider = useFider();
+  const teamdream = useTeamdream();
 
-  if (fider.settings.hasLegal) {
+  if (teamdream.settings.hasLegal) {
     return (
       <Modal.Footer align="center">
         <LegalNotice />
@@ -59,9 +59,9 @@ export const LegalFooter: React.FunctionComponent<{}> = () => {
 };
 
 export const LegalAgreement: React.FunctionComponent<LegalAgreementProps> = (props) => {
-  const fider = useFider();
+  const teamdream = useTeamdream();
 
-  if (fider.settings.hasLegal) {
+  if (teamdream.settings.hasLegal) {
     return (
       <Checkbox field="legalAgreement" onChange={props.onChange}>
         I have read and agree to the <PrivacyPolicy /> and <TermsOfService />.

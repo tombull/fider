@@ -1,5 +1,5 @@
 import { resolveRootComponent } from "./router";
-import * as Pages from "@fider/AsyncPages";
+import * as Pages from "@teamdream/AsyncPages";
 
 [
   { path: "", expected: Pages.AsyncHomePage },

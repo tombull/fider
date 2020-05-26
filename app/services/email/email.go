@@ -27,7 +27,7 @@ func SetBlacklist(s string) {
 	blacklistRegex = regexp.MustCompile(blacklist)
 }
 
-// CanSendTo returns true if Fider is allowed to send email to given address
+// CanSendTo returns true if Teamdream is allowed to send email to given address
 func CanSendTo(address string) bool {
 	if strings.TrimSpace(address) == "" {
 		return false

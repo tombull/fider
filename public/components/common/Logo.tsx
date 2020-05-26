@@ -1,13 +1,13 @@
 import React from "react";
-import { uploadedImageURL } from "@fider/services";
-import { useFider } from "@fider/hooks";
-import { Tenant } from "@fider/models";
+import { uploadedImageURL } from "@teamdream/services";
+import { useTeamdream } from "@teamdream/hooks";
+import { Tenant } from "@teamdream/models";
 
 type Size = 24 | 50 | 100 | 200;
 
 interface TenantLogoProps {
   size: Size;
-  useFiderIfEmpty?: boolean;
+  useTeamdreamIfEmpty?: boolean;
 }
 
 export const TenantLogoURL = (tenant: Tenant, size: Size): string | undefined => {
@@ -18,19 +18,19 @@ export const TenantLogoURL = (tenant: Tenant, size: Size): string | undefined =>
 };
 
 export const TenantLogo = (props: TenantLogoProps) => {
-  const fider = useFider();
+  const teamdream = useTeamdream();
 
-  const tenant = fider.session.tenant;
+  const tenant = teamdream.session.tenant;
   if (tenant && tenant.logoBlobKey) {
-    return <img src={TenantLogoURL(fider.session.tenant, props.size)} alt={tenant.name} />;
-  } else if (props.useFiderIfEmpty) {
-    return <img src="https://teamdream.co.uk/images/TeamDream-Logo.svg" alt="Fider" />;
+    return <img src={TenantLogoURL(teamdream.session.tenant, props.size)} alt={tenant.name} />;
+  } else if (props.useTeamdreamIfEmpty) {
+    return <img src="https://teamdream.co.uk/images/TeamDream-Logo.svg" alt="Teamdream" />;
   }
   return null;
 };
 
 TenantLogo.defaultProps = {
-  useFiderIfEmpty: false,
+  useTeamdreamIfEmpty: false,
 };
 
 interface OAuthProviderLogoProps {

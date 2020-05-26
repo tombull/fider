@@ -1,8 +1,8 @@
 import "./UserName.scss";
 
 import React from "react";
-import { isCollaborator, UserRole } from "@fider/models";
-import { classSet } from "@fider/services";
+import { isCollaborator, UserRole } from "@teamdream/models";
+import { classSet } from "@teamdream/services";
 
 interface UserNameProps {
   user: {

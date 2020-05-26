@@ -1,8 +1,8 @@
 import "./ShowTag.scss";
 
 import React from "react";
-import { Tag } from "@fider/models";
-import { classSet } from "@fider/services";
+import { Tag } from "@teamdream/models";
+import { classSet } from "@teamdream/services";
 import { FaLock } from "react-icons/fa";
 
 interface TagProps {

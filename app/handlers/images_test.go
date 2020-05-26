@@ -27,7 +27,7 @@ func TestGravatarHandler(t *testing.T) {
 	user := &models.User{
 		ID:     3,
 		Name:   "Darth Vader",
-		Email:  "darthvader.fider@gmail.com",
+		Email:  "darthvader.teamdream@gmail.com",
 		Tenant: mock.DemoTenant,
 	}
 
@@ -60,7 +60,7 @@ func TestGravatarNotFound_LetterAvatarHandler(t *testing.T) {
 	user := &models.User{
 		ID:     3,
 		Name:   "Darth Vader",
-		Email:  "darthvader.fider1234567890@gmail.com",
+		Email:  "darthvader.teamdream1234567890@gmail.com",
 		Tenant: mock.DemoTenant,
 	}
 

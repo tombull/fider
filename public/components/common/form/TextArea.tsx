@@ -1,5 +1,5 @@
 import React from "react";
-import { classSet } from "@fider/services";
+import { classSet } from "@teamdream/services";
 import { ValidationContext } from "../";
 import { DisplayError, hasError } from "./DisplayError";
 import Textarea from "react-textarea-autosize";

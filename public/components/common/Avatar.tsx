@@ -1,8 +1,8 @@
 import "./Avatar.scss";
 
 import React from "react";
-import { classSet } from "@fider/services";
-import { isCollaborator, UserRole } from "@fider/models";
+import { classSet } from "@teamdream/services";
+import { isCollaborator, UserRole } from "@teamdream/models";
 
 interface AvatarProps {
   user: {

@@ -12,14 +12,14 @@ var jwtSecret = env.Config.JWTSecret
 type Metadata = jwtgo.StandardClaims
 
 const (
-	//FiderClaimsOriginUI is assigned to Fider claims when the Auth Token is generated through the UI
-	FiderClaimsOriginUI = "ui"
-	//FiderClaimsOriginAPI is assigned to Fider claims when the Auth Token is generated through the API
-	FiderClaimsOriginAPI = "api"
+	//TeamdreamClaimsOriginUI is assigned to Teamdream claims when the Auth Token is generated through the UI
+	TeamdreamClaimsOriginUI = "ui"
+	//TeamdreamClaimsOriginAPI is assigned to Teamdream claims when the Auth Token is generated through the API
+	TeamdreamClaimsOriginAPI = "api"
 )
 
-// FiderClaims represents what goes into JWT tokens
-type FiderClaims struct {
+// TeamdreamClaims represents what goes into JWT tokens
+type TeamdreamClaims struct {
 	UserID    int    `json:"user/id"`
 	UserName  string `json:"user/name"`
 	UserEmail string `json:"user/email"`
@@ -46,12 +46,12 @@ func Encode(claims jwtgo.Claims) (string, error) {
 	return token, nil
 }
 
-// DecodeFiderClaims extract claims from JWT tokens
-func DecodeFiderClaims(token string) (*FiderClaims, error) {
-	claims := &FiderClaims{}
+// DecodeTeamdreamClaims extract claims from JWT tokens
+func DecodeTeamdreamClaims(token string) (*TeamdreamClaims, error) {
+	claims := &TeamdreamClaims{}
 	err := decode(token, claims)
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to decode Fider claims")
+		return nil, errors.Wrap(err, "failed to decode Teamdream claims")
 	}
 	return claims, nil
 }

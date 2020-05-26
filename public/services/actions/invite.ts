@@ -1,4 +1,4 @@
-import { http, Result } from "@fider/services";
+import { http, Result } from "@teamdream/services";
 
 export const sendInvites = async (subject: string, message: string, recipients: string[]): Promise<Result> => {
   return http.post("/api/v1/invitations/send", { subject, message, recipients }).then(http.event("invite", "send"));

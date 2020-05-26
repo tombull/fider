@@ -1,9 +1,9 @@
 import React from "react";
 
-import { Modal, Button, DisplayError, Select, Form, TextArea, Field, SelectOption } from "@fider/components";
-import { Post, PostStatus } from "@fider/models";
+import { Modal, Button, DisplayError, Select, Form, TextArea, Field, SelectOption } from "@teamdream/components";
+import { Post, PostStatus } from "@teamdream/models";
 
-import { actions, Failure } from "@fider/services";
+import { actions, Failure } from "@teamdream/services";
 import { FaBullhorn } from "react-icons/fa";
 import { PostSearch } from "./PostSearch";
 

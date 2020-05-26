@@ -1,7 +1,7 @@
 import "./AdminBasePage.scss";
 
 import React from "react";
-import { Heading } from "@fider/components";
+import { Heading } from "@teamdream/components";
 import { SideMenu, SideMenuToggler } from "./SideMenu";
 import { IconType } from "react-icons";
 

@@ -1,9 +1,9 @@
 import "./VotesModal.scss";
 
 import React from "react";
-import { Post, Vote } from "@fider/models";
-import { Modal, Button, Loader, List, ListItem, Avatar, UserName, Moment, Input } from "@fider/components";
-import { actions } from "@fider/services";
+import { Post, Vote } from "@teamdream/models";
+import { Modal, Button, Loader, List, ListItem, Avatar, UserName, Moment, Input } from "@teamdream/components";
+import { actions } from "@teamdream/services";
 import { FaTimes, FaSearch } from "react-icons/fa";
 
 interface VotesModalProps {

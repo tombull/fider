@@ -1,4 +1,4 @@
-import { CurrentUser, SystemSettings, Tenant } from "@fider/models";
+import { CurrentUser, SystemSettings, Tenant } from "@teamdream/models";
 
 declare global {
   interface Window {

@@ -1,7 +1,7 @@
 import "./Heading.scss";
 
 import React from "react";
-import { classSet } from "@fider/services";
+import { classSet } from "@teamdream/services";
 import { IconType } from "react-icons";
 
 interface HeadingLogo {

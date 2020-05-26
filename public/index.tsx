@@ -1,9 +1,9 @@
 import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
-import { resolveRootComponent } from "@fider/router";
-import { Header, Footer, Loader } from "@fider/components/common";
-import { ErrorBoundary } from "@fider/components";
-import { classSet, Fider, FiderContext, actions, navigator } from "@fider/services";
+import { resolveRootComponent } from "@teamdream/router";
+import { Header, Footer, Loader } from "@teamdream/components/common";
+import { ErrorBoundary } from "@teamdream/components";
+import { classSet, Teamdream, TeamdreamContext, actions, navigator } from "@teamdream/services";
 import { IconContext } from "react-icons";
 
 const Loading = () => (
@@ -12,10 +12,10 @@ const Loading = () => (
   </div>
 );
 
-import "@fider/assets/styles/index.scss";
+import "@teamdream/assets/styles/index.scss";
 
 const logProductionError = (err: Error) => {
-  if (Fider.isProduction()) {
+  if (Teamdream.isProduction()) {
     console.error(err); // tslint:disable-line
     actions.logError(`react.ErrorBoundary: ${err.message}`, err);
   }
@@ -36,33 +36,33 @@ window.addEventListener("error", (evt: ErrorEvent) => {
 });
 
 (() => {
-  let fider;
+  let teamdream;
 
   if (!navigator.isBrowserSupported()) {
     navigator.goTo("/browser-not-supported");
     return;
   }
 
-  fider = Fider.initialize();
+  teamdream = Teamdream.initialize();
 
-  __webpack_nonce__ = fider.session.contextID;
-  __webpack_public_path__ = `${fider.settings.globalAssetsURL}/assets/`;
+  __webpack_nonce__ = teamdream.session.contextID;
+  __webpack_public_path__ = `${teamdream.settings.globalAssetsURL}/assets/`;
 
   const config = resolveRootComponent(location.pathname);
   document.body.className = classSet({
-    "is-authenticated": fider.session.isAuthenticated,
-    "is-staff": fider.session.isAuthenticated && fider.session.user.isCollaborator,
+    "is-authenticated": teamdream.session.isAuthenticated,
+    "is-staff": teamdream.session.isAuthenticated && teamdream.session.user.isCollaborator,
   });
   ReactDOM.render(
     <React.StrictMode>
       <ErrorBoundary onError={logProductionError}>
-        <FiderContext.Provider value={fider}>
+        <TeamdreamContext.Provider value={teamdream}>
           <IconContext.Provider value={{ className: "icon" }}>
             {config.showHeader && <Header />}
-            <Suspense fallback={<Loading />}>{React.createElement(config.component, fider.session.props)}</Suspense>
+            <Suspense fallback={<Loading />}>{React.createElement(config.component, teamdream.session.props)}</Suspense>
             {config.showHeader && <Footer />}
           </IconContext.Provider>
-        </FiderContext.Provider>
+        </TeamdreamContext.Provider>
       </ErrorBoundary>
     </React.StrictMode>,
     document.getElementById("root")

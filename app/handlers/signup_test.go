@@ -170,7 +170,7 @@ func TestCreateTenantHandler_WithSocialAccount(t *testing.T) {
 
 	cookie := web.ParseCookie(response.Header().Get("Set-Cookie"))
 	Expect(cookie.Name).Equals(web.CookieSignUpAuthName)
-	ExpectFiderToken(cookie.Value, newUser)
+	ExpectTeamdreamToken(cookie.Value, newUser)
 	Expect(cookie.Domain).Equals("test.teamdream.co.uk")
 	Expect(cookie.HttpOnly).IsTrue()
 	Expect(cookie.Path).Equals("/")
@@ -224,7 +224,7 @@ func TestCreateTenantHandler_SingleHost_WithSocialAccount(t *testing.T) {
 	Expect(newUser.Email).Equals("jon.snow@got.com")
 	Expect(newUser.Role).Equals(enum.RoleAdministrator)
 
-	ExpectFiderAuthCookie(response, &models.User{
+	ExpectTeamdreamAuthCookie(response, &models.User{
 		ID:    1,
 		Name:  "Jon Snow",
 		Email: "jon.snow@got.com",

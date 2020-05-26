@@ -1,8 +1,8 @@
 import React from "react";
 import { ImageUploader } from "./ImageUploader";
-import { ImageUpload } from "@fider/models";
-import { ValidationContext, hasError, DisplayError } from "@fider/components";
-import { classSet } from "@fider/services";
+import { ImageUpload } from "@teamdream/models";
+import { ValidationContext, hasError, DisplayError } from "@teamdream/components";
+import { classSet } from "@teamdream/services";
 
 import "./MultiImageUploader.scss";
 

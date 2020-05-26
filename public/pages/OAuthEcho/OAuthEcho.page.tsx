@@ -1,8 +1,8 @@
 import "./OAuthEcho.page.scss";
 
 import React from "react";
-import { navigator } from "@fider/services";
-import { Segments, Segment } from "@fider/components";
+import { navigator } from "@teamdream/services";
+import { Segments, Segment } from "@teamdream/components";
 import { FaCheckCircle, FaTimesCircle, FaExclamationTriangle } from "react-icons/fa";
 
 interface OAuthEchoPageProps {

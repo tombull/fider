@@ -1,38 +1,38 @@
 import "./Header.scss";
 
 import React, { useState, useEffect } from "react";
-import { SignInModal, EnvironmentInfo, Avatar, TenantLogo, TenantStatusInfo } from "@fider/components";
-import { actions } from "@fider/services";
+import { SignInModal, EnvironmentInfo, Avatar, TenantLogo, TenantStatusInfo } from "@teamdream/components";
+import { actions } from "@teamdream/services";
 import { FaUser, FaCog, FaCaretDown } from "react-icons/fa";
-import { useFider } from "@fider/hooks";
+import { useTeamdream } from "@teamdream/hooks";
 
 export const Header = () => {
-  const fider = useFider();
+  const teamdream = useTeamdream();
   const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
   const [unreadNotifications, setUnreadNotifications] = useState(0);
 
   useEffect(() => {
-    if (fider.session.isAuthenticated) {
+    if (teamdream.session.isAuthenticated) {
       actions.getTotalUnreadNotifications().then((result) => {
         if (result.ok && result.data > 0) {
           setUnreadNotifications(result.data);
         }
       });
     }
-  }, [fider.session.isAuthenticated]);
+  }, [teamdream.session.isAuthenticated]);
 
   const showModal = () => {
-    if (!fider.session.isAuthenticated) {
+    if (!teamdream.session.isAuthenticated) {
       setIsSignInModalOpen(true);
     }
   };
 
   const hideModal = () => setIsSignInModalOpen(false);
 
-  const items = fider.session.isAuthenticated && (
+  const items = teamdream.session.isAuthenticated && (
     <div className="c-menu-user">
       <div className="c-menu-user-heading">
-        <FaUser /> <span>{fider.session.user.name}</span>
+        <FaUser /> <span>{teamdream.session.user.name}</span>
       </div>
       <a href="/settings" className="c-menu-user-item">
         Settings
@@ -42,7 +42,7 @@ export const Header = () => {
         {unreadNotifications > 0 && <div className="c-unread-count">{unreadNotifications}</div>}
       </a>
       <div className="c-menu-user-divider" />
-      {fider.session.user.isCollaborator && [
+      {teamdream.session.user.isCollaborator && [
         <div key={1} className="c-menu-user-heading">
           <FaCog /> <span>Administration</span>
         </div>,
@@ -57,7 +57,7 @@ export const Header = () => {
     </div>
   );
 
-  const showRightMenu = fider.session.isAuthenticated || !fider.session.tenant.isPrivate;
+  const showRightMenu = teamdream.session.isAuthenticated || !teamdream.session.tenant.isPrivate;
   return (
     <div id="c-header">
       <EnvironmentInfo />
@@ -66,14 +66,14 @@ export const Header = () => {
         <div className="container">
           <a href="/" className="c-menu-item-title">
             <TenantLogo size={100} />
-            <span>{fider.session.tenant.name}</span>
+            <span>{teamdream.session.tenant.name}</span>
           </a>
           {showRightMenu && (
             <div onClick={showModal} className="c-menu-item-signin">
-              {fider.session.isAuthenticated && <Avatar user={fider.session.user} />}
+              {teamdream.session.isAuthenticated && <Avatar user={teamdream.session.user} />}
               {unreadNotifications > 0 && <div className="c-unread-dot" />}
-              {!fider.session.isAuthenticated && <span>Sign in</span>}
-              {fider.session.isAuthenticated && <FaCaretDown />}
+              {!teamdream.session.isAuthenticated && <span>Sign in</span>}
+              {teamdream.session.isAuthenticated && <FaCaretDown />}
               {items}
             </div>
           )}

@@ -8,7 +8,7 @@ import (
 	"github.com/tombull/teamdream/app/pkg/env"
 )
 
-//RunPing checks if Fider Server is running and is healthy
+//RunPing checks if Teamdream Server is running and is healthy
 //Returns an exitcode, 0 for OK and 1 for ERROR
 func RunPing() int {
 	protocol := "http://"

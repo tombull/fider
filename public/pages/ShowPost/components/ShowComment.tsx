@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Comment, Post, ImageUpload } from "@fider/models";
+import { Comment, Post, ImageUpload } from "@teamdream/models";
 import {
   Avatar,
   UserName,
@@ -13,10 +13,10 @@ import {
   Modal,
   ImageViewer,
   MultiImageUploader,
-} from "@fider/components";
-import { formatDate, Failure, actions } from "@fider/services";
+} from "@teamdream/components";
+import { formatDate, Failure, actions } from "@teamdream/services";
 import { FaEllipsisH } from "react-icons/fa";
-import { useFider } from "@fider/hooks";
+import { useTeamdream } from "@teamdream/hooks";
 
 interface ShowCommentProps {
   post: Post;
@@ -24,7 +24,7 @@ interface ShowCommentProps {
 }
 
 export const ShowComment = (props: ShowCommentProps) => {
-  const fider = useFider();
+  const teamdream = useTeamdream();
   const [isEditing, setIsEditing] = useState(false);
   const [newContent, setNewContent] = useState("");
   const [isDeleteConfirmationModalOpen, setIsDeleteConfirmationModalOpen] = useState(false);
@@ -32,8 +32,8 @@ export const ShowComment = (props: ShowCommentProps) => {
   const [error, setError] = useState<Failure>();
 
   const canEditComment = (): boolean => {
-    if (fider.session.isAuthenticated) {
-      return fider.session.user.isCollaborator || props.comment.user.id === fider.session.user.id;
+    if (teamdream.session.isAuthenticated) {
+      return teamdream.session.user.isCollaborator || props.comment.user.id === teamdream.session.user.id;
     }
     return false;
   };

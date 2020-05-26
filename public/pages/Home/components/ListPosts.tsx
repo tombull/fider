@@ -1,8 +1,8 @@
 import "./ListPosts.scss";
 
 import React from "react";
-import { Post, Tag, CurrentUser } from "@fider/models";
-import { ShowTag, ShowPostResponse, VoteCounter, MultiLineText, ListItem, List } from "@fider/components";
+import { Post, Tag, CurrentUser } from "@teamdream/models";
+import { ShowTag, ShowPostResponse, VoteCounter, MultiLineText, ListItem, List } from "@teamdream/components";
 import { FaRegComments } from "react-icons/fa";
 
 interface ListPostsProps {

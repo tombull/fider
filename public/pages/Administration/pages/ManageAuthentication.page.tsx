@@ -1,9 +1,9 @@
 import React from "react";
 
-import { Segment, List, ListItem, Button, Heading, OAuthProviderLogo } from "@fider/components";
-import { OAuthConfig, OAuthProviderOption } from "@fider/models";
+import { Segment, List, ListItem, Button, Heading, OAuthProviderLogo } from "@teamdream/components";
+import { OAuthConfig, OAuthProviderOption } from "@teamdream/models";
 import { OAuthForm } from "../components/OAuthForm";
-import { actions, notify, Fider } from "@fider/services";
+import { actions, notify, Teamdream } from "@teamdream/services";
 import { FaEdit, FaPlay, FaSignInAlt } from "react-icons/fa";
 import { AdminBasePage } from "../components/AdminBasePage";
 
@@ -49,7 +49,7 @@ export default class ManageAuthenticationPage extends AdminBasePage<
   };
 
   private startTest = async (provider: string) => {
-    const redirect = `${Fider.settings.baseURL}/oauth/${provider}/echo`;
+    const redirect = `${Teamdream.settings.baseURL}/oauth/${provider}/echo`;
     window.open(`/oauth/${provider}?redirect=${redirect}`, "oauth-test", "width=1100,height=600,status=no,menubar=no");
   };
 
@@ -89,7 +89,7 @@ export default class ManageAuthenticationPage extends AdminBasePage<
               <ListItem key={o.provider}>
                 {o.isCustomProvider && (
                   <>
-                    {Fider.session.user.isAdministrator && (
+                    {Teamdream.session.user.isAdministrator && (
                       <Button onClick={this.edit.bind(this, o.provider)} size="mini" className="right">
                         <FaEdit />
                         Edit
@@ -116,7 +116,7 @@ export default class ManageAuthenticationPage extends AdminBasePage<
             ))}
           </List>
         </Segment>
-        {Fider.session.user.isAdministrator && (
+        {Teamdream.session.user.isAdministrator && (
           <Button color="positive" onClick={this.addNew}>
             Add new
           </Button>

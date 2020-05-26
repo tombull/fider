@@ -1,7 +1,7 @@
 import { createContext } from "react";
-import { CurrentUser, SystemSettings, Tenant } from "@fider/models";
+import { CurrentUser, SystemSettings, Tenant } from "@teamdream/models";
 
-export class FiderSession {
+export class TeamdreamSession {
   private pContextID: string;
   private pTenant: Tenant;
   private pUser: CurrentUser | undefined;
@@ -35,19 +35,19 @@ export class FiderSession {
   }
 }
 
-export class FiderImpl {
+export class TeamdreamImpl {
   private pSettings!: SystemSettings;
-  private pSession!: FiderSession;
+  private pSession!: TeamdreamSession;
 
-  public initialize = (): FiderImpl => {
+  public initialize = (): TeamdreamImpl => {
     const el = document.getElementById("server-data");
     const data = el ? JSON.parse(el.textContent || el.innerText) : {};
     this.pSettings = data.settings;
-    this.pSession = new FiderSession(data);
+    this.pSession = new TeamdreamSession(data);
     return this;
   };
 
-  public get session(): FiderSession {
+  public get session(): TeamdreamSession {
     return this.pSession;
   }
 
@@ -68,6 +68,6 @@ export class FiderImpl {
   }
 }
 
-export let Fider = new FiderImpl();
+export let Teamdream = new TeamdreamImpl();
 
-export const FiderContext = createContext<FiderImpl>(Fider);
+export const TeamdreamContext = createContext<TeamdreamImpl>(Teamdream);

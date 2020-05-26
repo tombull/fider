@@ -1,5 +1,5 @@
 import React from "react";
-import { markdown } from "@fider/services";
+import { markdown } from "@teamdream/services";
 
 interface MultiLineText {
   className?: string;

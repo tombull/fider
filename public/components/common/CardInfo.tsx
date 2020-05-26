@@ -1,14 +1,14 @@
 import React from "react";
 import "./CardInfo.scss";
-import { useFider } from "@fider/hooks";
+import { useTeamdream } from "@teamdream/hooks";
 
-const visa = require("@fider/assets/images/card-visa.svg");
-const diners = require("@fider/assets/images/card-diners.svg");
-const americanExpress = require("@fider/assets/images/card-americanexpress.svg");
-const discover = require("@fider/assets/images/card-discover.svg");
-const jcb = require("@fider/assets/images/card-jcb.svg");
-const unknown = require("@fider/assets/images/card-unknown.svg");
-const masterCard = require("@fider/assets/images/card-mastercard.svg");
+const visa = require("@teamdream/assets/images/card-visa.svg");
+const diners = require("@teamdream/assets/images/card-diners.svg");
+const americanExpress = require("@teamdream/assets/images/card-americanexpress.svg");
+const discover = require("@teamdream/assets/images/card-discover.svg");
+const jcb = require("@teamdream/assets/images/card-jcb.svg");
+const unknown = require("@teamdream/assets/images/card-unknown.svg");
+const masterCard = require("@teamdream/assets/images/card-mastercard.svg");
 
 interface CardBrandProps {
   brand: string;
@@ -18,11 +18,11 @@ interface CardBrandProps {
 }
 
 export const CardInfo = (props: CardBrandProps) => {
-  const fider = useFider();
+  const teamdream = useTeamdream();
 
   return (
     <p className="c-card-info">
-      <img src={`${fider.settings.globalAssetsURL}${brandImage(props.brand)}`} alt={props.brand} />
+      <img src={`${teamdream.settings.globalAssetsURL}${brandImage(props.brand)}`} alt={props.brand} />
       <span>
         **** **** **** {props.last4}{" "}
         <span className="c-card-info-exp">

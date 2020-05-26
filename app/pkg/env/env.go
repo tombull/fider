@@ -165,17 +165,17 @@ func MultiTenantDomain() string {
 	return ""
 }
 
-// IsProduction returns true on Fider production environment
+// IsProduction returns true on Teamdream production environment
 func IsProduction() bool {
 	return Config.Environment == "production" || (!IsTest() && !IsDevelopment())
 }
 
-// IsTest returns true on Fider test environment
+// IsTest returns true on Teamdream test environment
 func IsTest() bool {
 	return Config.Environment == "test"
 }
 
-// IsDevelopment returns true on Fider production environment
+// IsDevelopment returns true on Teamdream production environment
 func IsDevelopment() bool {
 	return Config.Environment == "development"
 }
@@ -199,7 +199,7 @@ func Etc(p ...string) string {
 	return Path(paths...)
 }
 
-// Subdomain returns the Fider subdomain (if available) from given host
+// Subdomain returns the Teamdream subdomain (if available) from given host
 func Subdomain(host string) string {
 	if IsSingleHostMode() {
 		return ""

@@ -79,7 +79,7 @@
     ],
     "moduleNameMapper": {
       "^.*\\.(png|scss|svg)$": "<rootDir>/public/jest.assets.ts",
-      "@fider/(.*)": "<rootDir>/public/$1"
+      "@teamdream/(.*)": "<rootDir>/public/$1"
     }
   },
   "scripts": {

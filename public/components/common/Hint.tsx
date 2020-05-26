@@ -3,7 +3,7 @@ import "./Hint.scss";
 import React, { useState } from "react";
 import { FaTimes } from "react-icons/fa";
 
-import { cache } from "@fider/services";
+import { cache } from "@teamdream/services";
 
 interface HintProps {
   permanentCloseKey?: string;
