@@ -5,7 +5,7 @@ go 1.13
 require (
 	github.com/aws/aws-sdk-go v1.31.5
 	github.com/bombsimon/wsl v1.2.8 // indirect
-	github.com/cosmtrek/air v1.12.1
+	github.com/cosmtrek/air v1.0.2
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/goenning/imagic v0.0.1
 	github.com/goenning/letteravatar v0.0.0-20180605200324-553181ed4055
