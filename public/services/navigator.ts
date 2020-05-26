@@ -27,10 +27,10 @@ const navigator = {
     }
   },
   replaceState: (path: string): void => {
-    if (history.replaceState) {
-      const newURL = Fider.settings.baseURL + path;
-      window.history.replaceState({ path: newURL }, "", newURL);
-    }
+    // if (history.replaceState) {
+    const newURL = Fider.settings.baseURL + path;
+    window.history.replaceState({ path: newURL }, "", newURL);
+    // }
   },
   getCountryCode: (): Promise<string> => {
     const countryCode = cache.session.get("geolocation_countrycode");
