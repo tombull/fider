@@ -12,5 +12,5 @@ func TestSHA512Hash(t *testing.T) {
 
 	hash := crypto.SHA512("Teamdream")
 
-	Expect(hash).Equals("262d21f30715f2b226264844c4ab2a934a4c0241321f77bebbca191e172df93da71c939c56fcb4bbdd8895fa8c496882d38e3ce66d9d4e3dee5bacde01e73988")
+	Expect(hash).Equals("2692e75882eeb5dc18756979a6f6266734bd0a61744c9083dc7c5693af42f54b68c2f58dcdf2ac93e7ee5cb1251581d6735c8793817a17f80ef91e92cade3a89")
 }

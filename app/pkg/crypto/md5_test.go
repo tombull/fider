@@ -12,5 +12,5 @@ func TestMD5Hash(t *testing.T) {
 
 	hash := crypto.MD5("Teamdream")
 
-	Expect(hash).Equals("3734538c8b650e4f354a55a436566bb6")
+	Expect(hash).Equals("6a49434f5d0281f77f236f774e8659df")
 }
