@@ -3,15 +3,15 @@ package apiv1
 import (
 	"strings"
 
-	"github.com/getfider/fider/app"
-	"github.com/getfider/fider/app/actions"
-	"github.com/getfider/fider/app/models/cmd"
-	"github.com/getfider/fider/app/models/dto"
-	"github.com/getfider/fider/app/pkg/bus"
-	"github.com/getfider/fider/app/pkg/log"
-	"github.com/getfider/fider/app/pkg/markdown"
-	"github.com/getfider/fider/app/pkg/web"
-	"github.com/getfider/fider/app/tasks"
+	"github.com/tombull/teamdream/app"
+	"github.com/tombull/teamdream/app/actions"
+	"github.com/tombull/teamdream/app/models/cmd"
+	"github.com/tombull/teamdream/app/models/dto"
+	"github.com/tombull/teamdream/app/pkg/bus"
+	"github.com/tombull/teamdream/app/pkg/log"
+	"github.com/tombull/teamdream/app/pkg/markdown"
+	"github.com/tombull/teamdream/app/pkg/web"
+	"github.com/tombull/teamdream/app/tasks"
 )
 
 // SendSampleInvite to current user's email

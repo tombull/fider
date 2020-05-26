@@ -4,9 +4,9 @@ import (
 	"context"
 	"testing"
 
-	"github.com/getfider/fider/app/models/dto"
-	. "github.com/getfider/fider/app/pkg/assert"
-	"github.com/getfider/fider/app/pkg/log"
+	"github.com/tombull/teamdream/app/models/dto"
+	. "github.com/tombull/teamdream/app/pkg/assert"
+	"github.com/tombull/teamdream/app/pkg/log"
 )
 
 func TestLog_WithProperty(t *testing.T) {

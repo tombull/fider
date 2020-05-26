@@ -3,7 +3,7 @@ package cmd
 import (
 	"time"
 
-	"github.com/getfider/fider/app/models"
+	"github.com/tombull/teamdream/app/models"
 )
 
 type CreateTenant struct {

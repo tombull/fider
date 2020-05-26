@@ -4,8 +4,8 @@ import (
 	"testing"
 	"time"
 
-	. "github.com/getfider/fider/app/pkg/assert"
-	"github.com/getfider/fider/app/pkg/jwt"
+	. "github.com/tombull/teamdream/app/pkg/assert"
+	"github.com/tombull/teamdream/app/pkg/jwt"
 )
 
 func TestJWT_Encode(t *testing.T) {

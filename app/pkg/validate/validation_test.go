@@ -4,8 +4,8 @@ import (
 	"errors"
 	"testing"
 
-	. "github.com/getfider/fider/app/pkg/assert"
-	"github.com/getfider/fider/app/pkg/validate"
+	. "github.com/tombull/teamdream/app/pkg/assert"
+	"github.com/tombull/teamdream/app/pkg/validate"
 )
 
 func TestResult_Error(t *testing.T) {

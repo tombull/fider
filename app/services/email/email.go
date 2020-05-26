@@ -4,7 +4,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/getfider/fider/app/pkg/env"
+	"github.com/tombull/teamdream/app/pkg/env"
 )
 
 // NoReply is the default 'from' address

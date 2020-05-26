@@ -3,15 +3,15 @@ package actions
 import (
 	"context"
 
-	"github.com/getfider/fider/app/models/enum"
-	"github.com/getfider/fider/app/models/query"
-	"github.com/getfider/fider/app/pkg/bus"
 	"github.com/gosimple/slug"
+	"github.com/tombull/teamdream/app/models/enum"
+	"github.com/tombull/teamdream/app/models/query"
+	"github.com/tombull/teamdream/app/pkg/bus"
 
-	"github.com/getfider/fider/app"
-	"github.com/getfider/fider/app/models"
-	"github.com/getfider/fider/app/pkg/errors"
-	"github.com/getfider/fider/app/pkg/validate"
+	"github.com/tombull/teamdream/app"
+	"github.com/tombull/teamdream/app/models"
+	"github.com/tombull/teamdream/app/pkg/errors"
+	"github.com/tombull/teamdream/app/pkg/validate"
 )
 
 // CreateNewPost is used to create a new post

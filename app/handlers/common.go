@@ -7,20 +7,20 @@ import (
 	"strings"
 	"time"
 
-	"github.com/getfider/fider/app/models/cmd"
-	"github.com/getfider/fider/app/models/enum"
+	"github.com/tombull/teamdream/app/models/cmd"
+	"github.com/tombull/teamdream/app/models/enum"
 
-	"github.com/getfider/fider/app/models/query"
+	"github.com/tombull/teamdream/app/models/query"
 
-	"github.com/getfider/fider/app"
-	"github.com/getfider/fider/app/models"
-	"github.com/getfider/fider/app/models/dto"
-	"github.com/getfider/fider/app/pkg/bus"
-	"github.com/getfider/fider/app/pkg/dbx"
-	"github.com/getfider/fider/app/pkg/env"
-	"github.com/getfider/fider/app/pkg/errors"
-	"github.com/getfider/fider/app/pkg/log"
-	"github.com/getfider/fider/app/pkg/web"
+	"github.com/tombull/teamdream/app"
+	"github.com/tombull/teamdream/app/models"
+	"github.com/tombull/teamdream/app/models/dto"
+	"github.com/tombull/teamdream/app/pkg/bus"
+	"github.com/tombull/teamdream/app/pkg/dbx"
+	"github.com/tombull/teamdream/app/pkg/env"
+	"github.com/tombull/teamdream/app/pkg/errors"
+	"github.com/tombull/teamdream/app/pkg/log"
+	"github.com/tombull/teamdream/app/pkg/web"
 )
 
 //Health always returns OK

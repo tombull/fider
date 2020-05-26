@@ -3,14 +3,14 @@ package middlewares
 import (
 	"time"
 
-	"github.com/getfider/fider/app/pkg/dbx"
+	"github.com/tombull/teamdream/app/pkg/dbx"
 
-	"github.com/getfider/fider/app"
-	"github.com/getfider/fider/app/models/dto"
-	"github.com/getfider/fider/app/pkg/errors"
-	"github.com/getfider/fider/app/pkg/log"
-	"github.com/getfider/fider/app/pkg/web"
-	"github.com/getfider/fider/app/pkg/worker"
+	"github.com/tombull/teamdream/app"
+	"github.com/tombull/teamdream/app/models/dto"
+	"github.com/tombull/teamdream/app/pkg/errors"
+	"github.com/tombull/teamdream/app/pkg/log"
+	"github.com/tombull/teamdream/app/pkg/web"
+	"github.com/tombull/teamdream/app/pkg/worker"
 )
 
 //WorkerSetup current context with some services

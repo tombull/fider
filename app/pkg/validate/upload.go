@@ -3,8 +3,8 @@ package validate
 import (
 	"fmt"
 
-	"github.com/getfider/fider/app/models"
 	"github.com/goenning/imagic"
+	"github.com/tombull/teamdream/app/models"
 )
 
 // MaxDimensionSize is the max width/height of an image. If image is bigger than this, it'll be resized.

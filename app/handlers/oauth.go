@@ -6,19 +6,19 @@ import (
 	"strings"
 	"time"
 
-	"github.com/getfider/fider/app/models/cmd"
-	"github.com/getfider/fider/app/models/enum"
+	"github.com/tombull/teamdream/app/models/cmd"
+	"github.com/tombull/teamdream/app/models/enum"
 
-	"github.com/getfider/fider/app/models/query"
-	"github.com/getfider/fider/app/pkg/bus"
+	"github.com/tombull/teamdream/app/models/query"
+	"github.com/tombull/teamdream/app/pkg/bus"
 
-	"github.com/getfider/fider/app"
-	"github.com/getfider/fider/app/models"
-	"github.com/getfider/fider/app/pkg/errors"
-	"github.com/getfider/fider/app/pkg/jwt"
-	"github.com/getfider/fider/app/pkg/log"
-	"github.com/getfider/fider/app/pkg/web"
-	webutil "github.com/getfider/fider/app/pkg/web/util"
+	"github.com/tombull/teamdream/app"
+	"github.com/tombull/teamdream/app/models"
+	"github.com/tombull/teamdream/app/pkg/errors"
+	"github.com/tombull/teamdream/app/pkg/jwt"
+	"github.com/tombull/teamdream/app/pkg/log"
+	"github.com/tombull/teamdream/app/pkg/web"
+	webutil "github.com/tombull/teamdream/app/pkg/web/util"
 )
 
 // OAuthEcho exchanges OAuth Code for a user profile and return directly to the UI, without storing it

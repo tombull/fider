@@ -6,17 +6,17 @@ import (
 	"os"
 	"testing"
 
-	"github.com/getfider/fider/app/models/query"
-	"github.com/getfider/fider/app/services/sqlstore/postgres"
+	"github.com/tombull/teamdream/app/models/query"
+	"github.com/tombull/teamdream/app/services/sqlstore/postgres"
 
-	"github.com/getfider/fider/app/pkg/bus"
+	"github.com/tombull/teamdream/app/pkg/bus"
 
-	"github.com/getfider/fider/app"
+	"github.com/tombull/teamdream/app"
 
-	"github.com/getfider/fider/app/models"
-	. "github.com/getfider/fider/app/pkg/assert"
-	"github.com/getfider/fider/app/pkg/dbx"
-	"github.com/getfider/fider/app/pkg/web"
+	"github.com/tombull/teamdream/app/models"
+	. "github.com/tombull/teamdream/app/pkg/assert"
+	"github.com/tombull/teamdream/app/pkg/dbx"
+	"github.com/tombull/teamdream/app/pkg/web"
 )
 
 var trx *dbx.Trx

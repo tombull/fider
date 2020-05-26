@@ -3,11 +3,11 @@ package billing
 import (
 	"context"
 
-	"github.com/getfider/fider/app"
+	"github.com/tombull/teamdream/app"
 
-	"github.com/getfider/fider/app/models/dto"
-	"github.com/getfider/fider/app/models/query"
 	"github.com/goenning/vat"
+	"github.com/tombull/teamdream/app/models/dto"
+	"github.com/tombull/teamdream/app/models/query"
 )
 
 func getAllCountries(ctx context.Context, q *query.GetAllCountries) error {

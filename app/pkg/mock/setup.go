@@ -1,10 +1,10 @@
 package mock
 
 import (
-	"github.com/getfider/fider/app"
-	"github.com/getfider/fider/app/models"
-	"github.com/getfider/fider/app/models/enum"
-	"github.com/getfider/fider/app/pkg/env"
+	"github.com/tombull/teamdream/app"
+	"github.com/tombull/teamdream/app/models"
+	"github.com/tombull/teamdream/app/models/enum"
+	"github.com/tombull/teamdream/app/pkg/env"
 )
 
 // DemoTenant is a mocked tenant

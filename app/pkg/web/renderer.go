@@ -9,18 +9,18 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/getfider/fider/app/models/dto"
+	"github.com/tombull/teamdream/app/models/dto"
 
-	"github.com/getfider/fider/app/models/query"
-	"github.com/getfider/fider/app/pkg/bus"
+	"github.com/tombull/teamdream/app/models/query"
+	"github.com/tombull/teamdream/app/pkg/bus"
 
 	"io/ioutil"
 
-	"github.com/getfider/fider/app/models"
-	"github.com/getfider/fider/app/pkg/crypto"
-	"github.com/getfider/fider/app/pkg/env"
-	"github.com/getfider/fider/app/pkg/errors"
-	"github.com/getfider/fider/app/pkg/markdown"
+	"github.com/tombull/teamdream/app/models"
+	"github.com/tombull/teamdream/app/pkg/crypto"
+	"github.com/tombull/teamdream/app/pkg/env"
+	"github.com/tombull/teamdream/app/pkg/errors"
+	"github.com/tombull/teamdream/app/pkg/markdown"
 )
 
 var templateFunctions = template.FuncMap{

@@ -9,9 +9,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/getfider/fider/app/pkg/bus"
-	"github.com/getfider/fider/app/pkg/env"
-	"github.com/getfider/fider/app/pkg/errors"
+	"github.com/tombull/teamdream/app/pkg/bus"
+	"github.com/tombull/teamdream/app/pkg/env"
+	"github.com/tombull/teamdream/app/pkg/errors"
 )
 
 func mustBeFunction(v interface{}) {

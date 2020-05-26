@@ -38,13 +38,13 @@ export class APIKeyForm extends React.Component<{}, APIKeyFormState> {
           The API Key is only shown whenever generated. If your Key is lost or has been compromised, generated a new one
           and take note of it.
         </p>
-        <p className="info">
+        {/* <p className="info">
           To learn how to use the API, read the{" "}
-          <a href="https://getfider.com/docs/api" target="_blank">
+          <a href="https://teamdream.co.uk/docs/api" target="_blank">
             official documentation
           </a>
           .
-        </p>
+        </p> */}
         <p>
           <Button size="tiny" onClick={this.regenerate}>
             Regenerate API Key

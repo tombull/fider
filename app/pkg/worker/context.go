@@ -3,12 +3,12 @@ package worker
 import (
 	"context"
 
-	"github.com/getfider/fider/app"
-	"github.com/getfider/fider/app/models"
-	"github.com/getfider/fider/app/models/dto"
-	"github.com/getfider/fider/app/pkg/errors"
-	"github.com/getfider/fider/app/pkg/log"
-	"github.com/getfider/fider/app/pkg/rand"
+	"github.com/tombull/teamdream/app"
+	"github.com/tombull/teamdream/app/models"
+	"github.com/tombull/teamdream/app/models/dto"
+	"github.com/tombull/teamdream/app/pkg/errors"
+	"github.com/tombull/teamdream/app/pkg/log"
+	"github.com/tombull/teamdream/app/pkg/rand"
 )
 
 //Context holds references to services available for jobs

@@ -5,8 +5,8 @@ import (
 	"sync"
 	"testing"
 
-	. "github.com/getfider/fider/app/pkg/assert"
-	"github.com/getfider/fider/app/pkg/dbx"
+	. "github.com/tombull/teamdream/app/pkg/assert"
+	"github.com/tombull/teamdream/app/pkg/dbx"
 )
 
 func createScanner(values ...interface{}) func(dest ...interface{}) error {

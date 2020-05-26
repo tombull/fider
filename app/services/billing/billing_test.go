@@ -5,17 +5,17 @@ import (
 	"testing"
 	"time"
 
-	"github.com/getfider/fider/app"
+	"github.com/tombull/teamdream/app"
 
-	"github.com/getfider/fider/app/pkg/bus"
-	"github.com/getfider/fider/app/pkg/env"
+	"github.com/tombull/teamdream/app/pkg/bus"
+	"github.com/tombull/teamdream/app/pkg/env"
 
-	"github.com/getfider/fider/app/models"
-	"github.com/getfider/fider/app/models/cmd"
-	"github.com/getfider/fider/app/models/dto"
-	"github.com/getfider/fider/app/models/query"
-	. "github.com/getfider/fider/app/pkg/assert"
-	"github.com/getfider/fider/app/services/billing"
+	"github.com/tombull/teamdream/app/models"
+	"github.com/tombull/teamdream/app/models/cmd"
+	"github.com/tombull/teamdream/app/models/dto"
+	"github.com/tombull/teamdream/app/models/query"
+	. "github.com/tombull/teamdream/app/pkg/assert"
+	"github.com/tombull/teamdream/app/services/billing"
 )
 
 func TestCreateCustomer_WithSubscription(t *testing.T) {

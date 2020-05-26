@@ -1,6 +1,6 @@
 package query
 
-import "github.com/getfider/fider/app/models"
+import "github.com/tombull/teamdream/app/models"
 
 type ListPostVotes struct {
 	PostID int

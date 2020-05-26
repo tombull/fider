@@ -5,14 +5,14 @@ import (
 	"testing"
 	"time"
 
-	"github.com/getfider/fider/app/models/query"
+	"github.com/tombull/teamdream/app/models/query"
 
-	"github.com/getfider/fider/app/models/cmd"
+	"github.com/tombull/teamdream/app/models/cmd"
 
-	"github.com/getfider/fider/app"
-	. "github.com/getfider/fider/app/pkg/assert"
-	"github.com/getfider/fider/app/pkg/bus"
-	"github.com/getfider/fider/app/pkg/errors"
+	"github.com/tombull/teamdream/app"
+	. "github.com/tombull/teamdream/app/pkg/assert"
+	"github.com/tombull/teamdream/app/pkg/bus"
+	"github.com/tombull/teamdream/app/pkg/errors"
 )
 
 func TestNotificationStorage_TotalCount(t *testing.T) {

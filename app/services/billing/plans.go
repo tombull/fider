@@ -7,11 +7,11 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/getfider/fider/app/models/dto"
-	"github.com/getfider/fider/app/models/query"
-	"github.com/getfider/fider/app/pkg/errors"
 	"github.com/goenning/vat"
 	"github.com/stripe/stripe-go"
+	"github.com/tombull/teamdream/app/models/dto"
+	"github.com/tombull/teamdream/app/models/query"
+	"github.com/tombull/teamdream/app/pkg/errors"
 )
 
 var plansMutex sync.RWMutex

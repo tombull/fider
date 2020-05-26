@@ -3,7 +3,7 @@ package validate
 import (
 	"context"
 
-	"github.com/getfider/fider/app/models"
+	"github.com/tombull/teamdream/app/models"
 )
 
 // Validatable defines which models can be validated against context

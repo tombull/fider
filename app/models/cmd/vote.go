@@ -1,6 +1,6 @@
 package cmd
 
-import "github.com/getfider/fider/app/models"
+import "github.com/tombull/teamdream/app/models"
 
 type AddVote struct {
 	Post *models.Post

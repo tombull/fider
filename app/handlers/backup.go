@@ -1,8 +1,8 @@
 package handlers
 
 import (
-	"github.com/getfider/fider/app/pkg/backup"
-	"github.com/getfider/fider/app/pkg/web"
+	"github.com/tombull/teamdream/app/pkg/backup"
+	"github.com/tombull/teamdream/app/pkg/web"
 )
 
 // ExportBackupZip returns a Zip file with all content

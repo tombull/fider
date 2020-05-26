@@ -6,14 +6,14 @@ import (
 	"net/http"
 	"testing"
 
-	"github.com/getfider/fider/app"
+	"github.com/tombull/teamdream/app"
 
-	"github.com/getfider/fider/app/middlewares"
-	. "github.com/getfider/fider/app/pkg/assert"
-	"github.com/getfider/fider/app/pkg/dbx"
-	"github.com/getfider/fider/app/pkg/mock"
-	"github.com/getfider/fider/app/pkg/web"
-	"github.com/getfider/fider/app/pkg/worker"
+	"github.com/tombull/teamdream/app/middlewares"
+	. "github.com/tombull/teamdream/app/pkg/assert"
+	"github.com/tombull/teamdream/app/pkg/dbx"
+	"github.com/tombull/teamdream/app/pkg/mock"
+	"github.com/tombull/teamdream/app/pkg/web"
+	"github.com/tombull/teamdream/app/pkg/worker"
 )
 
 func TestWebSetup(t *testing.T) {

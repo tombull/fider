@@ -11,23 +11,23 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/getfider/fider/app/pkg/dbx"
+	"github.com/tombull/teamdream/app/pkg/dbx"
 
 	"strings"
 
-	"github.com/getfider/fider/app"
-	"github.com/getfider/fider/app/actions"
-	"github.com/getfider/fider/app/models"
-	"github.com/getfider/fider/app/models/cmd"
-	"github.com/getfider/fider/app/models/dto"
-	"github.com/getfider/fider/app/pkg/bus"
-	"github.com/getfider/fider/app/pkg/env"
-	"github.com/getfider/fider/app/pkg/errors"
-	"github.com/getfider/fider/app/pkg/log"
-	"github.com/getfider/fider/app/pkg/rand"
-	"github.com/getfider/fider/app/pkg/validate"
-	"github.com/getfider/fider/app/pkg/worker"
-	"github.com/getfider/fider/app/services/blob"
+	"github.com/tombull/teamdream/app"
+	"github.com/tombull/teamdream/app/actions"
+	"github.com/tombull/teamdream/app/models"
+	"github.com/tombull/teamdream/app/models/cmd"
+	"github.com/tombull/teamdream/app/models/dto"
+	"github.com/tombull/teamdream/app/pkg/bus"
+	"github.com/tombull/teamdream/app/pkg/env"
+	"github.com/tombull/teamdream/app/pkg/errors"
+	"github.com/tombull/teamdream/app/pkg/log"
+	"github.com/tombull/teamdream/app/pkg/rand"
+	"github.com/tombull/teamdream/app/pkg/validate"
+	"github.com/tombull/teamdream/app/pkg/worker"
+	"github.com/tombull/teamdream/app/services/blob"
 )
 
 // Map defines a generic map of type `map[string]interface{}`
@@ -581,7 +581,7 @@ func LogoURL(ctx context.Context) string {
 	if hasTenant && tenant.LogoBlobKey != "" {
 		return TenantAssetsURL(ctx, "/images/%s?size=200", tenant.LogoBlobKey)
 	}
-	return "https://getfider.com/images/logo-100x100.png"
+	return "https://teamdream.co.uk/images/TeamDream-Logo.svg"
 }
 
 // BaseURL return the base URL from given context

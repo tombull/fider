@@ -1,8 +1,8 @@
 package middlewares
 
 import (
-	"github.com/getfider/fider/app/models/enum"
-	"github.com/getfider/fider/app/pkg/web"
+	"github.com/tombull/teamdream/app/models/enum"
+	"github.com/tombull/teamdream/app/pkg/web"
 )
 
 // IsAuthenticated blocks non-authenticated requests

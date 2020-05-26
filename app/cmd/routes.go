@@ -5,11 +5,11 @@ import (
 	"strings"
 	"time"
 
-	"github.com/getfider/fider/app/handlers"
-	"github.com/getfider/fider/app/handlers/apiv1"
-	"github.com/getfider/fider/app/middlewares"
-	"github.com/getfider/fider/app/models/enum"
-	"github.com/getfider/fider/app/pkg/web"
+	"github.com/tombull/teamdream/app/handlers"
+	"github.com/tombull/teamdream/app/handlers/apiv1"
+	"github.com/tombull/teamdream/app/middlewares"
+	"github.com/tombull/teamdream/app/models/enum"
+	"github.com/tombull/teamdream/app/pkg/web"
 )
 
 func routes(r *web.Engine) *web.Engine {

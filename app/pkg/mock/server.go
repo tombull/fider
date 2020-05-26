@@ -8,11 +8,11 @@ import (
 	"net/http/httptest"
 	"net/url"
 
-	"github.com/getfider/fider/app/models"
-	"github.com/getfider/fider/app/models/query"
-	"github.com/getfider/fider/app/pkg/bus"
-	"github.com/getfider/fider/app/pkg/jsonq"
-	"github.com/getfider/fider/app/pkg/web"
+	"github.com/tombull/teamdream/app/models"
+	"github.com/tombull/teamdream/app/models/query"
+	"github.com/tombull/teamdream/app/pkg/bus"
+	"github.com/tombull/teamdream/app/pkg/jsonq"
+	"github.com/tombull/teamdream/app/pkg/web"
 )
 
 // Server is a HTTP server wrapper for testing purpose

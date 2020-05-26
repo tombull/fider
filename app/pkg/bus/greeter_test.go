@@ -3,7 +3,7 @@ package bus_test
 import (
 	"context"
 
-	"github.com/getfider/fider/app/pkg/bus"
+	"github.com/tombull/teamdream/app/pkg/bus"
 )
 
 type SayHelloCommand struct {

@@ -3,10 +3,10 @@ package postgres_test
 import (
 	"testing"
 
-	"github.com/getfider/fider/app/models/cmd"
-	"github.com/getfider/fider/app/pkg/bus"
+	"github.com/tombull/teamdream/app/models/cmd"
+	"github.com/tombull/teamdream/app/pkg/bus"
 
-	. "github.com/getfider/fider/app/pkg/assert"
+	. "github.com/tombull/teamdream/app/pkg/assert"
 )
 
 func TestEventStorage_Add(t *testing.T) {

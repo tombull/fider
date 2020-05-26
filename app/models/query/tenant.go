@@ -1,8 +1,8 @@
 package query
 
 import (
-	"github.com/getfider/fider/app/models"
-	"github.com/getfider/fider/app/models/enum"
+	"github.com/tombull/teamdream/app/models"
+	"github.com/tombull/teamdream/app/models/enum"
 )
 
 type IsCNAMEAvailable struct {

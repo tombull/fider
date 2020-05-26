@@ -3,11 +3,11 @@ package handlers
 import (
 	"fmt"
 
-	"github.com/getfider/fider/app/models/query"
-	"github.com/getfider/fider/app/pkg/bus"
-	"github.com/getfider/fider/app/pkg/csv"
-	"github.com/getfider/fider/app/pkg/markdown"
-	"github.com/getfider/fider/app/pkg/web"
+	"github.com/tombull/teamdream/app/models/query"
+	"github.com/tombull/teamdream/app/pkg/bus"
+	"github.com/tombull/teamdream/app/pkg/csv"
+	"github.com/tombull/teamdream/app/pkg/markdown"
+	"github.com/tombull/teamdream/app/pkg/web"
 )
 
 // Index is the default home page

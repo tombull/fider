@@ -12,15 +12,15 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/getfider/fider/app/models"
-	"github.com/getfider/fider/app/models/dto"
-	"github.com/getfider/fider/app/pkg/env"
-	"github.com/getfider/fider/app/pkg/errors"
-	"github.com/getfider/fider/app/pkg/log"
-	"github.com/getfider/fider/app/pkg/rand"
-	"github.com/getfider/fider/app/pkg/worker"
 	"github.com/julienschmidt/httprouter"
 	cache "github.com/patrickmn/go-cache"
+	"github.com/tombull/teamdream/app/models"
+	"github.com/tombull/teamdream/app/models/dto"
+	"github.com/tombull/teamdream/app/pkg/env"
+	"github.com/tombull/teamdream/app/pkg/errors"
+	"github.com/tombull/teamdream/app/pkg/log"
+	"github.com/tombull/teamdream/app/pkg/rand"
+	"github.com/tombull/teamdream/app/pkg/worker"
 )
 
 var (

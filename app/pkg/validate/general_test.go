@@ -4,11 +4,11 @@ import (
 	"context"
 	"testing"
 
-	"github.com/getfider/fider/app/models/query"
-	. "github.com/getfider/fider/app/pkg/assert"
-	"github.com/getfider/fider/app/pkg/bus"
-	"github.com/getfider/fider/app/pkg/rand"
-	"github.com/getfider/fider/app/pkg/validate"
+	"github.com/tombull/teamdream/app/models/query"
+	. "github.com/tombull/teamdream/app/pkg/assert"
+	"github.com/tombull/teamdream/app/pkg/bus"
+	"github.com/tombull/teamdream/app/pkg/rand"
+	"github.com/tombull/teamdream/app/pkg/validate"
 )
 
 func TestInvalidEmail(t *testing.T) {

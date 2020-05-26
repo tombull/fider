@@ -7,16 +7,16 @@ import (
 	"net/http"
 	"testing"
 
-	"github.com/getfider/fider/app/models/cmd"
+	"github.com/tombull/teamdream/app/models/cmd"
 
-	"github.com/getfider/fider/app/models/query"
-	. "github.com/getfider/fider/app/pkg/assert"
-	"github.com/getfider/fider/app/pkg/bus"
-	"github.com/getfider/fider/app/pkg/env"
-	"github.com/getfider/fider/app/pkg/mock"
-	"github.com/getfider/fider/app/services/blob/fs"
+	"github.com/tombull/teamdream/app/models/query"
+	. "github.com/tombull/teamdream/app/pkg/assert"
+	"github.com/tombull/teamdream/app/pkg/bus"
+	"github.com/tombull/teamdream/app/pkg/env"
+	"github.com/tombull/teamdream/app/pkg/mock"
+	"github.com/tombull/teamdream/app/services/blob/fs"
 
-	"github.com/getfider/fider/app/handlers"
+	"github.com/tombull/teamdream/app/handlers"
 )
 
 func TestUpdateSettingsHandler(t *testing.T) {
@@ -73,9 +73,9 @@ func TestUpdateSettingsHandler_NewLogo(t *testing.T) {
 		OnTenant(mock.DemoTenant).
 		AsUser(mock.JonSnow).
 		ExecutePost(
-			handlers.UpdateSettings(), `{ 
-				"title": "GoT", 
-				"invitation": "Join us!", 
+			handlers.UpdateSettings(), `{
+				"title": "GoT",
+				"invitation": "Join us!",
 				"welcomeMessage": "Welcome to GoT Feedback Forum",
 				"logo": {
 					"upload": {
@@ -113,9 +113,9 @@ func TestUpdateSettingsHandler_RemoveLogo(t *testing.T) {
 		OnTenant(mock.DemoTenant).
 		AsUser(mock.JonSnow).
 		ExecutePost(
-			handlers.UpdateSettings(), `{ 
-				"title": "GoT", 
-				"invitation": "Join us!", 
+			handlers.UpdateSettings(), `{
+				"title": "GoT",
+				"invitation": "Join us!",
 				"welcomeMessage": "Welcome to GoT Feedback Forum",
 				"logo": {
 					"remove": true

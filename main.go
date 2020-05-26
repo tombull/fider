@@ -4,10 +4,10 @@ import (
 	"os"
 	"runtime"
 
-	"github.com/getfider/fider/app/cmd"
-	"github.com/getfider/fider/app/models"
-	"github.com/getfider/fider/app/pkg/env"
 	_ "github.com/lib/pq"
+	"github.com/tombull/teamdream/app/cmd"
+	"github.com/tombull/teamdream/app/models"
+	"github.com/tombull/teamdream/app/pkg/env"
 )
 
 var (

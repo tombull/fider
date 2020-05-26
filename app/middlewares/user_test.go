@@ -7,17 +7,17 @@ import (
 	"testing"
 	"time"
 
-	"github.com/getfider/fider/app"
+	"github.com/tombull/teamdream/app"
 
-	"github.com/getfider/fider/app/middlewares"
-	"github.com/getfider/fider/app/models"
-	"github.com/getfider/fider/app/models/enum"
-	"github.com/getfider/fider/app/models/query"
-	. "github.com/getfider/fider/app/pkg/assert"
-	"github.com/getfider/fider/app/pkg/bus"
-	"github.com/getfider/fider/app/pkg/jwt"
-	"github.com/getfider/fider/app/pkg/mock"
-	"github.com/getfider/fider/app/pkg/web"
+	"github.com/tombull/teamdream/app/middlewares"
+	"github.com/tombull/teamdream/app/models"
+	"github.com/tombull/teamdream/app/models/enum"
+	"github.com/tombull/teamdream/app/models/query"
+	. "github.com/tombull/teamdream/app/pkg/assert"
+	"github.com/tombull/teamdream/app/pkg/bus"
+	"github.com/tombull/teamdream/app/pkg/jwt"
+	"github.com/tombull/teamdream/app/pkg/mock"
+	"github.com/tombull/teamdream/app/pkg/web"
 )
 
 func TestUser_NoCookie(t *testing.T) {

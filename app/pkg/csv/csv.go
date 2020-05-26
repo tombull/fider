@@ -7,7 +7,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/getfider/fider/app/models"
+	"github.com/tombull/teamdream/app/models"
 )
 
 //FromPosts return a byte array of CSV file containing all posts

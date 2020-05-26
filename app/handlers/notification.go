@@ -1,10 +1,10 @@
 package handlers
 
 import (
-	"github.com/getfider/fider/app/models/cmd"
-	"github.com/getfider/fider/app/models/query"
-	"github.com/getfider/fider/app/pkg/bus"
-	"github.com/getfider/fider/app/pkg/web"
+	"github.com/tombull/teamdream/app/models/cmd"
+	"github.com/tombull/teamdream/app/models/query"
+	"github.com/tombull/teamdream/app/pkg/bus"
+	"github.com/tombull/teamdream/app/pkg/web"
 )
 
 // TotalUnreadNotifications returns the total number of unread notifications

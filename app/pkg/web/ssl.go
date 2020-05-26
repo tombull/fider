@@ -8,8 +8,8 @@ import (
 
 	"golang.org/x/crypto/acme"
 
-	"github.com/getfider/fider/app/pkg/env"
-	"github.com/getfider/fider/app/pkg/errors"
+	"github.com/tombull/teamdream/app/pkg/env"
+	"github.com/tombull/teamdream/app/pkg/errors"
 	"golang.org/x/crypto/acme/autocert"
 )
 

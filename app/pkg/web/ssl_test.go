@@ -4,9 +4,9 @@ import (
 	"crypto/tls"
 	"testing"
 
-	"github.com/getfider/fider/app/pkg/env"
+	"github.com/tombull/teamdream/app/pkg/env"
 
-	. "github.com/getfider/fider/app/pkg/assert"
+	. "github.com/tombull/teamdream/app/pkg/assert"
 )
 
 func Test_GetCertificate(t *testing.T) {

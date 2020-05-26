@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/getfider/fider/app/pkg/env"
+	"github.com/tombull/teamdream/app/pkg/env"
 )
 
 //RunPing checks if Fider Server is running and is healthy

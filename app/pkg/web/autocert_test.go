@@ -5,10 +5,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/getfider/fider/app/pkg/bus"
-	"github.com/getfider/fider/app/services/blob/fs"
+	"github.com/tombull/teamdream/app/pkg/bus"
+	"github.com/tombull/teamdream/app/services/blob/fs"
 
-	. "github.com/getfider/fider/app/pkg/assert"
+	. "github.com/tombull/teamdream/app/pkg/assert"
 )
 
 func Test_UseAutoCert(t *testing.T) {

@@ -10,8 +10,8 @@ import (
 	"runtime/pprof"
 	"syscall"
 
-	"github.com/getfider/fider/app/models"
-	"github.com/getfider/fider/app/pkg/web"
+	"github.com/tombull/teamdream/app/models"
+	"github.com/tombull/teamdream/app/pkg/web"
 )
 
 var extraSignals = []os.Signal{syscall.SIGUSR1}

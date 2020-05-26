@@ -5,14 +5,14 @@ import (
 	"database/sql"
 	"fmt"
 
-	"github.com/getfider/fider/app/models"
-	"github.com/getfider/fider/app/models/cmd"
-	"github.com/getfider/fider/app/models/query"
-	"github.com/getfider/fider/app/pkg/bus"
-	"github.com/getfider/fider/app/pkg/dbx"
-	"github.com/getfider/fider/app/pkg/errors"
-	"github.com/getfider/fider/app/pkg/rand"
-	"github.com/getfider/fider/app/services/blob"
+	"github.com/tombull/teamdream/app/models"
+	"github.com/tombull/teamdream/app/models/cmd"
+	"github.com/tombull/teamdream/app/models/query"
+	"github.com/tombull/teamdream/app/pkg/bus"
+	"github.com/tombull/teamdream/app/pkg/dbx"
+	"github.com/tombull/teamdream/app/pkg/errors"
+	"github.com/tombull/teamdream/app/pkg/rand"
+	"github.com/tombull/teamdream/app/services/blob"
 )
 
 func setAttachments(ctx context.Context, c *cmd.SetAttachments) error {

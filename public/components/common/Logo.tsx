@@ -24,7 +24,7 @@ export const TenantLogo = (props: TenantLogoProps) => {
   if (tenant && tenant.logoBlobKey) {
     return <img src={TenantLogoURL(fider.session.tenant, props.size)} alt={tenant.name} />;
   } else if (props.useFiderIfEmpty) {
-    return <img src="https://getfider.com/images/logo-100x100.png" alt="Fider" />;
+    return <img src="https://teamdream.co.uk/images/TeamDream-Logo.svg" alt="Fider" />;
   }
   return null;
 };

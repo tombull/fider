@@ -2,8 +2,8 @@ package jwt
 
 import (
 	jwtgo "github.com/dgrijalva/jwt-go"
-	"github.com/getfider/fider/app/pkg/env"
-	"github.com/getfider/fider/app/pkg/errors"
+	"github.com/tombull/teamdream/app/pkg/env"
+	"github.com/tombull/teamdream/app/pkg/errors"
 )
 
 var jwtSecret = env.Config.JWTSecret

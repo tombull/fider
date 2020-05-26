@@ -3,8 +3,8 @@ package jsonq_test
 import (
 	"testing"
 
-	. "github.com/getfider/fider/app/pkg/assert"
-	"github.com/getfider/fider/app/pkg/jsonq"
+	. "github.com/tombull/teamdream/app/pkg/assert"
+	"github.com/tombull/teamdream/app/pkg/jsonq"
 )
 
 func TestGet(t *testing.T) {

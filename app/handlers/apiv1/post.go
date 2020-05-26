@@ -1,14 +1,14 @@
 package apiv1
 
 import (
-	"github.com/getfider/fider/app/actions"
-	"github.com/getfider/fider/app/models"
-	"github.com/getfider/fider/app/models/cmd"
-	"github.com/getfider/fider/app/models/enum"
-	"github.com/getfider/fider/app/models/query"
-	"github.com/getfider/fider/app/pkg/bus"
-	"github.com/getfider/fider/app/pkg/web"
-	"github.com/getfider/fider/app/tasks"
+	"github.com/tombull/teamdream/app/actions"
+	"github.com/tombull/teamdream/app/models"
+	"github.com/tombull/teamdream/app/models/cmd"
+	"github.com/tombull/teamdream/app/models/enum"
+	"github.com/tombull/teamdream/app/models/query"
+	"github.com/tombull/teamdream/app/pkg/bus"
+	"github.com/tombull/teamdream/app/pkg/web"
+	"github.com/tombull/teamdream/app/tasks"
 )
 
 // SearchPosts return existing posts based on search criteria

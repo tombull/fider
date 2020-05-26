@@ -3,7 +3,7 @@ package cmd
 import (
 	"io"
 
-	"github.com/getfider/fider/app/models/dto"
+	"github.com/tombull/teamdream/app/models/dto"
 )
 
 type HTTPRequest struct {

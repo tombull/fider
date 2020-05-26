@@ -3,10 +3,10 @@ package email_test
 import (
 	"testing"
 
-	"github.com/getfider/fider/app/models/dto"
-	"github.com/getfider/fider/app/services/email"
+	"github.com/tombull/teamdream/app/models/dto"
+	"github.com/tombull/teamdream/app/services/email"
 
-	. "github.com/getfider/fider/app/pkg/assert"
+	. "github.com/tombull/teamdream/app/pkg/assert"
 )
 
 func TestRenderMessage(t *testing.T) {
@@ -28,7 +28,7 @@ func TestRenderMessage(t *testing.T) {
 			<tr>
 				<td height="40">&nbsp;</td>
 			</tr>
-			
+
 			<tr>
 				<td align="center">
 					<table bgcolor="#FFFFFF" cellpadding="0" cellspacing="0" border="0" style="text-align:left;padding:20px;margin:10px;border-radius:5px;color:#1c262d;border:1px solid #ECECEC;min-width:320px;max-width:660px;">

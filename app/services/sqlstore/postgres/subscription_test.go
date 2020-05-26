@@ -4,12 +4,12 @@ import (
 	"strconv"
 	"testing"
 
-	"github.com/getfider/fider/app/models/cmd"
-	"github.com/getfider/fider/app/models/enum"
-	"github.com/getfider/fider/app/models/query"
-	"github.com/getfider/fider/app/pkg/bus"
+	"github.com/tombull/teamdream/app/models/cmd"
+	"github.com/tombull/teamdream/app/models/enum"
+	"github.com/tombull/teamdream/app/models/query"
+	"github.com/tombull/teamdream/app/pkg/bus"
 
-	. "github.com/getfider/fider/app/pkg/assert"
+	. "github.com/tombull/teamdream/app/pkg/assert"
 )
 
 func TestSubscription_NoSettings(t *testing.T) {

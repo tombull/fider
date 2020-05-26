@@ -4,11 +4,11 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/getfider/fider/app/models"
-	"github.com/getfider/fider/app/pkg/env"
-	"github.com/getfider/fider/app/pkg/errors"
-	"github.com/getfider/fider/app/pkg/jwt"
-	"github.com/getfider/fider/app/pkg/web"
+	"github.com/tombull/teamdream/app/models"
+	"github.com/tombull/teamdream/app/pkg/env"
+	"github.com/tombull/teamdream/app/pkg/errors"
+	"github.com/tombull/teamdream/app/pkg/jwt"
+	"github.com/tombull/teamdream/app/pkg/web"
 )
 
 func encode(user *models.User) string {

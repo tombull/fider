@@ -3,7 +3,7 @@ package models
 import (
 	"time"
 
-	"github.com/getfider/fider/app/models/enum"
+	"github.com/tombull/teamdream/app/models/enum"
 )
 
 //Post represents an post on a tenant board

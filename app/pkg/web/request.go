@@ -9,7 +9,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/getfider/fider/app/pkg/errors"
+	"github.com/tombull/teamdream/app/pkg/errors"
 )
 
 //Request wraps the http request object

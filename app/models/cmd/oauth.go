@@ -1,8 +1,8 @@
 package cmd
 
 import (
-	"github.com/getfider/fider/app/models"
-	"github.com/getfider/fider/app/models/dto"
+	"github.com/tombull/teamdream/app/models"
+	"github.com/tombull/teamdream/app/models/dto"
 )
 
 type SaveCustomOAuthConfig struct {

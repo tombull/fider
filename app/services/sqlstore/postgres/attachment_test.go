@@ -4,11 +4,11 @@ import (
 	"context"
 	"testing"
 
-	"github.com/getfider/fider/app/models"
-	"github.com/getfider/fider/app/models/cmd"
+	"github.com/tombull/teamdream/app/models"
+	"github.com/tombull/teamdream/app/models/cmd"
 
-	. "github.com/getfider/fider/app/pkg/assert"
-	"github.com/getfider/fider/app/pkg/bus"
+	. "github.com/tombull/teamdream/app/pkg/assert"
+	"github.com/tombull/teamdream/app/pkg/bus"
 )
 
 func TestUploadImage(t *testing.T) {

@@ -3,14 +3,14 @@ package middlewares
 import (
 	"net/http"
 
-	"github.com/getfider/fider/app/models/enum"
-	"github.com/getfider/fider/app/models/query"
+	"github.com/tombull/teamdream/app/models/enum"
+	"github.com/tombull/teamdream/app/models/query"
 
-	"github.com/getfider/fider/app"
-	"github.com/getfider/fider/app/pkg/bus"
-	"github.com/getfider/fider/app/pkg/env"
-	"github.com/getfider/fider/app/pkg/errors"
-	"github.com/getfider/fider/app/pkg/web"
+	"github.com/tombull/teamdream/app"
+	"github.com/tombull/teamdream/app/pkg/bus"
+	"github.com/tombull/teamdream/app/pkg/env"
+	"github.com/tombull/teamdream/app/pkg/errors"
+	"github.com/tombull/teamdream/app/pkg/web"
 )
 
 // Tenant adds either SingleTenant or MultiTenant to the pipeline
@@ -45,15 +45,6 @@ func MultiTenant() web.MiddlewareFunc {
 	return func(next web.HandlerFunc) web.HandlerFunc {
 		return func(c *web.Context) error {
 			hostname := c.Request.URL.Hostname()
-
-			// If no tenant is specified, redirect user to getfider.com
-			// This is only valid for fider.io hosting
-			if (env.IsProduction() && hostname == "fider.io") ||
-				(env.IsDevelopment() && hostname == "dev.fider.io") {
-				if c.Request.URL.Path == "" || c.Request.URL.Path == "/" {
-					return c.Redirect("https://getfider.com")
-				}
-			}
 
 			byDomain := &query.GetTenantByDomain{Domain: hostname}
 			err := bus.Dispatch(c, byDomain)

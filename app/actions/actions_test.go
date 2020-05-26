@@ -1,9 +1,9 @@
 package actions_test
 
 import (
-	. "github.com/getfider/fider/app/pkg/assert"
-	"github.com/getfider/fider/app/pkg/jwt"
-	"github.com/getfider/fider/app/pkg/validate"
+	. "github.com/tombull/teamdream/app/pkg/assert"
+	"github.com/tombull/teamdream/app/pkg/jwt"
+	"github.com/tombull/teamdream/app/pkg/validate"
 )
 
 var jonSnowToken, _ = jwt.Encode(jwt.OAuthClaims{

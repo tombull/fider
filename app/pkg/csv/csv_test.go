@@ -5,10 +5,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/getfider/fider/app/models"
-	"github.com/getfider/fider/app/models/enum"
-	. "github.com/getfider/fider/app/pkg/assert"
-	"github.com/getfider/fider/app/pkg/csv"
+	"github.com/tombull/teamdream/app/models"
+	"github.com/tombull/teamdream/app/models/enum"
+	. "github.com/tombull/teamdream/app/pkg/assert"
+	"github.com/tombull/teamdream/app/pkg/csv"
 )
 
 func TestExportPostsToCSV_Empty(t *testing.T) {

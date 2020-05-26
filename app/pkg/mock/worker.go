@@ -4,17 +4,17 @@ import (
 	"context"
 	"net/url"
 
-	"github.com/getfider/fider/app"
-	"github.com/getfider/fider/app/models"
-	"github.com/getfider/fider/app/pkg/web"
-	"github.com/getfider/fider/app/pkg/worker"
+	"github.com/tombull/teamdream/app"
+	"github.com/tombull/teamdream/app/models"
+	"github.com/tombull/teamdream/app/pkg/web"
+	"github.com/tombull/teamdream/app/pkg/worker"
 )
 
 // Worker is fake wrapper for background worker
 type Worker struct {
-	tenant   *models.Tenant
-	user     *models.User
-	baseURL  string
+	tenant  *models.Tenant
+	user    *models.User
+	baseURL string
 }
 
 func createWorker() *Worker {

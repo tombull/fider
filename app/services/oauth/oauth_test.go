@@ -7,19 +7,19 @@ import (
 	"net/url"
 	"testing"
 
-	"github.com/getfider/fider/app"
-	"github.com/getfider/fider/app/models/cmd"
-	"github.com/getfider/fider/app/models/enum"
+	"github.com/tombull/teamdream/app"
+	"github.com/tombull/teamdream/app/models/cmd"
+	"github.com/tombull/teamdream/app/models/enum"
 
-	"github.com/getfider/fider/app/models"
-	"github.com/getfider/fider/app/models/query"
+	"github.com/tombull/teamdream/app/models"
+	"github.com/tombull/teamdream/app/models/query"
 
-	"github.com/getfider/fider/app/pkg/bus"
-	"github.com/getfider/fider/app/pkg/errors"
-	"github.com/getfider/fider/app/pkg/web"
+	"github.com/tombull/teamdream/app/pkg/bus"
+	"github.com/tombull/teamdream/app/pkg/errors"
+	"github.com/tombull/teamdream/app/pkg/web"
 
-	. "github.com/getfider/fider/app/pkg/assert"
-	"github.com/getfider/fider/app/services/oauth"
+	. "github.com/tombull/teamdream/app/pkg/assert"
+	"github.com/tombull/teamdream/app/services/oauth"
 )
 
 func newGetContext(rawurl string) *web.Context {

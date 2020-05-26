@@ -6,17 +6,17 @@ import (
 	"testing"
 	"time"
 
-	"github.com/getfider/fider/app/models/enum"
-	"github.com/getfider/fider/app/models/query"
+	"github.com/tombull/teamdream/app/models/enum"
+	"github.com/tombull/teamdream/app/models/query"
 
-	"github.com/getfider/fider/app/models"
-	"github.com/getfider/fider/app/models/cmd"
-	"github.com/getfider/fider/app/models/dto"
-	. "github.com/getfider/fider/app/pkg/assert"
-	"github.com/getfider/fider/app/pkg/bus"
-	"github.com/getfider/fider/app/pkg/mock"
-	"github.com/getfider/fider/app/services/email/emailmock"
-	"github.com/getfider/fider/app/tasks"
+	"github.com/tombull/teamdream/app/models"
+	"github.com/tombull/teamdream/app/models/cmd"
+	"github.com/tombull/teamdream/app/models/dto"
+	. "github.com/tombull/teamdream/app/pkg/assert"
+	"github.com/tombull/teamdream/app/pkg/bus"
+	"github.com/tombull/teamdream/app/pkg/mock"
+	"github.com/tombull/teamdream/app/services/email/emailmock"
+	"github.com/tombull/teamdream/app/tasks"
 )
 
 func TestSendSignUpEmailTask(t *testing.T) {
@@ -37,7 +37,7 @@ func TestSendSignUpEmailTask(t *testing.T) {
 	Expect(emailmock.MessageHistory[0].TemplateName).Equals("signup_email")
 	Expect(emailmock.MessageHistory[0].Tenant).IsNil()
 	Expect(emailmock.MessageHistory[0].Props).Equals(dto.Props{
-		"logo": "https://getfider.com/images/logo-100x100.png",
+		"logo": "https://teamdream.co.uk/images/TeamDream-Logo.svg",
 	})
 	Expect(emailmock.MessageHistory[0].From).Equals("Fider")
 	Expect(emailmock.MessageHistory[0].To).HasLen(1)
@@ -68,7 +68,7 @@ func TestSendSignInEmailTask(t *testing.T) {
 	Expect(emailmock.MessageHistory[0].TemplateName).Equals("signin_email")
 	Expect(emailmock.MessageHistory[0].Tenant).Equals(mock.DemoTenant)
 	Expect(emailmock.MessageHistory[0].Props).Equals(dto.Props{
-		"logo": "https://getfider.com/images/logo-100x100.png",
+		"logo": "https://teamdream.co.uk/images/TeamDream-Logo.svg",
 	})
 	Expect(emailmock.MessageHistory[0].From).Equals(mock.DemoTenant.Name)
 	Expect(emailmock.MessageHistory[0].To).HasLen(1)
@@ -102,7 +102,7 @@ func TestSendChangeEmailConfirmationTask(t *testing.T) {
 	Expect(emailmock.MessageHistory[0].TemplateName).Equals("change_emailaddress_email")
 	Expect(emailmock.MessageHistory[0].Tenant).Equals(mock.DemoTenant)
 	Expect(emailmock.MessageHistory[0].Props).Equals(dto.Props{
-		"logo": "https://getfider.com/images/logo-100x100.png",
+		"logo": "https://teamdream.co.uk/images/TeamDream-Logo.svg",
 	})
 	Expect(emailmock.MessageHistory[0].From).Equals(mock.DemoTenant.Name)
 	Expect(emailmock.MessageHistory[0].To).HasLen(1)
@@ -163,7 +163,7 @@ func TestNotifyAboutNewPostTask(t *testing.T) {
 		"content":    template.HTML("<p>TypeScript is great, please add support for it</p>"),
 		"view":       template.HTML("<a href='http://domain.com/posts/1/add-support-for-typescript'>View it on your browser</a>"),
 		"change":     template.HTML("<a href='http://domain.com/settings'>change your notification settings</a>"),
-		"logo":       "https://getfider.com/images/logo-100x100.png",
+		"logo":       "https://teamdream.co.uk/images/TeamDream-Logo.svg",
 	})
 	Expect(emailmock.MessageHistory[0].From).Equals("Jon Snow")
 	Expect(emailmock.MessageHistory[0].To).HasLen(1)
@@ -231,7 +231,7 @@ func TestNotifyAboutNewCommentTask(t *testing.T) {
 		"view":        template.HTML("<a href='http://domain.com/posts/1/add-support-for-typescript'>View it on your browser</a>"),
 		"change":      template.HTML("<a href='http://domain.com/settings'>change your notification settings</a>"),
 		"unsubscribe": template.HTML("<a href='http://domain.com/posts/1/add-support-for-typescript'>unsubscribe from it</a>"),
-		"logo":        "https://getfider.com/images/logo-100x100.png",
+		"logo":        "https://teamdream.co.uk/images/TeamDream-Logo.svg",
 	})
 	Expect(emailmock.MessageHistory[0].From).Equals("Arya Stark")
 	Expect(emailmock.MessageHistory[0].To).HasLen(1)
@@ -302,7 +302,7 @@ func TestNotifyAboutStatusChangeTask(t *testing.T) {
 		"view":        template.HTML("<a href='http://domain.com/posts/1/add-support-for-typescript'>View it on your browser</a>"),
 		"change":      template.HTML("<a href='http://domain.com/settings'>change your notification settings</a>"),
 		"unsubscribe": template.HTML("<a href='http://domain.com/posts/1/add-support-for-typescript'>unsubscribe from it</a>"),
-		"logo":        "https://getfider.com/images/logo-100x100.png",
+		"logo":        "https://teamdream.co.uk/images/TeamDream-Logo.svg",
 	})
 	Expect(emailmock.MessageHistory[0].From).Equals("Jon Snow")
 	Expect(emailmock.MessageHistory[0].To).HasLen(1)
@@ -368,7 +368,7 @@ func TestNotifyAboutDeletePostTask(t *testing.T) {
 		"tenantName": "Demonstration",
 		"content":    template.HTML("<p>Invalid post!</p>"),
 		"change":     template.HTML("<a href='http://domain.com/settings'>change your notification settings</a>"),
-		"logo":       "https://getfider.com/images/logo-100x100.png",
+		"logo":       "https://teamdream.co.uk/images/TeamDream-Logo.svg",
 	})
 	Expect(emailmock.MessageHistory[0].From).Equals("Jon Snow")
 	Expect(emailmock.MessageHistory[0].To).HasLen(1)
@@ -443,7 +443,7 @@ func TestNotifyAboutStatusChangeTask_Duplicate(t *testing.T) {
 		"view":        template.HTML("<a href='http://domain.com/posts/2/i-need-typescript'>View it on your browser</a>"),
 		"change":      template.HTML("<a href='http://domain.com/settings'>change your notification settings</a>"),
 		"unsubscribe": template.HTML("<a href='http://domain.com/posts/2/i-need-typescript'>unsubscribe from it</a>"),
-		"logo":        "https://getfider.com/images/logo-100x100.png",
+		"logo":        "https://teamdream.co.uk/images/TeamDream-Logo.svg",
 	})
 	Expect(emailmock.MessageHistory[0].From).Equals("Jon Snow")
 	Expect(emailmock.MessageHistory[0].To).HasLen(1)
@@ -488,7 +488,7 @@ func TestSendInvites(t *testing.T) {
 	Expect(emailmock.MessageHistory[0].Tenant).Equals(mock.DemoTenant)
 	Expect(emailmock.MessageHistory[0].Props).Equals(dto.Props{
 		"subject": "My Subject",
-		"logo":    "https://getfider.com/images/logo-100x100.png",
+		"logo":    "https://teamdream.co.uk/images/TeamDream-Logo.svg",
 	})
 	Expect(emailmock.MessageHistory[0].From).Equals("Jon Snow")
 	Expect(emailmock.MessageHistory[0].To).HasLen(2)

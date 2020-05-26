@@ -1,8 +1,8 @@
 package middlewares
 
 import (
-	"github.com/getfider/fider/app/pkg/env"
-	"github.com/getfider/fider/app/pkg/web"
+	"github.com/tombull/teamdream/app/pkg/env"
+	"github.com/tombull/teamdream/app/pkg/web"
 )
 
 // RequireBillingEnabled returns 404 if billing is not enabled, otherwise it continues the chain

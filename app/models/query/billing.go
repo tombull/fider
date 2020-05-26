@@ -1,6 +1,6 @@
 package query
 
-import "github.com/getfider/fider/app/models/dto"
+import "github.com/tombull/teamdream/app/models/dto"
 
 type ListBillingPlans struct {
 	CountryCode string

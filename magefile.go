@@ -15,7 +15,7 @@ import (
 
 // warning shown when at least one dependency is not installed
 var missingDepsWarning = `Dependencies %v are missing. Please install them and try again.
-To learn how, visit our contributors guide: https://github.com/getfider/fider/blob/master/CONTRIBUTING.md.
+To learn how, visit our contributors guide: https://github.com/tombull/teamdream/blob/master/CONTRIBUTING.md.
 `
 
 // required dependencies for building fider

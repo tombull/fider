@@ -3,8 +3,8 @@ package cmd
 import (
 	"testing"
 
-	. "github.com/getfider/fider/app/pkg/assert"
-	"github.com/getfider/fider/app/pkg/web"
+	. "github.com/tombull/teamdream/app/pkg/assert"
+	"github.com/tombull/teamdream/app/pkg/web"
 )
 
 func TestGetMainEngine(t *testing.T) {

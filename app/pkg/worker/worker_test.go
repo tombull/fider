@@ -6,9 +6,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/getfider/fider/app/pkg/worker"
+	"github.com/tombull/teamdream/app/pkg/worker"
 
-	. "github.com/getfider/fider/app/pkg/assert"
+	. "github.com/tombull/teamdream/app/pkg/assert"
 )
 
 var dummyTask = worker.Task{

@@ -3,12 +3,12 @@ package cmd
 import (
 	"context"
 
-	"github.com/getfider/fider/app/models/dto"
-	"github.com/getfider/fider/app/pkg/bus"
-	"github.com/getfider/fider/app/pkg/dbx"
-	"github.com/getfider/fider/app/pkg/log"
-	"github.com/getfider/fider/app/pkg/rand"
-	_ "github.com/getfider/fider/app/services/log/console"
+	"github.com/tombull/teamdream/app/models/dto"
+	"github.com/tombull/teamdream/app/pkg/bus"
+	"github.com/tombull/teamdream/app/pkg/dbx"
+	"github.com/tombull/teamdream/app/pkg/log"
+	"github.com/tombull/teamdream/app/pkg/rand"
+	_ "github.com/tombull/teamdream/app/services/log/console"
 )
 
 // RunMigrate run all pending migrations on current DATABASE_URL

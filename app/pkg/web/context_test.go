@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/getfider/fider/app/models"
-	. "github.com/getfider/fider/app/pkg/assert"
-	"github.com/getfider/fider/app/pkg/env"
-	"github.com/getfider/fider/app/pkg/web"
+	"github.com/tombull/teamdream/app/models"
+	. "github.com/tombull/teamdream/app/pkg/assert"
+	"github.com/tombull/teamdream/app/pkg/env"
+	"github.com/tombull/teamdream/app/pkg/web"
 )
 
 func newGetContext(rawurl string, headers map[string]string) *web.Context {

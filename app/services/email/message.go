@@ -5,8 +5,8 @@ import (
 	"html/template"
 	"strings"
 
-	"github.com/getfider/fider/app/models/dto"
-	"github.com/getfider/fider/app/pkg/env"
+	"github.com/tombull/teamdream/app/models/dto"
+	"github.com/tombull/teamdream/app/pkg/env"
 )
 
 var cache = make(map[string]*template.Template)

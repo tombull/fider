@@ -3,8 +3,8 @@ package crypto_test
 import (
 	"testing"
 
-	. "github.com/getfider/fider/app/pkg/assert"
-	"github.com/getfider/fider/app/pkg/crypto"
+	. "github.com/tombull/teamdream/app/pkg/assert"
+	"github.com/tombull/teamdream/app/pkg/crypto"
 )
 
 func TestSHA512Hash(t *testing.T) {

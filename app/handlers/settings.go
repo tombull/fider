@@ -3,16 +3,16 @@ package handlers
 import (
 	"time"
 
-	"github.com/getfider/fider/app/models/enum"
-	"github.com/getfider/fider/app/models/query"
+	"github.com/tombull/teamdream/app/models/enum"
+	"github.com/tombull/teamdream/app/models/query"
 
-	"github.com/getfider/fider/app/models/cmd"
-	"github.com/getfider/fider/app/pkg/bus"
+	"github.com/tombull/teamdream/app/models/cmd"
+	"github.com/tombull/teamdream/app/pkg/bus"
 
-	"github.com/getfider/fider/app/tasks"
+	"github.com/tombull/teamdream/app/tasks"
 
-	"github.com/getfider/fider/app/actions"
-	"github.com/getfider/fider/app/pkg/web"
+	"github.com/tombull/teamdream/app/actions"
+	"github.com/tombull/teamdream/app/pkg/web"
 )
 
 // ChangeUserEmail register the intent of changing user email

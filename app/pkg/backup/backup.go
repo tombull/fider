@@ -6,10 +6,10 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/getfider/fider/app/models/query"
-	"github.com/getfider/fider/app/pkg/bus"
+	"github.com/tombull/teamdream/app/models/query"
+	"github.com/tombull/teamdream/app/pkg/bus"
 
-	"github.com/getfider/fider/app/pkg/errors"
+	"github.com/tombull/teamdream/app/pkg/errors"
 )
 
 func Create(ctx context.Context) (*bytes.Buffer, error) {

@@ -3,12 +3,12 @@ package billing
 import (
 	"context"
 
-	"github.com/getfider/fider/app"
-	"github.com/getfider/fider/app/models"
-	"github.com/getfider/fider/app/pkg/bus"
-	"github.com/getfider/fider/app/pkg/env"
 	"github.com/stripe/stripe-go"
 	"github.com/stripe/stripe-go/client"
+	"github.com/tombull/teamdream/app"
+	"github.com/tombull/teamdream/app/models"
+	"github.com/tombull/teamdream/app/pkg/bus"
+	"github.com/tombull/teamdream/app/pkg/env"
 )
 
 var stripeClient *client.API
