@@ -20,7 +20,7 @@ export class TagsFilter extends React.Component<TagsFilterProps, TagsFilterState
   constructor(props: TagsFilterProps) {
     super(props);
     this.state = {
-      selected: props.defaultSelection
+      selected: props.defaultSelection,
     };
   }
 
@@ -51,7 +51,7 @@ export class TagsFilter extends React.Component<TagsFilterProps, TagsFilterState
       return null;
     }
 
-    const items = this.props.tags.map(t => {
+    const items = this.props.tags.map((t) => {
       return {
         value: t.slug,
         label: t.name,
@@ -61,7 +61,7 @@ export class TagsFilter extends React.Component<TagsFilterProps, TagsFilterState
             <ShowTag tag={t} size="mini" circular={true} />
             {t.name}
           </div>
-        )
+        ),
       };
     });
 

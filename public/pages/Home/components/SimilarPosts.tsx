@@ -23,7 +23,7 @@ export class SimilarPosts extends React.Component<SimilarPostsProps, SimilarPost
     this.state = {
       title: props.title,
       loading: !!props.title,
-      posts: []
+      posts: [],
     };
   }
 
@@ -31,7 +31,7 @@ export class SimilarPosts extends React.Component<SimilarPostsProps, SimilarPost
     if (nextProps.title !== prevState.title) {
       return {
         loading: true,
-        title: nextProps.title
+        title: nextProps.title,
       };
     }
     return null;
@@ -48,7 +48,7 @@ export class SimilarPosts extends React.Component<SimilarPostsProps, SimilarPost
 
   private loadSimilarPosts = () => {
     if (this.state.loading) {
-      actions.searchPosts({ query: this.state.title }).then(x => {
+      actions.searchPosts({ query: this.state.title }).then((x) => {
         if (x.ok) {
           this.setState({ loading: false, posts: x.data });
         }

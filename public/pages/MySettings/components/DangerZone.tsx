@@ -11,7 +11,7 @@ export class DangerZone extends React.Component<{}, DangerZoneState> {
   constructor(props: {}) {
     super(props);
     this.state = {
-      clicked: false
+      clicked: false,
     };
   }
 

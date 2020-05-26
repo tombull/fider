@@ -33,7 +33,7 @@ export default class SignUpPage extends React.Component<{}, SignUpPageState> {
       submitted: false,
       legalAgreement: false,
       tenantName: "",
-      subdomain: { available: false }
+      subdomain: { available: false },
     };
 
     const token = querystring.get("token");
@@ -43,7 +43,7 @@ export default class SignUpPage extends React.Component<{}, SignUpPageState> {
         this.user = {
           token,
           name: data["oauth/name"],
-          email: data["oauth/email"]
+          email: data["oauth/email"],
         };
       }
     }
@@ -56,7 +56,7 @@ export default class SignUpPage extends React.Component<{}, SignUpPageState> {
       tenantName: this.state.tenantName,
       subdomain: this.state.subdomain.value,
       name: this.state.name,
-      email: this.state.email
+      email: this.state.email,
     });
 
     if (result.ok) {
@@ -83,13 +83,13 @@ export default class SignUpPage extends React.Component<{}, SignUpPageState> {
   private checkAvailability = (subdomain: string) => {
     window.clearTimeout(this.timer);
     this.timer = window.setTimeout(() => {
-      actions.checkAvailability(subdomain).then(result => {
+      actions.checkAvailability(subdomain).then((result) => {
         this.setState({
           subdomain: {
             value: subdomain,
             available: !result.data.message,
-            message: result.data.message
-          }
+            message: result.data.message,
+          },
         });
       });
     }, 500);
@@ -100,8 +100,8 @@ export default class SignUpPage extends React.Component<{}, SignUpPageState> {
       {
         subdomain: {
           value: subdomain,
-          available: false
-        }
+          available: false,
+        },
       },
       this.checkAvailability.bind(this, subdomain)
     );

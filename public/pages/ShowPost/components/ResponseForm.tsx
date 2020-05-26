@@ -27,7 +27,7 @@ export class ResponseForm extends React.Component<ResponseFormProps, ResponseFor
       showModal: false,
       status: this.props.post.status,
       originalNumber: 0,
-      text: this.props.post.response ? this.props.post.response.text : ""
+      text: this.props.post.response ? this.props.post.response.text : "",
     };
   }
 
@@ -37,7 +37,7 @@ export class ResponseForm extends React.Component<ResponseFormProps, ResponseFor
       location.reload();
     } else {
       this.setState({
-        error: result.error
+        error: result.error,
       });
     }
   };
@@ -71,9 +71,9 @@ export class ResponseForm extends React.Component<ResponseFormProps, ResponseFor
       </Button>
     );
 
-    const options = PostStatus.All.map(s => ({
+    const options = PostStatus.All.map((s) => ({
       value: s.value.toString(),
-      label: s.title
+      label: s.title,
     }));
 
     const modal = (

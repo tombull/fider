@@ -17,7 +17,7 @@ export default class CompleteSignInProfilePage extends React.Component<HomePageP
     super(props);
     this.key = querystring.get("k");
     this.state = {
-      name: ""
+      name: "",
     };
   }
 
