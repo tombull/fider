@@ -312,4 +312,4 @@
 //   }
 // }
 
-export default null; //injectStripe(PaymentInfoModal);
+export default null; // injectStripe(PaymentInfoModal);
