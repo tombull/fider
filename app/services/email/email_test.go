@@ -1,6 +1,7 @@
 package email_test
 
 import (
+	"strings"
 	"testing"
 
 	"github.com/tombull/teamdream/app/models/dto"
@@ -9,6 +10,9 @@ import (
 	. "github.com/tombull/teamdream/app/pkg/assert"
 )
 
+func ReplaceSpaces(inString string) string {
+	return strings.Replace(strings.Replace(strings.Replace(inString, "\t", ""), " ", ""), "\n", "")
+}
 func TestRenderMessage(t *testing.T) {
 	RegisterT(t)
 
@@ -16,7 +20,7 @@ func TestRenderMessage(t *testing.T) {
 		"name": "Fider",
 	})
 	Expect(message.Subject).Equals("Message to: Fider")
-	Expect(message.Body).Equals(`<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+	Expect(ReplaceSpaces(message.Body)).Equals(ReplaceSpaces(`<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -46,7 +50,7 @@ func TestRenderMessage(t *testing.T) {
 			</tr>
 		</table>
 	</body>
-</html>`)
+</html>`))
 }
 
 func TestCanSendTo(t *testing.T) {
