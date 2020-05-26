@@ -1,29 +1,29 @@
-name: fider
+name: teamdream
 
 on:
   push:
     branches:
-    - master
+      - master
   pull_request:
     branches:
-    - master
+      - master
 
 jobs:
   test-ui:
-    name: test-ui
+    name: Test UI
     runs-on: ubuntu-latest
     container:
       image: getfider/githubci:0.0.2
 
     steps:
       - name: checkout code
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
       - run: npm ci
       - run: mage lint:ui
       - run: mage test:ui
 
   test-server:
-    name: test-server
+    name: Test Server
     runs-on: ubuntu-latest
     container:
       image: getfider/githubci:0.0.2
@@ -32,34 +32,34 @@ jobs:
       minio:
         image: getfider/minio:0.0.2
         ports:
-        - 9000:9000
+          - 9000:9000
         env:
           MINIO_ACCESS_KEY: s3user
           MINIO_SECRET_KEY: s3user-s3cr3t
       postgres:
         image: postgres:9.6.8
         env:
-          POSTGRES_USER: fider_ci
-          POSTGRES_PASSWORD: fider_ci_pw
-          POSTGRES_DB: fider_ci
+          POSTGRES_USER: teamdream_ci
+          POSTGRES_PASSWORD: teamdream_ci_pw
+          POSTGRES_DB: teamdream_ci
         ports:
-        - 5432:5432
+          - 5432:5432
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
     steps:
-      - name: checkout code
-        uses: actions/checkout@v1
+      - name: Checkout code
+        uses: actions/checkout@v2
       - run: mage lint:server
-      - name: mage test:server
+      - name: Run server tests
         run: |
           mkdir ./dist
           mage test:server
         env:
           BLOB_STORAGE_S3_ENDPOINT_URL: http://minio:9000
-          DATABASE_URL: postgres://fider_ci:fider_ci_pw@postgres:5432/fider_ci?sslmode=disable
+          DATABASE_URL: postgres://teamdream_ci:teamdream_ci_pw@postgres:5432/teamdream_ci?sslmode=disable
 
   build:
-    name: build
+    name: Build
     runs-on: ubuntu-latest
     needs: [test-server, test-ui]
     container:
@@ -67,24 +67,25 @@ jobs:
 
     steps:
       - name: checkout code
-        uses: actions/checkout@v1
-      - run: docker build -t getfider/fider .
-      
+        uses: actions/checkout@v2
+      - name: Set repository name environment variable
+        run: echo ::set-env name=REPOSITORY_NAME::$(echo "$GITHUB_REPOSITORY" | awk -F / '{print $2}' | sed -e "s/:refs//")
+        shell: bash
+      - name: Docker build
+        env:
+          CONTAINER_URL: docker.pkg.github.com/${{github.repository}}/
+        run: |
+          export SHORT_SHA=`git rev-parse --short=7 ${GITHUB_SHA}`
+          docker build . --file Dockerfile --tag $CONTAINER_URL$REPOSITORY_NAME:${SHORT_SHA} --tag $CONTAINER_URL$REPOSITORY_NAME:latest
+
       - name: extract branch name
         run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
         id: getBranch
-
-      - uses: azure/docker-login@v1
-        if: steps.getBranch.outputs.branch == 'master'
-        with:
-          username: ${{ secrets.DOCKER_USER }}
-          password: ${{ secrets.DOCKER_PASS }}
 
       - name: push docker image
         if: steps.getBranch.outputs.branch == 'master'
         run: |
           export SHORT_SHA=`git rev-parse --short=7 ${GITHUB_SHA}`
-          docker tag getfider/fider getfider/fider:${SHORT_SHA}
-          docker push getfider/fider:${SHORT_SHA}
-          docker tag getfider/fider getfider/fider:master
-          docker push getfider/fider:master
+          echo ${{secrets.GITHUB_TOKEN}} | docker login --username $GITHUB_ACTOR --password-stdin docker.pkg.github.com
+          docker push $CONTAINER_URL$REPOSITORY_NAME:${SHORT_SHA}
+          docker push $CONTAINER_URL$REPOSITORY_NAME:latest
