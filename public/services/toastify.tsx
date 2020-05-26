@@ -10,7 +10,7 @@ const setup = () => {
   if (!hasContainer) {
     hasContainer = true;
     ReactDOM.render(
-      <ToastContainer position={toast.POSITION.TOP_RIGHT} toastClassName="c-toast" />,
+      <ToastContainer position="top-right" toastClassName="c-toast" />,
       document.getElementById("root-toastify")
     );
   }

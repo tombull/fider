@@ -7,7 +7,7 @@ import { AdminBasePage } from "../components/AdminBasePage";
 import { Segment, Button, CardInfo, Message } from "@fider/components";
 import { PaymentInfo, BillingPlan, Country, InvoiceDue } from "@fider/models";
 import { Fider, actions, navigator } from "@fider/services";
-import PaymentInfoModal from "../components/PaymentInfoModal";
+// import PaymentInfoModal from "../components/PaymentInfoModal";
 import { StripeProvider, Elements } from "react-stripe-elements";
 import { BillingPlanPanel } from "../components/BillingPlanPanel";
 
@@ -59,11 +59,11 @@ export default class BillingPage extends AdminBasePage<BillingPageProps, Billing
     }
   };
 
-  private closeModal = async () => {
-    this.setState({
-      showModal: false,
-    });
-  };
+  // private closeModal = async () => {
+  //   this.setState({
+  //     showModal: false,
+  //   });
+  // };
 
   public componentDidMount() {
     if (!this.props.paymentInfo) {
@@ -85,11 +85,11 @@ export default class BillingPage extends AdminBasePage<BillingPageProps, Billing
         {this.state.showModal && (
           <StripeProvider stripe={this.state.stripe}>
             <Elements>
-              <PaymentInfoModal
+              {/* <PaymentInfoModal
                 paymentInfo={this.props.paymentInfo}
                 countries={this.props.countries}
                 onClose={this.closeModal}
-              />
+              /> */}
             </Elements>
           </StripeProvider>
         )}
