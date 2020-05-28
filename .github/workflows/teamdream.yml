@@ -53,7 +53,7 @@ jobs:
       - name: Run server tests
         run: |
           mkdir ./dist
-          mage test:server
+          mage -v test:server
         env:
           BLOB_STORAGE_S3_ENDPOINT_URL: http://minio:9000
           DATABASE_URL: postgres://teamdream_ci:teamdream_ci_pw@postgres:5432/teamdream_ci?sslmode=disable
