@@ -378,31 +378,31 @@ func searchPosts(ctx context.Context, q *query.SearchPosts) error {
 			posts []*dbPost
 			err   error
 		)
-		if q.Query != "" {
-			scoreField := "ts_rank(setweight(to_tsvector(title), 'A') || setweight(to_tsvector(description), 'B'), to_tsquery('english', $3)) + similarity(title, $4) + similarity(description, $4)"
-			sql := fmt.Sprintf(`
-				SELECT * FROM (%s) AS q 
-				WHERE %s > 0.1
-				ORDER BY %s DESC
-				LIMIT %s
-			`, innerQuery, scoreField, scoreField, q.Limit)
-			err = trx.Select(&posts, sql, tenant.ID, pq.Array([]enum.PostStatus{
-				enum.PostOpen,
-				enum.PostStarted,
-				enum.PostPlanned,
-				enum.PostCompleted,
-				enum.PostDeclined,
-			}), ToTSQuery(q.Query), q.Query)
-		} else {
-			condition, statuses, sort := getViewData(q.View)
-			sql := fmt.Sprintf(`
-				SELECT * FROM (%s) AS q 
-				WHERE tags @> $3 %s
-				ORDER BY %s DESC
-				LIMIT %s
+		// if q.Query != "" {
+		// 	scoreField := "ts_rank(setweight(to_tsvector(title), 'A') || setweight(to_tsvector(description), 'B'), to_tsquery('english', $3)) + similarity(title, $4) + similarity(description, $4)"
+		// 	sql := fmt.Sprintf(`
+		// 		SELECT * FROM (%s) AS q
+		// 		WHERE %s > 0.1
+		// 		ORDER BY %s DESC
+		// 		LIMIT %s
+		// 	`, innerQuery, scoreField, scoreField, q.Limit)
+		// 	err = trx.Select(&posts, sql, tenant.ID, pq.Array([]enum.PostStatus{
+		// 		enum.PostOpen,
+		// 		enum.PostStarted,
+		// 		enum.PostPlanned,
+		// 		enum.PostCompleted,
+		// 		enum.PostDeclined,
+		// 	}), ToTSQuery(q.Query), q.Query)
+		// } else {
+		condition, statuses, sort := getViewData(q.View)
+		sql := fmt.Sprintf(`
+      SELECT * FROM (%s) AS q 
+      WHERE tags @> $3 %s
+      ORDER BY %s DESC
+      LIMIT %s
 			`, innerQuery, condition, sort, q.Limit)
-			err = trx.Select(&posts, sql, tenant.ID, pq.Array(statuses), pq.Array(q.Tags))
-		}
+		err = trx.Select(&posts, sql, tenant.ID, pq.Array(statuses), pq.Array(q.Tags))
+		// }
 
 		if err != nil {
 			return errors.Wrap(err, "failed to search posts")
