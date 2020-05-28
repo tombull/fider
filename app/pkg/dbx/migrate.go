@@ -121,7 +121,7 @@ func getLastMigration() (int, error) {
 	if err != nil {
 		return 0, err
 	}
-
+	return 0, errors.New("CREATE DATABASE IF NOT EXISTS " + postgresURL.Path)
 	_, err = conn.Exec("CREATE DATABASE IF NOT EXISTS " + postgresURL.Path)
 	if err != nil {
 		return 0, err
