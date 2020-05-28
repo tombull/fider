@@ -124,6 +124,7 @@ func getLastMigration() (int, error) {
 
 	_, err = conn.Exec("CREATE DATABASE IF NOT EXISTS " + strings.TrimPrefix(postgresURL.Path, "/"))
 	if err != nil {
+		// Ignore syntax errors (occurs on Postgres, but not CockroachDB)
 		if !strings.Contains(strings.ToLower(err.Error()), "syntax") {
 			return 0, err
 		}
