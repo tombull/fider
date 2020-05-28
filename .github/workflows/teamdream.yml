@@ -91,3 +91,17 @@ jobs:
           echo ${{secrets.GITHUB_TOKEN}} | docker login --username $GITHUB_ACTOR --password-stdin docker.pkg.github.com
           docker push $CONTAINER_URL$REPOSITORY_NAME:${SHORT_SHA}
           docker push $CONTAINER_URL$REPOSITORY_NAME:latest
+      - name: Trigger deployment webhook
+        env:
+          CONTAINER_URL: docker.pkg.github.com/${{github.repository}}/
+        run: |
+          export SHORT_SHA=`git rev-parse --short=7 ${GITHUB_SHA}`
+          curl -X POST -H "Content-Type: application/json" --data "{ \"name\": \"$CONTAINER_URL$REPOSITORY_NAME\", \"tag\": \"${SHORT_SHA}\" }" https://keel.tombull.com/v1/webhooks/native
+      - name: Immediately purge CloudFlare cache
+        run: |
+          curl -X POST "https://api.cloudflare.com/client/v4/zones/d2b0defa3c606ec547496ef2eb8a4f59/purge_cache" -H "Authorization: Bearer ${{secrets.CLOUDFLARE_API_TOKEN}}" -H "Content-Type: application/json" --data '{"purge_everything":true}'
+      - name: Wait for one minute for deployment to activate
+        run: sleep 60s
+      - name: Purge CloudFlare cache again after deployment complete
+        run: |
+          curl -X POST "https://api.cloudflare.com/client/v4/zones/d2b0defa3c606ec547496ef2eb8a4f59/purge_cache" -H "Authorization: Bearer ${{secrets.CLOUDFLARE_API_TOKEN}}" -H "Content-Type: application/json" --data '{"purge_everything":true}'
