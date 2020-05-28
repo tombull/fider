@@ -56,7 +56,7 @@ func (s Service) Init() {
 			Credentials:      credentials.NewStaticCredentials(s3EnvConfig.AccessKeyID, s3EnvConfig.SecretAccessKey, ""),
 			Endpoint:         aws.String(s3EnvConfig.EndpointURL),
 			Region:           aws.String(s3EnvConfig.Region),
-			DisableSSL:       aws.Bool(strings.HasSuffix(s3EnvConfig.EndpointURL, "http://")),
+			DisableSSL:       aws.Bool(strings.HasPrefix(s3EnvConfig.EndpointURL, "http://")),
 			S3ForcePathStyle: aws.Bool(true),
 		}
 		awsSession, err := session.NewSession(s3Config)
