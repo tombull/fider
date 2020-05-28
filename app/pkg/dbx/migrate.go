@@ -122,8 +122,12 @@ func getLastMigration() (int, error) {
 		return 0, err
 	}
 
-	// Silently ignore errors
-	conn.Exec("CREATE DATABASE IF NOT EXISTS " + strings.TrimPrefix(postgresURL.Path, "/"))
+	_, err = conn.Exec("CREATE DATABASE IF NOT EXISTS " + strings.TrimPrefix(postgresURL.Path, "/"))
+	if err != nil {
+		if !strings.Contains(strings.ToLower(err.Error()), "syntax") {
+			return 0, err
+		}
+	}
 
 	_, err = conn.Exec(`CREATE TABLE IF NOT EXISTS migrations_history (
 		version     BIGINT PRIMARY KEY,
