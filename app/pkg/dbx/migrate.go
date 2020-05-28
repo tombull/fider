@@ -2,7 +2,6 @@ package dbx
 
 import (
 	"context"
-	"database/sql"
 	stdErrors "errors"
 	"io/ioutil"
 	"net/url"
@@ -122,33 +121,33 @@ func getLastMigration() (int, error) {
 		return 0, err
 	}
 	return 0, errors.New("CREATE DATABASE IF NOT EXISTS " + postgresURL.Path)
-	_, err = conn.Exec("CREATE DATABASE IF NOT EXISTS " + postgresURL.Path)
-	if err != nil {
-		return 0, err
-	}
+	// _, err = conn.Exec("CREATE DATABASE IF NOT EXISTS " + postgresURL.Path)
+	// if err != nil {
+	// 	return 0, err
+	// }
 
-	_, err = conn.Exec(`CREATE TABLE IF NOT EXISTS migrations_history (
-		version     BIGINT PRIMARY KEY,
-		filename    VARCHAR(100) null,
-		date	 			TIMESTAMPTZ NOT NULL DEFAULT NOW()
-	)`)
-	if err != nil {
-		return 0, err
-	}
+	// _, err = conn.Exec(`CREATE TABLE IF NOT EXISTS migrations_history (
+	// 	version     BIGINT PRIMARY KEY,
+	// 	filename    VARCHAR(100) null,
+	// 	date	 			TIMESTAMPTZ NOT NULL DEFAULT NOW()
+	// )`)
+	// if err != nil {
+	// 	return 0, err
+	// }
 
-	var lastVersion sql.NullInt64
-	row := conn.QueryRow("SELECT MAX(version) FROM migrations_history LIMIT 1")
-	err = row.Scan(&lastVersion)
-	if err != nil {
-		return 0, err
-	}
+	// var lastVersion sql.NullInt64
+	// row := conn.QueryRow("SELECT MAX(version) FROM migrations_history LIMIT 1")
+	// err = row.Scan(&lastVersion)
+	// if err != nil {
+	// 	return 0, err
+	// }
 
-	if !lastVersion.Valid {
-		// If it's the first run, maybe we have records on old migrations table, so try to get from it.
-		// This SHOULD be removed in the far future.
-		row := conn.QueryRow("SELECT version FROM schema_migrations LIMIT 1")
-		_ = row.Scan(&lastVersion)
-	}
+	// if !lastVersion.Valid {
+	// 	// If it's the first run, maybe we have records on old migrations table, so try to get from it.
+	// 	// This SHOULD be removed in the far future.
+	// 	row := conn.QueryRow("SELECT version FROM schema_migrations LIMIT 1")
+	// 	_ = row.Scan(&lastVersion)
+	// }
 
-	return int(lastVersion.Int64), nil
+	// return int(lastVersion.Int64), nil
 }
