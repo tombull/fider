@@ -1,8 +1,34 @@
-alter table users add column avatar_type smallint null;
-alter table users add column avatar_bkey varchar(512) null;
+ALTER TABLE
+    users
+ADD
+    COLUMN avatar_type smallint NULL;
 
-update users set avatar_type = 2; -- gravatar
-update users set avatar_bkey = '';
+ALTER TABLE
+    users
+ADD
+    COLUMN avatar_bkey varchar(512) NULL;
 
-alter table users alter column avatar_type set not null;
-alter table users alter column avatar_bkey set not null;
+UPDATE
+    users
+SET
+    avatar_type = 2;
+
+-- gravatar
+UPDATE
+    users
+SET
+    avatar_bkey = '';
+
+ALTER TABLE
+    users
+ALTER COLUMN
+    avatar_type
+SET
+    NOT NULL;
+
+ALTER TABLE
+    users
+ALTER COLUMN
+    avatar_bkey
+SET
+    NOT NULL;

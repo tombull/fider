@@ -1,13 +1,13 @@
-create table if not exists attachments (
-  id              serial not null,
-  tenant_id       int not null,
-  post_id         int not null,
-  comment_id      int null,
-  user_id         int not null,
-  attachment_bkey varchar(512) not null,
-  primary key (id),
-  foreign key (tenant_id) references tenants(id),
-  foreign key (post_id) references posts(id),
-  foreign key (user_id) references users(id),
-  foreign key (comment_id) references comments(id)
+CREATE TABLE IF NOT EXISTS attachments (
+    id serial NOT NULL,
+    tenant_id int NOT NULL,
+    post_id int NOT NULL,
+    comment_id int NULL,
+    user_id int NOT NULL,
+    attachment_bkey varchar(512) NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (tenant_id) REFERENCES tenants(id),
+    FOREIGN KEY (post_id) REFERENCES posts(id),
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (comment_id) REFERENCES comments(id)
 );

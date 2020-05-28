@@ -1,9 +1,9 @@
-create table if not exists ideas (
-     id           serial primary key,
-     title        varchar(100) not null,
-     description  text null,
-     tenant_id    int not null,
-     created_on   timestamptz not null default now(),
-     modified_on  timestamptz not null default now(),
-     foreign key (tenant_id) references tenants(id)
+CREATE TABLE IF NOT EXISTS ideas (
+    id serial PRIMARY KEY,
+    title varchar(100) NOT NULL,
+    description text NULL,
+    tenant_id int NOT NULL,
+    created_on timestamptz NOT NULL DEFAULT NOW(),
+    modified_on timestamptz NOT NULL DEFAULT NOW(),
+    FOREIGN KEY (tenant_id) REFERENCES tenants(id)
 );

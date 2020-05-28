@@ -1,1 +1,2 @@
-ALTER TABLE tenants RENAME COLUMN domain TO subdomain;
+ALTER TABLE
+    tenants RENAME COLUMN domain TO subdomain;

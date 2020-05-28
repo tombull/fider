@@ -1,1 +1,2 @@
-ALTER TABLE ideas DROP COLUMN supporters;
+ALTER TABLE
+    ideas DROP COLUMN supporters;

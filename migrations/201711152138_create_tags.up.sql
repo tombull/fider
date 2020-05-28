@@ -1,21 +1,21 @@
-create table if not exists tags (
-     id             serial primary key,
-     tenant_id      int not null,
-     name           varchar(30) not null,
-     slug           varchar(30) not null,
-     color          varchar(6) not null,
-     is_public      boolean not null,
-     created_on     timestamptz not null,
-     foreign key (tenant_id) references tenants(id)
+CREATE TABLE IF NOT EXISTS tags (
+    id serial PRIMARY KEY,
+    tenant_id int NOT NULL,
+    name varchar(30) NOT NULL,
+    slug varchar(30) NOT NULL,
+    color varchar(6) NOT NULL,
+    is_public boolean NOT NULL,
+    created_on timestamptz NOT NULL,
+    FOREIGN KEY (tenant_id) REFERENCES tenants(id)
 );
 
-create table if not exists idea_tags (
-     tag_id         int not null,
-     idea_id        int not null,
-     created_on     timestamptz not null,
-     created_by_id  int not null,
-     primary key (tag_id, idea_id),
-     foreign key (idea_id) references ideas(id),
-     foreign key (tag_id) references tags(id),
-     foreign key (created_by_id) references users(id)
+CREATE TABLE IF NOT EXISTS idea_tags (
+    tag_id int NOT NULL,
+    idea_id int NOT NULL,
+    created_on timestamptz NOT NULL,
+    created_by_id int NOT NULL,
+    PRIMARY KEY (tag_id, idea_id),
+    FOREIGN KEY (idea_id) REFERENCES ideas(id),
+    FOREIGN KEY (tag_id) REFERENCES tags(id),
+    FOREIGN KEY (created_by_id) REFERENCES users(id)
 );

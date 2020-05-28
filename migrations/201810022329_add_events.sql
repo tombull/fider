@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS events (
+CREATE TABLE IF NOT EXISTS EVENTS (
     id SERIAL NOT NULL,
     tenant_id INT NOT NULL,
     client_ip INET,

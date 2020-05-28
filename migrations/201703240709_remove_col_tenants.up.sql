@@ -1,2 +1,7 @@
-alter table tenants drop column modified_on;
-alter table tenants alter column created_on drop default;
+ALTER TABLE
+    tenants DROP COLUMN modified_on;
+
+ALTER TABLE
+    tenants
+ALTER COLUMN
+    created_on DROP DEFAULT;

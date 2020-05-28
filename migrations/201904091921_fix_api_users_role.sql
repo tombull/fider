@@ -1,1 +1,6 @@
-UPDATE users SET role = 1 WHERE role = 0
+UPDATE
+    users
+SET
+    role = 1
+WHERE
+    role = 0

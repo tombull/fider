@@ -1,1 +1,6 @@
-update users set email = lower(email) where email != lower(email)
+UPDATE
+    users
+SET
+    email = lower(email)
+WHERE
+    email != lower(email)

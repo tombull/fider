@@ -1,9 +1,9 @@
-create table if not exists comments (
-     id          serial primary key,
-     content     text null,
-     idea_id     int not null,
-     user_id     int not null,
-     created_on  timestamptz not null,
-     foreign key (idea_id) references ideas(id),
-     foreign key (user_id) references users(id)
+CREATE TABLE IF NOT EXISTS comments (
+    id serial PRIMARY KEY,
+    content text NULL,
+    idea_id int NOT NULL,
+    user_id int NOT NULL,
+    created_on timestamptz NOT NULL,
+    FOREIGN KEY (idea_id) REFERENCES ideas(id),
+    FOREIGN KEY (user_id) REFERENCES users(id)
 );

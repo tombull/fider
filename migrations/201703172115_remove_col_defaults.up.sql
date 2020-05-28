@@ -1,5 +1,15 @@
-alter table ideas drop column modified_on;
-alter table ideas alter column created_on drop default;
+ALTER TABLE
+    ideas DROP COLUMN modified_on;
 
-alter table users drop column modified_on;
-alter table users alter column created_on drop default;
+ALTER TABLE
+    ideas
+ALTER COLUMN
+    created_on DROP DEFAULT;
+
+ALTER TABLE
+    users DROP COLUMN modified_on;
+
+ALTER TABLE
+    users
+ALTER COLUMN
+    created_on DROP DEFAULT;

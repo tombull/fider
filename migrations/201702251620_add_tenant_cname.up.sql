@@ -1,1 +1,4 @@
-alter table tenants add cname varchar(100) null
+ALTER TABLE
+    tenants
+ADD
+    COLUMN cname VARCHAR(100) NULL

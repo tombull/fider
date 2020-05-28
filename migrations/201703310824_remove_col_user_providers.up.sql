@@ -1,2 +1,7 @@
-alter table user_providers drop column modified_on;
-alter table user_providers alter column created_on drop default;
+ALTER TABLE
+    user_providers DROP COLUMN modified_on;
+
+ALTER TABLE
+    user_providers
+ALTER COLUMN
+    created_on DROP DEFAULT;

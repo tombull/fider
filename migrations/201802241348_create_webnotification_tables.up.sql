@@ -1,17 +1,17 @@
-create table if not exists notifications (
-  id          serial not null, 
-  tenant_id   int not null,
-  user_id     int not null,
-  title       varchar(160) not null,
-  link        varchar(2048) null,
-  read        boolean not null, 
-  idea_id     int not null,
-  author_id   int not null,
-  created_on  timestamptz not null default now(),
-  updated_on  timestamptz not null default now(),
-  primary key (id),
-  foreign key (tenant_id) references tenants(id),
-  foreign key (user_id) references users(id),
-  foreign key (author_id) references users(id),
-  foreign key (idea_id) references ideas(id)
+CREATE TABLE IF NOT EXISTS notifications (
+    id serial NOT NULL,
+    tenant_id int NOT NULL,
+    user_id int NOT NULL,
+    title varchar(160) NOT NULL,
+    link varchar(2048) NULL,
+    READ boolean NOT NULL,
+    idea_id int NOT NULL,
+    author_id int NOT NULL,
+    created_on timestamptz NOT NULL DEFAULT NOW(),
+    updated_on timestamptz NOT NULL DEFAULT NOW(),
+    PRIMARY KEY (id),
+    FOREIGN KEY (tenant_id) REFERENCES tenants(id),
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (author_id) REFERENCES users(id),
+    FOREIGN KEY (idea_id) REFERENCES ideas(id)
 );

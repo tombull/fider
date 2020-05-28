@@ -1,17 +1,17 @@
-create table if not exists users (
-     id           serial primary key,
-     name         varchar(100) null,
-     email        varchar(200) not null,
-     created_on   timestamptz not null default now(),
-     modified_on  timestamptz not null default now()
+CREATE TABLE IF NOT EXISTS users (
+    id serial PRIMARY KEY,
+    name varchar(100) NULL,
+    email varchar(200) NOT NULL,
+    created_on timestamptz NOT NULL DEFAULT NOW(),
+    modified_on timestamptz NOT NULL DEFAULT NOW()
 );
 
-create table if not exists user_providers (
-     user_id      int not null,
-     provider     varchar(40) not null,
-     provider_uid varchar(100) not null,
-     created_on   timestamptz not null default now(),
-     modified_on  timestamptz not null default now(),
-     primary key (user_id, provider),
-     foreign key (user_id) references users(id)
+CREATE TABLE IF NOT EXISTS user_providers (
+    user_id int NOT NULL,
+    provider varchar(40) NOT NULL,
+    provider_uid varchar(100) NOT NULL,
+    created_on timestamptz NOT NULL DEFAULT NOW(),
+    modified_on timestamptz NOT NULL DEFAULT NOW(),
+    PRIMARY KEY (user_id, provider),
+    FOREIGN KEY (user_id) REFERENCES users(id)
 );

@@ -1,1 +1,6 @@
-UPDATE tenants SET cname = null WHERE cname = '';
+UPDATE
+    tenants
+SET
+    cname = NULL
+WHERE
+    cname = '';

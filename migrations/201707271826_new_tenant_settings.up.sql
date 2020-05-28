@@ -1,4 +1,15 @@
-alter table tenants add invitation varchar(100) null;
-alter table tenants add welcome_message text null;
+ALTER TABLE
+    tenants
+ADD
+    invitation varchar(100) NULL;
 
-update tenants set invitation = '', welcome_message = '';
+ALTER TABLE
+    tenants
+ADD
+    welcome_message text NULL;
+
+UPDATE
+    tenants
+SET
+    invitation = '',
+    welcome_message = '';

@@ -1,14 +1,25 @@
-ALTER TABLE ideas ADD supporters INT;
+ALTER TABLE
+    ideas
+ADD
+    supporters INT;
 
-UPDATE ideas SET supporters = 0;
+UPDATE
+    ideas
+SET
+    supporters = 0;
 
-ALTER TABLE ideas ALTER COLUMN supporters SET NOT NULL;
+ALTER TABLE
+    ideas
+ALTER COLUMN
+    supporters
+SET
+    NOT NULL;
 
 CREATE TABLE IF NOT EXISTS idea_supporters (
-     user_id     int not null,
-     idea_id     int not null,
-     created_on  timestamptz not null,
-     primary key (user_id, idea_id),
-     foreign key (idea_id) references ideas(id),
-     foreign key (user_id) references users(id)
+    user_id int NOT NULL,
+    idea_id int NOT NULL,
+    created_on timestamptz NOT NULL,
+    PRIMARY KEY (user_id, idea_id),
+    FOREIGN KEY (idea_id) REFERENCES ideas(id),
+    FOREIGN KEY (user_id) REFERENCES users(id)
 );

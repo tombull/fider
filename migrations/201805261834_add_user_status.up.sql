@@ -1,5 +1,16 @@
-ALTER TABLE users ADD status INT NULL;
+ALTER TABLE
+    users
+ADD
+    STATUS INT NULL;
 
-UPDATE users SET status = 1;
+UPDATE
+    users
+SET
+    STATUS = 1;
 
-ALTER TABLE users ALTER COLUMN status SET NOT NULL;
+ALTER TABLE
+    users
+ALTER COLUMN
+    STATUS
+SET
+    NOT NULL;

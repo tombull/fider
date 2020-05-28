@@ -1,5 +1,16 @@
-ALTER TABLE ideas ADD status INT;
+ALTER TABLE
+    ideas
+ADD
+    STATUS INT;
 
-UPDATE ideas SET status = 0;
+UPDATE
+    ideas
+SET
+    STATUS = 0;
 
-ALTER TABLE ideas ALTER COLUMN status SET NOT NULL;
+ALTER TABLE
+    ideas
+ALTER COLUMN
+    STATUS
+SET
+    NOT NULL;

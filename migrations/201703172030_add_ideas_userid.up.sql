@@ -1,1 +1,9 @@
-alter table ideas add user_id int REFERENCES users (id)
+ALTER TABLE
+    ideas
+ADD
+    COLUMN user_id INT;
+
+ALTER TABLE
+    ideas
+ADD
+    CONSTRAINT users_fk FOREIGN KEY user_id REFERENCES users (id) ON DELETE CASCADE;
