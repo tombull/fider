@@ -438,8 +438,7 @@ CREATE UNIQUE INDEX blobs_unique_global_key ON public.blobs (KEY, tenant_id);
 
 -- WHERE
 --     (tenant_id IS NOT NULL);
-CREATE UNIQUE INDEX blobs_unique_tenant_key ON public.blobs (KEY);
-
+-- CREATE UNIQUE INDEX blobs_unique_tenant_key ON public.blobs (KEY);
 -- WHERE
 --     (tenant_id IS NULL);
 CREATE UNIQUE INDEX email_verifications_key_idx ON public.email_verifications (tenant_id, KEY);
