@@ -253,91 +253,91 @@ ALTER TABLE
 ALTER COLUMN
     id
 SET
-    DEFAULT nextval('public.attachments_id_seq' :: regclass);
+    DEFAULT nextval('public.attachments_id_seq');
 
 ALTER TABLE
     ONLY public.blobs
 ALTER COLUMN
     id
 SET
-    DEFAULT nextval('public.blobs_id_seq' :: regclass);
+    DEFAULT nextval('public.blobs_id_seq');
 
 ALTER TABLE
     ONLY public.comments
 ALTER COLUMN
     id
 SET
-    DEFAULT nextval('public.comments_id_seq' :: regclass);
+    DEFAULT nextval('public.comments_id_seq');
 
 ALTER TABLE
     ONLY public.email_verifications
 ALTER COLUMN
     id
 SET
-    DEFAULT nextval('public.email_verifications_id_seq' :: regclass);
+    DEFAULT nextval('public.email_verifications_id_seq');
 
 ALTER TABLE
     ONLY public.events
 ALTER COLUMN
     id
 SET
-    DEFAULT nextval('public.events_id_seq' :: regclass);
+    DEFAULT nextval('public.events_id_seq');
 
 ALTER TABLE
     ONLY public.logs
 ALTER COLUMN
     id
 SET
-    DEFAULT nextval('public.logs_id_seq' :: regclass);
+    DEFAULT nextval('public.logs_id_seq');
 
 ALTER TABLE
     ONLY public.notifications
 ALTER COLUMN
     id
 SET
-    DEFAULT nextval('public.notifications_id_seq' :: regclass);
+    DEFAULT nextval('public.notifications_id_seq');
 
 ALTER TABLE
     ONLY public.oauth_providers
 ALTER COLUMN
     id
 SET
-    DEFAULT nextval('public.oauth_providers_id_seq' :: regclass);
+    DEFAULT nextval('public.oauth_providers_id_seq');
 
 ALTER TABLE
     ONLY public.posts
 ALTER COLUMN
     id
 SET
-    DEFAULT nextval('public.posts_id_seq' :: regclass);
+    DEFAULT nextval('public.posts_id_seq');
 
 ALTER TABLE
     ONLY public.tags
 ALTER COLUMN
     id
 SET
-    DEFAULT nextval('public.tags_id_seq' :: regclass);
+    DEFAULT nextval('public.tags_id_seq');
 
 ALTER TABLE
     ONLY public.tenants
 ALTER COLUMN
     id
 SET
-    DEFAULT nextval('public.tenants_id_seq' :: regclass);
+    DEFAULT nextval('public.tenants_id_seq');
 
 ALTER TABLE
     ONLY public.user_settings
 ALTER COLUMN
     id
 SET
-    DEFAULT nextval('public.user_settings_id_seq' :: regclass);
+    DEFAULT nextval('public.user_settings_id_seq');
 
 ALTER TABLE
     ONLY public.users
 ALTER COLUMN
     id
 SET
-    DEFAULT nextval('public.users_id_seq' :: regclass);
+    DEFAULT nextval('public.users_id_seq');
 
 ALTER TABLE
     ONLY public.attachments
@@ -434,47 +434,46 @@ ALTER TABLE
 ADD
     CONSTRAINT users_pkey PRIMARY KEY (id);
 
-CREATE UNIQUE INDEX blobs_unique_global_key ON public.blobs USING btree (KEY, tenant_id)
-WHERE
-    (tenant_id IS NOT NULL);
+-- CREATE UNIQUE INDEX blobs_unique_global_key ON public.blobs (KEY, tenant_id);
+-- WHERE
+--     (tenant_id IS NOT NULL);
+CREATE UNIQUE INDEX blobs_unique_tenant_key ON public.blobs (KEY);
 
-CREATE UNIQUE INDEX blobs_unique_tenant_key ON public.blobs USING btree (KEY)
-WHERE
-    (tenant_id IS NULL);
+-- WHERE
+--     (tenant_id IS NULL);
+CREATE UNIQUE INDEX email_verifications_key_idx ON public.email_verifications (tenant_id, KEY);
 
-CREATE UNIQUE INDEX email_verifications_key_idx ON public.email_verifications USING btree (tenant_id, KEY);
+CREATE UNIQUE INDEX post_id_tenant_id_key ON public.posts (tenant_id, id);
 
-CREATE UNIQUE INDEX post_id_tenant_id_key ON public.posts USING btree (tenant_id, id);
+CREATE UNIQUE INDEX post_number_tenant_key ON public.posts (tenant_id, number);
 
-CREATE UNIQUE INDEX post_number_tenant_key ON public.posts USING btree (tenant_id, number);
+CREATE UNIQUE INDEX post_slug_tenant_key ON public.posts (tenant_id, slug);
 
-CREATE UNIQUE INDEX post_slug_tenant_key ON public.posts USING btree (tenant_id, slug)
-WHERE
-    (STATUS <> 6);
+-- WHERE
+--     (STATUS <> 6);
+CREATE UNIQUE INDEX tag_id_tenant_id_key ON public.tags (tenant_id, id);
 
-CREATE UNIQUE INDEX tag_id_tenant_id_key ON public.tags USING btree (tenant_id, id);
+CREATE UNIQUE INDEX tag_slug_tenant_key ON public.tags (tenant_id, slug);
 
-CREATE UNIQUE INDEX tag_slug_tenant_key ON public.tags USING btree (tenant_id, slug);
+CREATE UNIQUE INDEX tenant_cname_unique_idx ON public.tenants (cname);
 
-CREATE UNIQUE INDEX tenant_cname_unique_idx ON public.tenants USING btree (cname)
-WHERE
-    ((cname) :: text <> '' :: text);
+-- WHERE
+--     (cname <> '');
+CREATE UNIQUE INDEX tenant_id_provider_key ON public.oauth_providers (tenant_id, provider);
 
-CREATE UNIQUE INDEX tenant_id_provider_key ON public.oauth_providers USING btree (tenant_id, provider);
+CREATE UNIQUE INDEX tenant_subdomain_unique_idx ON public.tenants (subdomain);
 
-CREATE UNIQUE INDEX tenant_subdomain_unique_idx ON public.tenants USING btree (subdomain);
+CREATE UNIQUE INDEX user_email_unique_idx ON public.users (tenant_id, email);
 
-CREATE UNIQUE INDEX user_email_unique_idx ON public.users USING btree (tenant_id, email)
-WHERE
-    ((email) :: text <> '' :: text);
+-- WHERE
+--     (email <> '');
+CREATE UNIQUE INDEX user_id_tenant_id_key ON public.users (tenant_id, id);
 
-CREATE UNIQUE INDEX user_id_tenant_id_key ON public.users USING btree (tenant_id, id);
+CREATE UNIQUE INDEX user_provider_unique_idx ON public.user_providers (user_id, provider);
 
-CREATE UNIQUE INDEX user_provider_unique_idx ON public.user_providers USING btree (user_id, provider);
+CREATE UNIQUE INDEX user_settings_uq_key ON public.user_settings (user_id, KEY);
 
-CREATE UNIQUE INDEX user_settings_uq_key ON public.user_settings USING btree (user_id, KEY);
-
-CREATE UNIQUE INDEX users_api_key ON public.users USING btree (tenant_id, api_key);
+CREATE UNIQUE INDEX users_api_key ON public.users (tenant_id, api_key);
 
 ALTER TABLE
     ONLY public.attachments
@@ -504,17 +503,17 @@ ADD
 ALTER TABLE
     ONLY public.comments
 ADD
-    CONSTRAINT comments_deleted_by_id_fkey FOREIGN KEY (deleted_by_id, tenant_id) REFERENCES public.users(id, tenant_id);
+    CONSTRAINT comments_deleted_by_id_fkey FOREIGN KEY (tenant_id, deleted_by_id) REFERENCES public.users(tenant_id, id);
 
 ALTER TABLE
     ONLY public.comments
 ADD
-    CONSTRAINT comments_edited_by_id_fkey FOREIGN KEY (edited_by_id, tenant_id) REFERENCES public.users(id, tenant_id);
+    CONSTRAINT comments_edited_by_id_fkey FOREIGN KEY (tenant_id, edited_by_id) REFERENCES public.users(tenant_id, id);
 
 ALTER TABLE
     ONLY public.comments
 ADD
-    CONSTRAINT comments_post_id_fkey FOREIGN KEY (post_id, tenant_id) REFERENCES public.posts(id, tenant_id);
+    CONSTRAINT comments_post_id_fkey FOREIGN KEY (tenant_id, post_id) REFERENCES public.posts(tenant_id, id);
 
 ALTER TABLE
     ONLY public.comments
@@ -524,7 +523,7 @@ ADD
 ALTER TABLE
     ONLY public.comments
 ADD
-    CONSTRAINT comments_user_id_fkey FOREIGN KEY (user_id, tenant_id) REFERENCES public.users(id, tenant_id);
+    CONSTRAINT comments_user_id_fkey FOREIGN KEY (tenant_id, user_id) REFERENCES public.users(tenant_id, id);
 
 ALTER TABLE
     ONLY public.email_verifications
@@ -534,7 +533,7 @@ ADD
 ALTER TABLE
     ONLY public.email_verifications
 ADD
-    CONSTRAINT email_verifications_user_id_fkey FOREIGN KEY (user_id, tenant_id) REFERENCES public.users(id, tenant_id);
+    CONSTRAINT email_verifications_user_id_fkey FOREIGN KEY (tenant_id, user_id) REFERENCES public.users(tenant_id, id);
 
 ALTER TABLE
     ONLY public.events
@@ -549,12 +548,12 @@ ADD
 ALTER TABLE
     ONLY public.notifications
 ADD
-    CONSTRAINT notifications_author_id_fkey FOREIGN KEY (author_id, tenant_id) REFERENCES public.users(id, tenant_id);
+    CONSTRAINT notifications_author_id_fkey FOREIGN KEY (tenant_id, author_id) REFERENCES public.users(tenant_id, id);
 
 ALTER TABLE
     ONLY public.notifications
 ADD
-    CONSTRAINT notifications_post_id_fkey FOREIGN KEY (post_id, tenant_id) REFERENCES public.posts(id, tenant_id);
+    CONSTRAINT notifications_post_id_fkey FOREIGN KEY (tenant_id, post_id) REFERENCES public.posts(tenant_id, id);
 
 ALTER TABLE
     ONLY public.notifications
@@ -564,7 +563,7 @@ ADD
 ALTER TABLE
     ONLY public.notifications
 ADD
-    CONSTRAINT notifications_user_id_fkey FOREIGN KEY (user_id, tenant_id) REFERENCES public.users(id, tenant_id);
+    CONSTRAINT notifications_user_id_fkey FOREIGN KEY (tenant_id, user_id) REFERENCES public.users(tenant_id, id);
 
 ALTER TABLE
     ONLY public.oauth_providers
@@ -574,7 +573,7 @@ ADD
 ALTER TABLE
     ONLY public.post_subscribers
 ADD
-    CONSTRAINT post_subscribers_post_id_fkey FOREIGN KEY (post_id, tenant_id) REFERENCES public.posts(id, tenant_id);
+    CONSTRAINT post_subscribers_post_id_fkey FOREIGN KEY (tenant_id, post_id) REFERENCES public.posts(tenant_id, id);
 
 ALTER TABLE
     ONLY public.post_subscribers
@@ -584,22 +583,22 @@ ADD
 ALTER TABLE
     ONLY public.post_subscribers
 ADD
-    CONSTRAINT post_subscribers_user_id_fkey FOREIGN KEY (user_id, tenant_id) REFERENCES public.users(id, tenant_id);
+    CONSTRAINT post_subscribers_user_id_fkey FOREIGN KEY (tenant_id, user_id) REFERENCES public.users(tenant_id, id);
 
 ALTER TABLE
     ONLY public.post_tags
 ADD
-    CONSTRAINT post_tags_created_by_id_fkey FOREIGN KEY (created_by_id, tenant_id) REFERENCES public.users(id, tenant_id);
+    CONSTRAINT post_tags_created_by_id_fkey FOREIGN KEY (tenant_id, created_by_id) REFERENCES public.users(tenant_id, id);
 
 ALTER TABLE
     ONLY public.post_tags
 ADD
-    CONSTRAINT post_tags_post_id_fkey FOREIGN KEY (post_id, tenant_id) REFERENCES public.posts(id, tenant_id);
+    CONSTRAINT post_tags_post_id_fkey FOREIGN KEY (tenant_id, post_id) REFERENCES public.posts(tenant_id, id);
 
 ALTER TABLE
     ONLY public.post_tags
 ADD
-    CONSTRAINT post_tags_tag_id_fkey FOREIGN KEY (tag_id, tenant_id) REFERENCES public.tags(id, tenant_id);
+    CONSTRAINT post_tags_tag_id_fkey FOREIGN KEY (tenant_id, tag_id) REFERENCES public.tags(tenant_id, id);
 
 ALTER TABLE
     ONLY public.post_tags
@@ -609,7 +608,7 @@ ADD
 ALTER TABLE
     ONLY public.post_votes
 ADD
-    CONSTRAINT post_votes_post_id_fkey FOREIGN KEY (post_id, tenant_id) REFERENCES public.posts(id, tenant_id);
+    CONSTRAINT post_votes_post_id_fkey FOREIGN KEY (tenant_id, post_id) REFERENCES public.posts(tenant_id, id);
 
 ALTER TABLE
     ONLY public.post_votes
@@ -619,7 +618,7 @@ ADD
 ALTER TABLE
     ONLY public.post_votes
 ADD
-    CONSTRAINT post_votes_user_id_fkey FOREIGN KEY (user_id, tenant_id) REFERENCES public.users(id, tenant_id);
+    CONSTRAINT post_votes_user_id_fkey FOREIGN KEY (tenant_id, user_id) REFERENCES public.users(tenant_id, id);
 
 ALTER TABLE
     ONLY public.posts
@@ -654,7 +653,7 @@ ADD
 ALTER TABLE
     ONLY public.user_providers
 ADD
-    CONSTRAINT user_providers_user_id_fkey FOREIGN KEY (user_id, tenant_id) REFERENCES public.users(id, tenant_id);
+    CONSTRAINT user_providers_user_id_fkey FOREIGN KEY (tenant_id, user_id) REFERENCES public.users(tenant_id, id);
 
 ALTER TABLE
     ONLY public.user_settings
@@ -664,4 +663,4 @@ ADD
 ALTER TABLE
     ONLY public.user_settings
 ADD
-    CONSTRAINT user_settings_user_id_fkey FOREIGN KEY (user_id, tenant_id) REFERENCES public.users(id, tenant_id);
+    CONSTRAINT user_settings_user_id_fkey FOREIGN KEY (tenant_id, user_id) REFERENCES public.users(tenant_id, id);
