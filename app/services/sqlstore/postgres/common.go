@@ -63,7 +63,7 @@ func getViewData(view string) (string, []enum.PostStatus, string) {
 	case "trending":
 		fallthrough
 	default:
-		sort = "((COALESCE(recent_votes_count, 0)*5 + COALESCE(recent_comments_count, 0) *3)-1) / pow((EXTRACT(EPOCH FROM current_timestamp - created_at)/3600) + 2, 1.4)"
+		sort = "CAST(((COALESCE(recent_votes_count, 0)*5 + COALESCE(recent_comments_count, 0) *3)-1) AS FLOAT) / pow((EXTRACT(EPOCH FROM current_timestamp - created_at)/3600) + 2, 1.4)"
 	}
 	return condition, statuses, sort
 }

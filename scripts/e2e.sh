@@ -1,12 +1,12 @@
 #!/bin/bash
 
-FIDER_CONTAINER="teamdream_e2e"
+TEAMDREAM_CONTAINER="teamdream_e2e"
 PG_CONTAINER="teamdream_pge2e"
 PORT=3000
 
 start_teamdream () {
   echo "Starting Teamdream (HOST_MODE: $1)..."
-  docker rm -f $FIDER_CONTAINER $PG_CONTAINER || true
+  docker rm -f $TEAMDREAM_CONTAINER $PG_CONTAINER || true
   docker run -d -e POSTGRES_USER=teamdream_e2e -e POSTGRES_PASSWORD=teamdream_e2e_pw --name $PG_CONTAINER postgres:9.6.8
   docker run --link $PG_CONTAINER:pg waisbrot/wait
   docker run \
@@ -19,7 +19,7 @@ start_teamdream () {
     -v `pwd`/etc:/app/etc \
     --env-file .env \
     --link $PG_CONTAINER \
-    --name $FIDER_CONTAINER getfider/teamdream:e2e
+    --name $TEAMDREAM_CONTAINER getfider/teamdream:e2e
 }
 
 run_e2e () {
@@ -45,7 +45,7 @@ then
 fi
 
 echo "Stopping Containers ..."
-docker rm -f $FIDER_CONTAINER $PG_CONTAINER || true
+docker rm -f $TEAMDREAM_CONTAINER $PG_CONTAINER || true
 
 echo "Killing Chromium..."
 ps -A | grep '[c]hromium' | awk '{print $1}' | xargs kill || true
