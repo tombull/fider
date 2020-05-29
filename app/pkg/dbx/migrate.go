@@ -5,7 +5,6 @@ import (
 	"database/sql"
 	stdErrors "errors"
 	"io/ioutil"
-	"net/url"
 	"os"
 	"sort"
 	"strconv"
@@ -117,20 +116,20 @@ func runMigration(ctx context.Context, version int, path, fileName string) error
 }
 
 func getLastMigration() (int, error) {
-	postgresURL, err := url.Parse(env.Config.Database.URL)
-	if err != nil {
-		return 0, err
-	}
+	// postgresURL, err := url.Parse(env.Config.Database.URL)
+	// if err != nil {
+	// 	return 0, err
+	// }
 
-	_, err = conn.Exec("CREATE DATABASE IF NOT EXISTS " + strings.TrimPrefix(postgresURL.Path, "/"))
-	if err != nil {
-		// Ignore syntax errors (occurs on Postgres, but not CockroachDB)
-		if !strings.Contains(strings.ToLower(err.Error()), "syntax") {
-			return 0, err
-		}
-	}
+	// _, err = conn.Exec("CREATE DATABASE IF NOT EXISTS " + strings.TrimPrefix(postgresURL.Path, "/"))
+	// if err != nil {
+	// 	// Ignore syntax errors (occurs on Postgres, but not CockroachDB)
+	// 	if !strings.Contains(strings.ToLower(err.Error()), "syntax") {
+	// 		return 0, err
+	// 	}
+	// }
 
-	_, err = conn.Exec(`CREATE TABLE IF NOT EXISTS migrations_history (
+	_, err := conn.Exec(`CREATE TABLE IF NOT EXISTS migrations_history (
 		version     BIGINT PRIMARY KEY,
 		filename    VARCHAR(100) null,
 		date	 			TIMESTAMPTZ NOT NULL DEFAULT NOW()
