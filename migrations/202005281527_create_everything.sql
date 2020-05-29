@@ -455,10 +455,9 @@ CREATE UNIQUE INDEX tag_id_tenant_id_key ON public.tags (tenant_id, id);
 
 CREATE UNIQUE INDEX tag_slug_tenant_key ON public.tags (tenant_id, slug);
 
-CREATE UNIQUE INDEX tenant_cname_unique_idx ON public.tenants (cname);
-
--- WHERE
---     (cname <> '');
+-- CREATE UNIQUE INDEX tenant_cname_unique_idx ON public.tenants (cname);
+-- -- WHERE
+-- --     (cname <> '');
 CREATE UNIQUE INDEX tenant_id_provider_key ON public.oauth_providers (tenant_id, provider);
 
 CREATE UNIQUE INDEX tenant_subdomain_unique_idx ON public.tenants (subdomain);
