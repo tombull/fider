@@ -434,7 +434,8 @@ ALTER TABLE
 ADD
     CONSTRAINT users_pkey PRIMARY KEY (id);
 
--- CREATE UNIQUE INDEX blobs_unique_global_key ON public.blobs (KEY, tenant_id);
+CREATE UNIQUE INDEX blobs_unique_global_key ON public.blobs (KEY, tenant_id);
+
 -- WHERE
 --     (tenant_id IS NOT NULL);
 CREATE UNIQUE INDEX blobs_unique_tenant_key ON public.blobs (KEY);
