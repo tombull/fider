@@ -1,4 +1,0 @@
-ALTER TABLE
-    tenants
-ADD
-    COLUMN cname VARCHAR(100) NULL
