@@ -77,7 +77,7 @@ func TestSend_Success(t *testing.T) {
 			<tr>
 				<td height="40">&nbsp;</td>
 			</tr>
-			
+
 			<tr>
 				<td align="center">
 					<table bgcolor="#FFFFFF" cellpadding="0" cellspacing="0" border="0" style="text-align:left;padding:20px;margin:10px;border-radius:5px;color:#1c262d;border:1px solid #ECECEC;min-width:320px;max-width:660px;">
@@ -199,7 +199,7 @@ func TestBatch_Success(t *testing.T) {
 			<tr>
 				<td height="40">&nbsp;</td>
 			</tr>
-			
+
 			<tr>
 				<td align="center">
 					<table bgcolor="#FFFFFF" cellpadding="0" cellspacing="0" border="0" style="text-align:left;padding:20px;margin:10px;border-radius:5px;color:#1c262d;border:1px solid #ECECEC;min-width:320px;max-width:660px;">
